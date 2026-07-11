@@ -1,0 +1,953 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sarath Job Search Tracker</title>
+  <style>
+    :root {
+      --bg: #f6f7f4;
+      --panel: #ffffff;
+      --panel-2: #f0f5f7;
+      --ink: #17212b;
+      --muted: #65737f;
+      --line: #dce2e4;
+      --accent: #176b87;
+      --accent-2: #7c5c34;
+      --good: #1d7f54;
+      --warn: #a86612;
+      --risk: #b84c38;
+      --blue-soft: #e5f2f6;
+      --green-soft: #e6f3ec;
+      --amber-soft: #f7eddd;
+      --red-soft: #f8e7e3;
+      --shadow: 0 14px 30px rgba(27, 41, 51, .08);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #edf4f5 0, rgba(237, 244, 245, 0) 360px),
+        var(--bg);
+      min-height: 100vh;
+    }
+
+    button, input, select, textarea {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .app {
+      width: min(1440px, calc(100vw - 32px));
+      margin: 0 auto;
+      padding: 24px 0 32px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: minmax(260px, 1fr) auto;
+      gap: 16px;
+      align-items: center;
+      padding: 6px 0 22px;
+    }
+
+    .identity {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 46px;
+      height: 46px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #17212b;
+      color: white;
+      font-weight: 800;
+      letter-spacing: 0;
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      font-size: 25px;
+      line-height: 1.15;
+      margin: 0;
+      letter-spacing: 0;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin-top: 5px;
+      font-size: 14px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn {
+      height: 38px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+      white-space: nowrap;
+    }
+
+    .btn:hover { border-color: #b8c4c8; }
+    .btn.primary {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    .icon {
+      width: 17px;
+      height: 17px;
+      display: inline-block;
+      flex: 0 0 auto;
+    }
+
+    .overview {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 15px 16px;
+      box-shadow: var(--shadow);
+      min-height: 92px;
+    }
+
+    .metric .label {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .metric .value {
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 800;
+      margin-top: 10px;
+    }
+
+    .metric .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1fr repeat(3, minmax(150px, 190px));
+      gap: 10px;
+      margin: 0 0 14px;
+      align-items: center;
+    }
+
+    .field {
+      height: 42px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 12px;
+      width: 100%;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .field:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(23, 107, 135, .14);
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 290px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 12px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .panel-head {
+      padding: 14px 15px 10px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .panel-title {
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .target-list, .status-list {
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .target {
+      border: 1px solid var(--line);
+      background: #fbfcfc;
+      border-radius: 8px;
+      padding: 10px;
+      display: grid;
+      gap: 5px;
+    }
+
+    .target b { font-size: 13px; }
+    .target span { color: var(--muted); font-size: 12px; line-height: 1.35; }
+
+    .status-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 9px;
+      border-radius: 8px;
+      background: #fbfcfc;
+      border: 1px solid var(--line);
+      cursor: pointer;
+    }
+
+    .status-row.active {
+      border-color: var(--accent);
+      background: var(--blue-soft);
+    }
+
+    .count {
+      min-width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #eef1f2;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .job-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      min-height: 248px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+
+    .job-top {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 15px 15px 11px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .company {
+      font-size: 13px;
+      color: var(--muted);
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .role {
+      font-size: 18px;
+      line-height: 1.25;
+      font-weight: 800;
+    }
+
+    .fit {
+      width: 54px;
+      height: 54px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--green-soft);
+      color: var(--good);
+      font-weight: 900;
+      border: 1px solid #cce8da;
+    }
+
+    .fit.medium {
+      background: var(--amber-soft);
+      color: var(--warn);
+      border-color: #efd7b7;
+    }
+
+    .job-body {
+      padding: 12px 15px 10px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      border-radius: 8px;
+      padding: 5px 8px;
+      background: var(--panel-2);
+      color: #33424d;
+      border: 1px solid #d7e1e4;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .pill.easy { background: var(--green-soft); border-color: #cce8da; color: var(--good); }
+    .pill.external { background: var(--blue-soft); border-color: #c4e1e9; color: var(--accent); }
+    .pill.warn { background: var(--amber-soft); border-color: #efd7b7; color: var(--warn); }
+
+    .notes {
+      color: #44545f;
+      font-size: 13px;
+      line-height: 1.45;
+      min-height: 38px;
+    }
+
+    .card-edit {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mini {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 8px;
+      background: #fbfcfc;
+      min-width: 0;
+      font-size: 13px;
+    }
+
+    .card-actions {
+      padding: 10px 15px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      border-top: 1px solid var(--line);
+    }
+
+    .link-btn {
+      color: var(--accent);
+      font-weight: 800;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tiny-btn {
+      border: 1px solid var(--line);
+      background: #fbfcfc;
+      color: var(--ink);
+      border-radius: 8px;
+      padding: 7px 9px;
+      font-size: 12px;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .empty {
+      display: none;
+      padding: 42px;
+      text-align: center;
+      color: var(--muted);
+      border: 1px dashed #b8c4c8;
+      background: rgba(255,255,255,.7);
+      border-radius: var(--radius);
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(23, 33, 43, .38);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 10;
+    }
+
+    .drawer.open { display: flex; }
+
+    .modal {
+      width: min(720px, 100%);
+      max-height: min(780px, calc(100vh - 40px));
+      overflow: auto;
+      background: var(--panel);
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      box-shadow: 0 26px 70px rgba(17, 29, 39, .26);
+    }
+
+    .modal-head {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: start;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 900;
+      margin: 0;
+    }
+
+    .modal-body {
+      padding: 18px 20px 20px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .form-grid label, .wide {
+      display: grid;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    textarea.field {
+      min-height: 96px;
+      padding: 10px 12px;
+      resize: vertical;
+    }
+
+    .close {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfc;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .save-line {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .overview { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .layout { grid-template-columns: 1fr; }
+      .sidebar { position: static; grid-template-columns: 1fr 1fr; }
+      .toolbar { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .app { width: min(100% - 20px, 1440px); padding-top: 14px; }
+      .topbar { grid-template-columns: 1fr; }
+      .actions { justify-content: flex-start; }
+      .overview, .jobs, .sidebar, .toolbar, .form-grid { grid-template-columns: 1fr; }
+      .job-top { grid-template-columns: 1fr; }
+      .fit { width: 100%; height: 42px; }
+      .card-edit { grid-template-columns: 1fr; }
+      h1 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="identity">
+        <div class="mark">SK</div>
+        <div>
+          <h1>Data Engineering Job Tracker</h1>
+          <div class="sub">Sarath Krishnan · Bangalore · Hyderabad · Kochi · INR 22 LPA+</div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="exportJson" title="Export saved tracker data">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          JSON
+        </button>
+        <button class="btn" id="exportCsv" title="Export tracker as CSV">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8"/><path d="M8 17h8"/></svg>
+          CSV
+        </button>
+        <label class="btn" title="Import previously exported JSON">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V9"/><path d="m17 14-5-5-5 5"/><path d="M5 3h14"/></svg>
+          Import
+          <input id="importJson" type="file" accept="application/json" hidden>
+        </label>
+        <button class="btn primary" id="resetData" title="Restore the original first batch">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+          Reset
+        </button>
+      </div>
+    </header>
+
+    <section class="overview" id="metrics"></section>
+
+    <section class="toolbar">
+      <input class="field" id="searchBox" placeholder="Search company, role, location, notes">
+      <select class="field" id="locationFilter">
+        <option value="all">All locations</option>
+      </select>
+      <select class="field" id="roleFilter">
+        <option value="all">All resume versions</option>
+      </select>
+      <select class="field" id="sortBy">
+        <option value="priority">Sort by priority</option>
+        <option value="fit">Sort by fit</option>
+        <option value="company">Sort by company</option>
+        <option value="status">Sort by status</option>
+      </select>
+    </section>
+
+    <section class="layout">
+      <aside class="sidebar">
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Focus Targets</div>
+          </div>
+          <div class="target-list">
+            <div class="target"><b>Primary stack</b><span>Azure Data Factory, Databricks, PySpark, Delta Lake, Unity Catalog, Airflow</span></div>
+            <div class="target"><b>Best angle</b><span>SSIS/Talend migration into Databricks Lakehouse with validation and performance wins</span></div>
+            <div class="target"><b>Daily target</b><span>Apply to 5-10 high-fit roles after JD verification</span></div>
+            <div class="target"><b>Salary floor</b><span>INR 22 LPA and above</span></div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Status</div>
+          </div>
+          <div class="status-list" id="statusList"></div>
+        </section>
+      </aside>
+
+      <section>
+        <div class="jobs" id="jobGrid"></div>
+        <div class="empty" id="emptyState">No jobs match the current filters.</div>
+      </section>
+    </section>
+  </main>
+
+  <section class="drawer" id="drawer" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <p class="modal-title" id="modalTitle"></p>
+          <div class="sub" id="modalSub"></div>
+        </div>
+        <button class="close" id="closeModal" title="Close">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <label>Status
+            <select class="field" id="modalStatus"></select>
+          </label>
+          <label>Resume Version
+            <select class="field" id="modalResume"></select>
+          </label>
+          <label>Applied Date
+            <input class="field" id="modalAppliedDate" type="date">
+          </label>
+          <label>Follow-Up Date
+            <input class="field" id="modalFollowupDate" type="date">
+          </label>
+        </div>
+        <label class="wide">Notes
+          <textarea class="field" id="modalNotes"></textarea>
+        </label>
+        <label class="wide">Recruiter / Hiring Manager
+          <input class="field" id="modalContact" placeholder="Name, LinkedIn, email, or phone">
+        </label>
+        <label class="wide">Next Action
+          <input class="field" id="modalNextAction" placeholder="Tailor resume, verify JD, apply, follow up">
+        </label>
+        <div class="save-line">
+          <button class="btn" id="cancelModal">Cancel</button>
+          <button class="btn primary" id="saveModal">Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const STORAGE_KEY = "sarath-job-tracker-v1";
+    const statuses = [
+      "Ready to tailor",
+      "JD verification needed",
+      "Terms check needed",
+      "Notice period check",
+      "Applied",
+      "Followed up",
+      "Interview",
+      "Rejected",
+      "Lower priority"
+    ];
+    const resumeVersions = ["Azure-DE-v1", "Databricks-v1", "Lakehouse-Snowflake-v1"];
+
+    const seedJobs = [
+      {date:"2026-07-08",priority:1,fit:94,company:"IBM",role:"Data Engineer - Data Platforms - Azure",location:"Bengaluru, Hybrid",applyType:"External Apply",status:"Ready to tailor",resumeVersion:"Azure-DE-v1",link:"https://www.linkedin.com/jobs/view/4424865118/",notes:"Strongest Azure match; salary not listed",contact:"",appliedDate:"",followupDate:"",nextAction:"Tailor Azure resume and apply"},
+      {date:"2026-07-08",priority:2,fit:92,company:"LTIMindtree",role:"Azure Databricks Engineer",location:"India, Remote",applyType:"Easy Apply",status:"JD verification needed",resumeVersion:"Databricks-v1",link:"https://www.linkedin.com/jobs/view/4434534526/",notes:"Exact role; over 100 applicants",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify full JD and apply"},
+      {date:"2026-07-08",priority:3,fit:90,company:"KPI Partners",role:"Senior Databricks Data Engineer",location:"Bangalore Urban, Hybrid",applyType:"Easy Apply",status:"JD verification needed",resumeVersion:"Databricks-v1",link:"https://www.linkedin.com/jobs/view/4435542286/",notes:"Exact Databricks role",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify full JD and apply"},
+      {date:"2026-07-08",priority:4,fit:88,company:"Honeywell Technologies",role:"Advanced Data Engineer - Databricks",location:"Bengaluru",applyType:"External Apply",status:"JD verification needed",resumeVersion:"Databricks-v1",link:"https://www.linkedin.com/jobs/view/4418074230/",notes:"External apply",contact:"",appliedDate:"",followupDate:"",nextAction:"Open company careers page"},
+      {date:"2026-07-08",priority:5,fit:87,company:"Ledelsea",role:"Data Engineer (Snowflake, Databricks, Azure DevOps)",location:"Hyderabad, Hybrid",applyType:"Easy Apply",status:"Terms check needed",resumeVersion:"Lakehouse-Snowflake-v1",link:"https://www.linkedin.com/jobs/view/4437165439/",notes:"Contract role; confirm terms",contact:"",appliedDate:"",followupDate:"",nextAction:"Confirm contract, payroll, salary"},
+      {date:"2026-07-08",priority:6,fit:84,company:"techolution",role:"Azure Data Engineer - Immediate Joiners - Remote",location:"India, Remote",applyType:"Easy Apply",status:"Notice period check",resumeVersion:"Azure-DE-v1",link:"https://www.linkedin.com/jobs/view/4435021734/",notes:"Immediate joiner requirement",contact:"",appliedDate:"",followupDate:"",nextAction:"Check notice period fit"},
+      {date:"2026-07-08",priority:7,fit:82,company:"EY",role:"Senior Associate - EDS - DataEngineer",location:"Kochi, On-site",applyType:"Unknown",status:"JD verification needed",resumeVersion:"Azure-DE-v1",link:"https://www.linkedin.com/jobs/view/4434524260/",notes:"Kochi location; verify band/salary",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify stack and salary band"},
+      {date:"2026-07-08",priority:8,fit:80,company:"Persistent Systems",role:"Senior Data Engineer",location:"India, Remote",applyType:"Easy Apply",status:"JD verification needed",resumeVersion:"Databricks-v1",link:"https://www.linkedin.com/jobs/view/4436187192/",notes:"Broad senior data role",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify JD"},
+      {date:"2026-07-08",priority:9,fit:78,company:"Bristol Myers Squibb",role:"Senior Data Engineer - Data & ML Engineering",location:"Hyderabad",applyType:"External Apply",status:"JD verification needed",resumeVersion:"Databricks-v1",link:"https://www.linkedin.com/jobs/view/4437812106/",notes:"ML/data platform angle",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify pharma/domain requirements"},
+      {date:"2026-07-08",priority:10,fit:76,company:"Accenture in India",role:"Data Engineer",location:"Hyderabad",applyType:"External Apply",status:"JD verification needed",resumeVersion:"Azure-DE-v1",link:"https://www.linkedin.com/jobs/view/4437700053/",notes:"Broad consulting role",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify JD before applying"},
+      {date:"2026-07-08",priority:11,fit:74,company:"GE HealthCare",role:"Senior Data Engineer",location:"Bengaluru",applyType:"External Apply",status:"JD verification needed",resumeVersion:"Azure-DE-v1",link:"https://www.linkedin.com/jobs/view/4418936341/",notes:"Details hidden; verify stack",contact:"",appliedDate:"",followupDate:"",nextAction:"Verify stack"},
+      {date:"2026-07-08",priority:12,fit:70,company:"Cisco",role:"Data Engineer",location:"Bengaluru",applyType:"External Apply",status:"Lower priority",resumeVersion:"Lakehouse-Snowflake-v1",link:"https://www.linkedin.com/jobs/view/4436319175/",notes:"JD mentioned Snowflake/dbt/Python/GCP; GCP/dbt possible gaps",contact:"",appliedDate:"",followupDate:"",nextAction:"Apply only after higher-fit roles"}
+    ];
+
+    let jobs = loadJobs();
+    let activeStatus = "all";
+    let activeEditId = null;
+
+    const el = (id) => document.getElementById(id);
+    const jobGrid = el("jobGrid");
+    const emptyState = el("emptyState");
+    const metrics = el("metrics");
+    const searchBox = el("searchBox");
+    const locationFilter = el("locationFilter");
+    const roleFilter = el("roleFilter");
+    const sortBy = el("sortBy");
+
+    function loadJobs() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return seedJobs.map(withId);
+      try {
+        return JSON.parse(raw).map(withId);
+      } catch {
+        return seedJobs.map(withId);
+      }
+    }
+
+    function withId(job, index) {
+      return { id: job.id || `${job.company}-${job.role}-${index}`.replace(/[^a-z0-9]+/gi, "-").toLowerCase(), ...job };
+    }
+
+    function saveJobs() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
+    }
+
+    function uniqueValues(key) {
+      return [...new Set(jobs.map(job => job[key]).filter(Boolean))].sort();
+    }
+
+    function populateFilters() {
+      const selectedLocation = locationFilter.value || "all";
+      const selectedRole = roleFilter.value || "all";
+      const locations = uniqueValues("location");
+      const roles = uniqueValues("resumeVersion");
+      locationFilter.innerHTML = `<option value="all">All locations</option>` + locations.map(v => `<option>${escapeHtml(v)}</option>`).join("");
+      roleFilter.innerHTML = `<option value="all">All resume versions</option>` + roles.map(v => `<option>${escapeHtml(v)}</option>`).join("");
+      locationFilter.value = locations.includes(selectedLocation) ? selectedLocation : "all";
+      roleFilter.value = roles.includes(selectedRole) ? selectedRole : "all";
+    }
+
+    function renderMetrics(filtered) {
+      const total = jobs.length;
+      const applied = jobs.filter(j => ["Applied","Followed up","Interview"].includes(j.status)).length;
+      const avgFit = Math.round(jobs.reduce((sum, j) => sum + Number(j.fit || 0), 0) / Math.max(1, jobs.length));
+      const highFit = jobs.filter(j => Number(j.fit) >= 85).length;
+      const items = [
+        ["Total Roles", total, `${filtered.length} visible now`],
+        ["High-Fit Roles", highFit, "Fit score 85 and above"],
+        ["Average Fit", `${avgFit}%`, "Across current batch"],
+        ["Applied Pipeline", applied, "Applied, follow-up, interview"]
+      ];
+      metrics.innerHTML = items.map(([label, value, hint]) => `
+        <article class="metric">
+          <div class="label">${label}</div>
+          <div class="value">${value}</div>
+          <div class="hint">${hint}</div>
+        </article>
+      `).join("");
+    }
+
+    function renderStatusList() {
+      const counts = Object.fromEntries(statuses.map(s => [s, jobs.filter(j => j.status === s).length]));
+      const allCount = jobs.length;
+      el("statusList").innerHTML = [
+        `<div class="status-row ${activeStatus === "all" ? "active" : ""}" data-status="all"><span>All jobs</span><span class="count">${allCount}</span></div>`,
+        ...statuses.map(status => `<div class="status-row ${activeStatus === status ? "active" : ""}" data-status="${escapeAttr(status)}"><span>${escapeHtml(status)}</span><span class="count">${counts[status] || 0}</span></div>`)
+      ].join("");
+      document.querySelectorAll(".status-row").forEach(row => {
+        row.addEventListener("click", () => {
+          activeStatus = row.dataset.status;
+          render();
+        });
+      });
+    }
+
+    function filteredJobs() {
+      const q = searchBox.value.trim().toLowerCase();
+      const loc = locationFilter.value;
+      const resume = roleFilter.value;
+      let list = jobs.filter(job => {
+        const text = `${job.company} ${job.role} ${job.location} ${job.status} ${job.resumeVersion} ${job.notes}`.toLowerCase();
+        return (!q || text.includes(q)) &&
+          (loc === "all" || job.location === loc) &&
+          (resume === "all" || job.resumeVersion === resume) &&
+          (activeStatus === "all" || job.status === activeStatus);
+      });
+      const sort = sortBy.value;
+      list.sort((a, b) => {
+        if (sort === "fit") return Number(b.fit) - Number(a.fit);
+        if (sort === "company") return a.company.localeCompare(b.company);
+        if (sort === "status") return a.status.localeCompare(b.status) || a.priority - b.priority;
+        return Number(a.priority) - Number(b.priority);
+      });
+      return list;
+    }
+
+    function renderJobs(list) {
+      jobGrid.innerHTML = list.map(job => {
+        const fitClass = Number(job.fit) >= 82 ? "" : "medium";
+        const applyClass = job.applyType === "Easy Apply" ? "easy" : job.applyType === "External Apply" ? "external" : "warn";
+        return `
+          <article class="job-card">
+            <div class="job-top">
+              <div>
+                <div class="company">${escapeHtml(job.company)}</div>
+                <div class="role">${escapeHtml(job.role)}</div>
+              </div>
+              <div class="fit ${fitClass}">${job.fit}%</div>
+            </div>
+            <div class="job-body">
+              <div class="meta">
+                <span class="pill">Priority ${job.priority}</span>
+                <span class="pill">${escapeHtml(job.location)}</span>
+                <span class="pill ${applyClass}">${escapeHtml(job.applyType)}</span>
+                <span class="pill warn">${escapeHtml(job.status)}</span>
+                <span class="pill">${escapeHtml(job.resumeVersion)}</span>
+              </div>
+              <div class="notes">${escapeHtml(job.notes)}</div>
+              <div class="card-edit">
+                <select class="mini quick-status" data-id="${job.id}">
+                  ${statuses.map(s => `<option ${s === job.status ? "selected" : ""}>${escapeHtml(s)}</option>`).join("")}
+                </select>
+                <input class="mini quick-next" data-id="${job.id}" value="${escapeAttr(job.nextAction || "")}" placeholder="Next action">
+              </div>
+            </div>
+            <div class="card-actions">
+              <a class="link-btn" href="${escapeAttr(job.link)}" target="_blank" rel="noreferrer">
+                Open job
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+              </a>
+              <button class="tiny-btn edit-job" data-id="${job.id}">Edit</button>
+            </div>
+          </article>
+        `;
+      }).join("");
+
+      emptyState.style.display = list.length ? "none" : "block";
+
+      document.querySelectorAll(".quick-status").forEach(select => {
+        select.addEventListener("change", () => {
+          const job = jobs.find(item => item.id === select.dataset.id);
+          job.status = select.value;
+          saveJobs();
+          render();
+        });
+      });
+
+      document.querySelectorAll(".quick-next").forEach(input => {
+        input.addEventListener("change", () => {
+          const job = jobs.find(item => item.id === input.dataset.id);
+          job.nextAction = input.value;
+          saveJobs();
+        });
+      });
+
+      document.querySelectorAll(".edit-job").forEach(button => {
+        button.addEventListener("click", () => openModal(button.dataset.id));
+      });
+    }
+
+    function openModal(id) {
+      const job = jobs.find(item => item.id === id);
+      if (!job) return;
+      activeEditId = id;
+      el("modalTitle").textContent = job.role;
+      el("modalSub").textContent = `${job.company} · ${job.location} · Fit ${job.fit}%`;
+      el("modalStatus").innerHTML = statuses.map(s => `<option ${s === job.status ? "selected" : ""}>${escapeHtml(s)}</option>`).join("");
+      el("modalResume").innerHTML = resumeVersions.map(s => `<option ${s === job.resumeVersion ? "selected" : ""}>${escapeHtml(s)}</option>`).join("");
+      el("modalAppliedDate").value = job.appliedDate || "";
+      el("modalFollowupDate").value = job.followupDate || "";
+      el("modalNotes").value = job.notes || "";
+      el("modalContact").value = job.contact || "";
+      el("modalNextAction").value = job.nextAction || "";
+      el("drawer").classList.add("open");
+      el("drawer").setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      el("drawer").classList.remove("open");
+      el("drawer").setAttribute("aria-hidden", "true");
+      activeEditId = null;
+    }
+
+    function saveModal() {
+      const job = jobs.find(item => item.id === activeEditId);
+      if (!job) return;
+      job.status = el("modalStatus").value;
+      job.resumeVersion = el("modalResume").value;
+      job.appliedDate = el("modalAppliedDate").value;
+      job.followupDate = el("modalFollowupDate").value;
+      job.notes = el("modalNotes").value;
+      job.contact = el("modalContact").value;
+      job.nextAction = el("modalNextAction").value;
+      saveJobs();
+      closeModal();
+      render();
+    }
+
+    function exportFile(filename, content, type) {
+      const blob = new Blob([content], { type });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function toCsv(rows) {
+      const fields = ["date","priority","fit","company","role","location","applyType","status","resumeVersion","link","notes","contact","appliedDate","followupDate","nextAction"];
+      const escape = value => `"${String(value ?? "").replace(/"/g, '""')}"`;
+      return [fields.join(","), ...rows.map(row => fields.map(field => escape(row[field])).join(","))].join("\n");
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>"']/g, char => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[char]));
+    }
+
+    function escapeAttr(value) {
+      return escapeHtml(value).replace(/`/g, "&#96;");
+    }
+
+    function render() {
+      populateFilters();
+      renderStatusList();
+      const list = filteredJobs();
+      renderMetrics(list);
+      renderJobs(list);
+    }
+
+    [searchBox, locationFilter, roleFilter, sortBy].forEach(control => control.addEventListener("input", render));
+    el("closeModal").addEventListener("click", closeModal);
+    el("cancelModal").addEventListener("click", closeModal);
+    el("saveModal").addEventListener("click", saveModal);
+    el("drawer").addEventListener("click", event => {
+      if (event.target.id === "drawer") closeModal();
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") closeModal();
+    });
+
+    el("exportJson").addEventListener("click", () => exportFile("sarath-job-tracker.json", JSON.stringify(jobs, null, 2), "application/json"));
+    el("exportCsv").addEventListener("click", () => exportFile("sarath-job-tracker.csv", toCsv(jobs), "text/csv"));
+    el("resetData").addEventListener("click", () => {
+      jobs = seedJobs.map(withId);
+      activeStatus = "all";
+      saveJobs();
+      render();
+    });
+    el("importJson").addEventListener("change", event => {
+      const file = event.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(reader.result);
+          if (Array.isArray(imported)) {
+            jobs = imported.map(withId);
+            saveJobs();
+            render();
+          }
+        } catch {}
+      };
+      reader.readAsText(file);
+      event.target.value = "";
+    });
+
+    render();
+  </script>
+</body>
+</html>

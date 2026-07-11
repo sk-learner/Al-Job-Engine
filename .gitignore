@@ -1,0 +1,11 @@
+# Local Netlify folder
+.netlify
+
+# Build and cache noise
+.next
+node_modules
+.npm-cache
+dist
+.env
+.env.local
+*.log

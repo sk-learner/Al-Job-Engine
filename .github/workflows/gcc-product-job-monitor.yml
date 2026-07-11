@@ -1,0 +1,93 @@
+name: India GCC Product Data Job Monitor
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gcc-product-data-job-monitor
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: Run job monitor
+    runs-on: windows-latest
+    timeout-minutes: 25
+    env:
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
+      GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
+      NETLIFY_BUILD_HOOK_URL: ${{ secrets.NETLIFY_BUILD_HOOK_URL }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run legacy ntfy-style monitor
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+          powershell.exe -NoProfile -ExecutionPolicy Bypass -File "work\job-monitor\run_gcc_product_monitor.ps1"
+
+      - name: Verify generated feed
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+          $feedPath = "work\rolepilot-saas\public\gcc_product_feed.js"
+          if (!(Test-Path $feedPath)) {
+            throw "Expected feed file was not generated: $feedPath"
+          }
+
+          $feed = Get-Content -Raw $feedPath
+          if ($feed -notmatch "window\.GCC_PRODUCT_JOB_FEED\s*=") {
+            throw "Generated feed does not use the expected JavaScript assignment format."
+          }
+
+          $json = $feed -replace '^\s*window\.GCC_PRODUCT_JOB_FEED\s*=\s*', '' -replace ';\s*$', ''
+          $parsed = $json | ConvertFrom-Json
+          $jobCount = @($parsed.jobs).Count
+          "Feed generated at $($parsed.generatedAt) with $jobCount jobs."
+
+      - name: Commit feed and state changes
+        id: commit
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          $paths = @(
+            "work/job-monitor/gcc-product-companies.json",
+            "work/job-monitor/seen-jobs.json",
+            "work/job-monitor/recent-feed-jobs.json",
+            "outputs/gcc_product_feed.js",
+            "outputs/linkedin_discovery_feed.js",
+            "work/rolepilot-saas/public/gcc_product_feed.js",
+            "work/rolepilot-saas/public/linkedin_discovery_feed.js"
+          )
+
+          git add -- $paths
+
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) {
+            "changed=false" >> $env:GITHUB_OUTPUT
+            "No feed or state changes to commit."
+            exit 0
+          }
+
+          git commit -m "Refresh India data job feed"
+          git push
+          "changed=true" >> $env:GITHUB_OUTPUT
+
+      - name: Trigger Netlify rebuild
+        if: steps.commit.outputs.changed == 'true' && env.NETLIFY_BUILD_HOOK_URL != ''
+        shell: powershell
+        run: |
+          $ErrorActionPreference = "Stop"
+          Invoke-WebRequest -UseBasicParsing -Method Post -Uri $env:NETLIFY_BUILD_HOOK_URL -TimeoutSec 30 | Out-Null
+          "Netlify build hook triggered."
