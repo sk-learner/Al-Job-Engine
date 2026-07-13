@@ -1,0 +1,1349 @@
+﻿{
+    "companies":  [
+                      {
+                          "company":  "MongoDB",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.mongodb.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Gurugram",
+                                                 "Hyderabad",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Rubrik",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.rubrik.com/company/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Okta",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.okta.com/company/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Zscaler",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.zscaler.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Hyderabad",
+                                                 "Pune",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Twilio",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.twilio.com/en-us/company/jobs",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Cloudflare",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.cloudflare.com/careers/jobs/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Asana",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://asana.com/jobs",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Datadog",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.datadoghq.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Elastic",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.elastic.co/careers",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Coinbase",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.coinbase.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru",
+                                                 "Hyderabad"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Databricks",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.databricks.com/company/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Snowflake",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.snowflake.com/",
+                          "indiaLocations":  [
+                                                 "Pune",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Stripe",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://stripe.com/jobs",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Rippling",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.rippling.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Plaid",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://plaid.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Ramp",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://ramp.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Robinhood",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://careers.robinhood.com/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Affirm",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.affirm.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Dropbox",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://jobs.dropbox.com/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Reddit",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.redditinc.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "DoorDash",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://careers.doordash.com/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Pinterest",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.pinterestcareers.com/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Gusto",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://gusto.com/about/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "DigitalOcean",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.digitalocean.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru",
+                                                 "Hyderabad"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "HashiCorp",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.hashicorp.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Confluent",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.confluent.io/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Miro",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://miro.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Vercel",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://vercel.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "OpenAI",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://openai.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Figma",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.figma.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Notion",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.notion.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Grammarly",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.grammarly.com/jobs",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Atlassian",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.atlassian.com/company/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Canva",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.canva.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Wise",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://wise.jobs/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Toast",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.toasttab.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Chennai",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Toast",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.toasttab.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Chennai",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "ThoughtSpot",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.thoughtspot.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Hyderabad",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Nutanix",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.nutanix.com/company/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Pune",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Couchbase",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.couchbase.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Airtable",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.airtable.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Amplitude",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://amplitude.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Braze",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.braze.com/company/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Samsara",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.samsara.com/company/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "HackerRank",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.hackerrank.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Postman",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.postman.com/company/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Freshworks",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.freshworks.com/company/careers/",
+                          "indiaLocations":  [
+                                                 "Chennai",
+                                                 "Bengaluru",
+                                                 "Hyderabad",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Razorpay",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://razorpay.com/jobs/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Zeta",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.zeta.tech/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Mumbai",
+                                                 "Hyderabad",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "PhonePe",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.phonepe.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Meesho",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.meesho.io/jobs",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "ShareChat",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://sharechat.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Swiggy",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.swiggy.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Dunzo",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.dunzo.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Navi",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://navi.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Groww",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://groww.in/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "CRED",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://cred.club/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "CoinDCX",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://coindcx.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Mumbai",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Mindtickle",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.mindtickle.com/careers/",
+                          "indiaLocations":  [
+                                                 "Pune",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "BrowserStack",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.browserstack.com/careers",
+                          "indiaLocations":  [
+                                                 "Mumbai",
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Chargebee",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.chargebee.com/careers/",
+                          "indiaLocations":  [
+                                                 "Chennai",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Whatfix",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://whatfix.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "MoEngage",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.moengage.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "CleverTap",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://clevertap.com/careers/",
+                          "indiaLocations":  [
+                                                 "Mumbai",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Observe.AI",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.observe.ai/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Locus",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://locus.sh/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Uniphore",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.uniphore.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Chennai",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Eightfold AI",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://eightfold.ai/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Noida",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Netskope",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.netskope.com/company/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "SentinelOne",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.sentinelone.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "CrowdStrike",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.crowdstrike.com/careers/",
+                          "indiaLocations":  [
+                                                 "Pune",
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Palo Alto Networks",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://jobs.paloaltonetworks.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "ServiceNow",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.servicenow.com/",
+                          "indiaLocations":  [
+                                                 "Hyderabad",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Box",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://careers.box.com/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Yext",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.yext.com/careers",
+                          "indiaLocations":  [
+                                                 "Hyderabad",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "6sense",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://6sense.com/careers/",
+                          "indiaLocations":  [
+                                                 "Pune",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Branch",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.branch.io/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Cockroach Labs",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.cockroachlabs.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Scale AI",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://scale.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Weights \u0026 Biases",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://wandb.ai/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "PlanetScale",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://planetscale.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Supabase",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://supabase.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Grafana Labs",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://grafana.com/about/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "dbt Labs",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.getdbt.com/careers",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Astronomer",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.astronomer.io/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Starburst",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.starburst.io/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Starburst",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.starburst.io/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Fivetran",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.fivetran.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Segment",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.twilio.com/en-us/company/jobs",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Airbnb",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://careers.airbnb.com/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Booking.com",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://careers.booking.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Expedia Group",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.expediagroup.com/",
+                          "indiaLocations":  [
+                                                 "Gurugram",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Wayfair",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.wayfair.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Deliveroo",
+                          "classification":  "Product company / India R\u0026D",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.deliveroo.co.uk/",
+                          "indiaLocations":  [
+                                                 "Hyderabad",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Deel",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.deel.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Remote",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://remote.com/jobs",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "GitLab",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://about.gitlab.com/jobs/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "GitHub",
+                          "classification":  "Product company",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://github.careers/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Hyderabad",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Zapier",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://zapier.com/jobs",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Automattic",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://automattic.com/work-with-us/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Coursera",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://about.coursera.org/careers",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Udemy",
+                          "classification":  "Product company",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://about.udemy.com/careers/",
+                          "indiaLocations":  [
+                                                 "India Remote"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "greenhouse"
+                      },
+                      {
+                          "company":  "Nielsen",
+                          "classification":  "Product/GCC",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://jobs.lever.co/nielsen",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Mumbai",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "lever"
+                      },
+                      {
+                          "company":  "Walmart Global Tech",
+                          "classification":  "GCC / Product engineering",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://tech.walmart.com/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "Chennai",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "workday"
+                      },
+                      {
+                          "company":  "Target in India",
+                          "classification":  "GCC / Product engineering",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://india.target.com/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "workday"
+                      },
+                      {
+                          "company":  "Lowe\u0027s India",
+                          "classification":  "GCC / Product engineering",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.lowes.co.in/careers",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "workday"
+                      },
+                      {
+                          "company":  "Mastercard",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.mastercard.com/",
+                          "indiaLocations":  [
+                                                 "Pune",
+                                                 "Gurugram",
+                                                 "Vadodara",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "workday"
+                      },
+                      {
+                          "company":  "Salesforce",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.salesforce.com/",
+                          "indiaLocations":  [
+                                                 "Hyderabad",
+                                                 "Bengaluru",
+                                                 "Mumbai",
+                                                 "Gurugram",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "workday"
+                      },
+                      {
+                          "company":  "ServiceNow",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://careers.servicenow.com/",
+                          "indiaLocations":  [
+                                                 "Hyderabad",
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "smartrecruiters"
+                      },
+                      {
+                          "company":  "Visa",
+                          "classification":  "Product company / GCC",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://usa.visa.com/careers.html",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "smartrecruiters"
+                      },
+                      {
+                          "company":  "Tesco Technology",
+                          "classification":  "GCC / Product engineering",
+                          "confidence":  "High",
+                          "evidenceUrl":  "https://www.tescotechnology.com/careers/",
+                          "indiaLocations":  [
+                                                 "Bengaluru",
+                                                 "India"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "smartrecruiters"
+                      },
+                      {
+                          "company":  "Nagarro Product Roles",
+                          "classification":  "Review-only product roles",
+                          "confidence":  "Medium",
+                          "evidenceUrl":  "https://www.smartrecruiters.com/",
+                          "indiaLocations":  [
+                                                 "India Remote",
+                                                 "Gurugram",
+                                                 "Bengaluru"
+                                             ],
+                          "discoveryDate":  "2026-07-08",
+                          "sourceType":  "smartrecruiters"
+                      }
+                  ],
+    "generatedAt":  "2026-07-11T23:00:36"
+}

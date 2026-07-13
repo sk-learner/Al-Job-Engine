@@ -1,0 +1,3091 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RolePilot | AI Job Command Center</title>
+  <meta name="theme-color" content="#111b24">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111b24'/%3E%3Cpath d='M18 20h17c7.2 0 11 3.5 11 9.5 0 4.2-2 7.1-5.7 8.5L47 49H35.6l-5.4-9.4H28V49H18V20Z' fill='%23fff'/%3E%3Cpath d='M28 31.8h6.1c1.8 0 2.8-.8 2.8-2.3 0-1.6-1-2.4-2.8-2.4H28v4.7Z' fill='%23111b24'/%3E%3Cpath d='M13 13h38v38H13z' fill='none' stroke='%2348a5bf' stroke-width='3' stroke-linecap='round' stroke-dasharray='18 9'/%3E%3Cpath d='M46 18 32 46 18 18' fill='none' stroke='%2349a36f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f4f6f7;
+      --surface: #ffffff;
+      --surface-2: #eef4f5;
+      --ink: #15202b;
+      --muted: #61717d;
+      --line: #dbe3e6;
+      --line-2: #c9d5d9;
+      --blue: #176b87;
+      --blue-2: #dff0f5;
+      --green: #1d7b55;
+      --green-2: #e3f3eb;
+      --amber: #a45f13;
+      --amber-2: #f7ead8;
+      --red: #b24737;
+      --red-2: #f7e5e1;
+      --violet: #6554a8;
+      --violet-2: #ebe8f6;
+      --shadow: 0 16px 42px rgba(25, 38, 47, .09);
+      --radius: 8px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      background:
+        linear-gradient(180deg, #eaf2f4 0, rgba(234, 242, 244, 0) 340px),
+        radial-gradient(circle at 100% 0%, rgba(23, 107, 135, .08), transparent 340px),
+        var(--bg);
+    }
+
+    button, input, select, textarea { font: inherit; }
+    a { color: inherit; text-decoration: none; }
+
+    .shell {
+      width: min(1480px, calc(100vw - 28px));
+      margin: 0 auto;
+      padding: 20px 0 34px;
+    }
+
+    .topbar {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      border-radius: var(--radius);
+      background: #142332;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      flex: 0 0 auto;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 25px;
+      line-height: 1.15;
+      letter-spacing: 0;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 5px;
+    }
+
+    .top-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 9px;
+    }
+
+    .btn {
+      height: 38px;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--ink);
+      border-radius: var(--radius);
+      padding: 0 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      cursor: pointer;
+      font-weight: 750;
+      white-space: nowrap;
+      box-shadow: 0 1px 0 rgba(0,0,0,.03);
+    }
+
+    .btn:hover { border-color: var(--line-2); }
+    .btn.primary { background: var(--blue); color: white; border-color: var(--blue); }
+    .btn.green { background: var(--green); color: white; border-color: var(--green); }
+    .btn.ghost { background: transparent; box-shadow: none; }
+
+    .icon {
+      width: 17px;
+      height: 17px;
+      flex: 0 0 auto;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .tab {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      border-radius: var(--radius);
+      padding: 9px 12px;
+      cursor: pointer;
+      color: #334652;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .tab.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+
+    .view { display: none; }
+    .view.active { display: block; }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      margin: 10px 0 14px;
+    }
+
+    .metric, .panel, .job, .stage, .tool-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .metric {
+      padding: 14px 15px;
+      min-height: 95px;
+    }
+
+    .label {
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .metric-value {
+      font-size: 29px;
+      font-weight: 900;
+      line-height: 1;
+      margin-top: 10px;
+    }
+
+    .hint {
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 8px;
+      line-height: 1.35;
+    }
+
+    .filters {
+      display: grid;
+      grid-template-columns: minmax(220px, 1fr) repeat(4, minmax(145px, 180px));
+      gap: 9px;
+      margin: 0 0 14px;
+    }
+
+    .field {
+      width: 100%;
+      min-width: 0;
+      height: 40px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+      color: var(--ink);
+      padding: 0 11px;
+      outline: none;
+    }
+
+    textarea.field {
+      height: auto;
+      min-height: 92px;
+      resize: vertical;
+      padding: 10px 11px;
+      line-height: 1.45;
+    }
+
+    .field:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(23, 107, 135, .14);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+      gap: 14px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .panel-head {
+      padding: 14px 15px 11px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .panel-title {
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .panel-body {
+      padding: 13px 15px 15px;
+    }
+
+    .jobs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .job {
+      overflow: hidden;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      min-height: 272px;
+    }
+
+    .job-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      padding: 14px 14px 10px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .company {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 850;
+      margin-bottom: 4px;
+    }
+
+    .role {
+      font-size: 17px;
+      line-height: 1.25;
+      font-weight: 900;
+    }
+
+    .score {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius);
+      display: grid;
+      place-items: center;
+      font-weight: 950;
+      background: var(--green-2);
+      color: var(--green);
+      border: 1px solid #cbe8d9;
+    }
+
+    .score.mid {
+      background: var(--amber-2);
+      color: var(--amber);
+      border-color: #ebd2af;
+    }
+
+    .score.low {
+      background: var(--red-2);
+      color: var(--red);
+      border-color: #edc8c1;
+    }
+
+    .job-body {
+      padding: 12px 14px;
+      display: grid;
+      gap: 10px;
+      align-content: start;
+    }
+
+    .pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 4px 8px;
+      border-radius: var(--radius);
+      background: var(--surface-2);
+      border: 1px solid #d5e1e4;
+      font-size: 12px;
+      color: #354953;
+      font-weight: 780;
+    }
+
+    .pill.green { background: var(--green-2); color: var(--green); border-color: #cbe8d9; }
+    .pill.blue { background: var(--blue-2); color: var(--blue); border-color: #c4e0e8; }
+    .pill.amber { background: var(--amber-2); color: var(--amber); border-color: #ebd2af; }
+    .pill.red { background: var(--red-2); color: var(--red); border-color: #edc8c1; }
+    .pill.violet { background: var(--violet-2); color: var(--violet); border-color: #dad3ef; }
+
+    .notes {
+      color: #40535f;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: 84px 1fr 34px;
+      gap: 8px;
+      align-items: center;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .bar {
+      height: 8px;
+      background: #e7ecee;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      width: var(--w);
+      background: var(--blue);
+      border-radius: inherit;
+    }
+
+    .job-foot {
+      border-top: 1px solid var(--line);
+      padding: 10px 14px 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .small-actions { display: flex; gap: 7px; flex-wrap: wrap; }
+
+    .mini-btn {
+      border: 1px solid var(--line);
+      background: #fbfcfc;
+      border-radius: var(--radius);
+      min-height: 32px;
+      padding: 6px 9px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .mini-btn:hover { border-color: var(--line-2); }
+    .mini-btn.green { background: var(--green); border-color: var(--green); color: white; }
+    .mini-btn.green:hover { background: #176c4a; border-color: #176c4a; }
+
+    .link {
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 13px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(240px, 1fr));
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+
+    .stage {
+      min-height: 460px;
+      box-shadow: none;
+      background: rgba(255,255,255,.76);
+    }
+
+    .stage-head {
+      padding: 12px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      font-weight: 900;
+    }
+
+    .stage-body {
+      padding: 10px;
+      display: grid;
+      gap: 9px;
+    }
+
+    .lane-card {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 10px;
+      display: grid;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .lane-card:hover { border-color: var(--line-2); }
+    .lane-card b { font-size: 13px; line-height: 1.3; }
+    .lane-card span { font-size: 12px; color: var(--muted); line-height: 1.35; }
+
+    .discovery-list, .reminder-list, .draft-list {
+      display: grid;
+      gap: 9px;
+    }
+
+    .discovery-item, .reminder, .draft-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: #fbfcfc;
+      padding: 11px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .discovery-item .row, .reminder .row, .draft-item .row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .copy-box {
+      background: #fbfcfc;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 12px;
+      color: #354750;
+      font-size: 13px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+    }
+
+    .analytics-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .chart {
+      display: grid;
+      gap: 9px;
+    }
+
+    .chart-row {
+      display: grid;
+      grid-template-columns: 120px 1fr 38px;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+    }
+
+    .empty {
+      display: none;
+      border: 1px dashed var(--line-2);
+      border-radius: var(--radius);
+      padding: 34px;
+      text-align: center;
+      color: var(--muted);
+      background: rgba(255,255,255,.64);
+    }
+
+    .drawer {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 34, 45, .42);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 20;
+    }
+
+    .drawer.open { display: flex; }
+
+    .modal {
+      width: min(900px, 100%);
+      max-height: min(820px, calc(100vh - 36px));
+      overflow: auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 30px 90px rgba(16, 31, 42, .28);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 17px 19px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .modal-title {
+      margin: 0;
+      font-size: 21px;
+      font-weight: 950;
+      line-height: 1.25;
+    }
+
+    .close {
+      width: 34px;
+      height: 34px;
+      border-radius: var(--radius);
+      border: 1px solid var(--line);
+      background: #fbfcfc;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .modal-body {
+      padding: 16px 19px 19px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .form-grid label, .stack label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .stack {
+      display: grid;
+      gap: 10px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 9px;
+      border-top: 1px solid var(--line);
+      padding-top: 14px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 18px;
+      right: 18px;
+      background: var(--ink);
+      color: white;
+      border-radius: var(--radius);
+      padding: 11px 13px;
+      display: none;
+      box-shadow: 0 18px 60px rgba(0,0,0,.2);
+      z-index: 30;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    @media (max-width: 1180px) {
+      .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .filters { grid-template-columns: 1fr 1fr 1fr; }
+      .grid-2, .analytics-grid { grid-template-columns: 1fr; }
+      .jobs { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 20px, 1480px); padding-top: 13px; }
+      .topbar, .metrics, .filters, .grid-3, .form-grid { grid-template-columns: 1fr; }
+      .top-actions { justify-content: flex-start; }
+      .job-head { grid-template-columns: 1fr; }
+      .score { width: 100%; height: 40px; }
+      h1 { font-size: 22px; }
+      .board { grid-template-columns: repeat(4, 260px); }
+    }
+
+    /* Premium UI pass */
+    :root {
+      --bg: #f3f5f2;
+      --surface: #ffffff;
+      --surface-2: #f3f7f7;
+      --ink: #111b24;
+      --muted: #5d6c76;
+      --line: #d8e0df;
+      --line-2: #bfcaca;
+      --blue: #0f6f8f;
+      --blue-2: #e3f2f6;
+      --green: #197650;
+      --green-2: #e4f3ea;
+      --amber: #9f5d16;
+      --amber-2: #f6ead9;
+      --red: #b04737;
+      --red-2: #f7e5e1;
+      --violet: #6253a2;
+      --violet-2: #ece9f7;
+      --shadow: 0 18px 44px rgba(22, 35, 43, .08);
+      --shadow-sm: 0 8px 22px rgba(22, 35, 43, .06);
+    }
+
+    body {
+      background:
+        linear-gradient(180deg, #e7eff0 0, #f3f5f2 325px),
+        var(--bg);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0 0 auto;
+      height: 4px;
+      background: linear-gradient(90deg, #0f6f8f, #197650 42%, #9f5d16 74%, #6253a2);
+      z-index: 40;
+    }
+
+    .shell {
+      padding-top: 26px;
+    }
+
+    .topbar {
+      background: rgba(255, 255, 255, .68);
+      border: 1px solid rgba(216, 224, 223, .9);
+      border-radius: 8px;
+      padding: 14px;
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(16px);
+    }
+
+    .logo {
+      background: linear-gradient(145deg, #111b24, #254251);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.12), 0 12px 24px rgba(17,27,36,.18);
+    }
+
+    .subtitle {
+      max-width: 820px;
+      line-height: 1.4;
+    }
+
+    .btn {
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease, background .16s ease;
+    }
+
+    .btn:hover, .mini-btn:hover, .tab:hover {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tabs {
+      background: rgba(255, 255, 255, .58);
+      border: 1px solid rgba(216, 224, 223, .8);
+      border-radius: 8px;
+      padding: 6px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 0 rgba(255,255,255,.8) inset;
+    }
+
+    .tab {
+      border-color: transparent;
+      background: transparent;
+      min-height: 38px;
+    }
+
+    .tab.active {
+      background: #111b24;
+      box-shadow: 0 10px 22px rgba(17, 27, 36, .18);
+    }
+
+    .command-band {
+      display: grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .command-card {
+      background: rgba(255, 255, 255, .86);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 14px 15px;
+      box-shadow: var(--shadow-sm);
+      display: grid;
+      gap: 8px;
+      min-height: 116px;
+    }
+
+    .command-card.primary-card {
+      background: #101c25;
+      color: white;
+      border-color: #101c25;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .command-card.primary-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #48a5bf, #49a36f, #d69545);
+    }
+
+    .command-label {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .primary-card .command-label {
+      color: rgba(255,255,255,.66);
+    }
+
+    .command-title {
+      font-size: 18px;
+      line-height: 1.22;
+      font-weight: 950;
+    }
+
+    .command-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .primary-card .command-text {
+      color: rgba(255,255,255,.72);
+    }
+
+    .metrics {
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 106px;
+      border-color: rgba(216, 224, 223, .92);
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .metric::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: var(--blue);
+      opacity: .9;
+    }
+
+    .metric:nth-child(2)::before { background: var(--green); }
+    .metric:nth-child(3)::before { background: var(--amber); }
+    .metric:nth-child(4)::before { background: var(--violet); }
+    .metric:nth-child(5)::before { background: #3d6572; }
+
+    .metric-value {
+      font-size: 32px;
+      letter-spacing: 0;
+    }
+
+    .filters {
+      background: rgba(255,255,255,.74);
+      border: 1px solid rgba(216, 224, 223, .9);
+      border-radius: 8px;
+      padding: 9px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .field {
+      background: rgba(255,255,255,.94);
+    }
+
+    .job {
+      border-color: rgba(216, 224, 223, .98);
+      box-shadow: var(--shadow-sm);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      position: relative;
+    }
+
+    .job:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 22px 48px rgba(22, 35, 43, .12);
+      border-color: var(--line-2);
+    }
+
+    .job::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      background: var(--blue);
+      opacity: .86;
+    }
+
+    .job-head {
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      background: linear-gradient(180deg, #ffffff, #fbfcfb);
+    }
+
+    .avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: #edf3f4;
+      border: 1px solid #d9e4e6;
+      color: #214653;
+      font-weight: 950;
+      font-size: 13px;
+    }
+
+    .role {
+      max-width: 100%;
+    }
+
+    .score {
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.55);
+    }
+
+    .notes {
+      min-height: 39px;
+    }
+
+    .pills {
+      gap: 6px;
+    }
+
+    .pill {
+      box-shadow: 0 1px 0 rgba(255,255,255,.7) inset;
+    }
+
+    .pill.status-dot::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+      margin-right: 6px;
+    }
+
+    .match-row {
+      grid-template-columns: 92px 1fr 38px;
+      padding: 2px 0;
+    }
+
+    .bar {
+      height: 9px;
+      background: #e8eeee;
+    }
+
+    .fill {
+      background: linear-gradient(90deg, #0f6f8f, #49a36f);
+    }
+
+    .job-foot {
+      background: #fbfcfb;
+    }
+
+    .mini-btn {
+      background: #ffffff;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+    }
+
+    .panel, .stage {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .panel-head {
+      background: linear-gradient(180deg, #ffffff, #fbfcfb);
+    }
+
+    .copy-box {
+      background: #f7f9f8;
+    }
+
+    @media (max-width: 1180px) {
+      .command-band { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .topbar { padding: 12px; }
+      .tabs { padding: 5px; }
+      .command-card { min-height: 0; }
+      .job-head { grid-template-columns: auto 1fr; }
+      .job-head .score { grid-column: 1 / -1; }
+    }
+
+    .decision {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 950;
+    }
+
+    .decision::before {
+      content: "";
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .quality-strip {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: center;
+      padding: 9px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #f8faf9;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .quality-strip b {
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .insight {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+      padding: 11px;
+      display: grid;
+      gap: 6px;
+      min-height: 104px;
+    }
+
+    .insight b {
+      font-size: 13px;
+    }
+
+    .insight span, .insight li {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .insight ul {
+      margin: 0;
+      padding-left: 17px;
+    }
+
+    .packet-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .packet-section {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+      padding: 11px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .packet-title {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+      font-weight: 950;
+      font-size: 13px;
+    }
+
+    .crm-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .person-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fbfcfb;
+      padding: 12px;
+      display: grid;
+      gap: 8px;
+      min-height: 150px;
+    }
+
+    .person-card b {
+      font-size: 15px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 8px;
+    }
+
+    .timeline-step {
+      display: grid;
+      grid-template-columns: 28px 1fr;
+      gap: 9px;
+      align-items: start;
+    }
+
+    .timeline-dot {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: var(--blue-2);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 950;
+      border: 1px solid #c4e0e8;
+    }
+
+    .strategy-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .strategy-item {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      gap: 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 10px;
+      background: #fbfcfb;
+    }
+
+    .rank {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: white;
+      font-weight: 950;
+      font-size: 12px;
+    }
+
+    @media (max-width: 1180px) {
+      .crm-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .insight-grid, .crm-grid, .strategy-item { grid-template-columns: 1fr; }
+      .rank { width: 100%; }
+    }
+
+    .palette {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 72px 18px 18px;
+      background: rgba(17, 27, 36, .36);
+      backdrop-filter: blur(12px);
+      z-index: 50;
+    }
+
+    .palette.open {
+      display: flex;
+    }
+
+    .palette-card {
+      width: min(760px, 100%);
+      max-height: min(760px, calc(100vh - 110px));
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(216, 224, 223, .95);
+      border-radius: 8px;
+      box-shadow: 0 34px 100px rgba(14, 27, 37, .32);
+      overflow: hidden;
+    }
+
+    .palette-search {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      background: #ffffff;
+    }
+
+    .palette-search input {
+      border: 0;
+      outline: 0;
+      font-size: 16px;
+      font-weight: 750;
+      color: var(--ink);
+      min-width: 0;
+    }
+
+    .palette-results {
+      padding: 10px;
+      display: grid;
+      gap: 7px;
+      max-height: 650px;
+      overflow: auto;
+    }
+
+    .palette-item {
+      border: 1px solid transparent;
+      background: #fbfcfb;
+      border-radius: 8px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 32px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      cursor: pointer;
+      transition: background .16s ease, border-color .16s ease, transform .16s ease;
+    }
+
+    .palette-item:hover, .palette-item.active {
+      background: var(--blue-2);
+      border-color: #c4e0e8;
+      transform: translateY(-1px);
+    }
+
+    .palette-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: white;
+      font-weight: 950;
+      font-size: 11px;
+    }
+
+    .palette-main {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .palette-main b {
+      font-size: 13px;
+    }
+
+    .palette-main span {
+      font-size: 12px;
+      color: var(--muted);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .kbd {
+      border: 1px solid var(--line-2);
+      background: #ffffff;
+      border-radius: 6px;
+      padding: 3px 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .job, .metric, .command-card, .panel {
+      animation: riseIn .28s ease both;
+    }
+
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <div class="logo">RP</div>
+        <div>
+          <h1>RolePilot</h1>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="btn primary" id="addJobBtn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+          Add Job
+        </button>
+        <button class="btn" id="commandBtn" title="Open command palette">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m18 6-6 12L6 6"/><path d="M6 6h12"/></svg>
+          Command
+        </button>
+        <button class="btn" id="exportJsonBtn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg>
+          Export
+        </button>
+        <label class="btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21V9"/><path d="m17 14-5-5-5 5"/><path d="M5 3h14"/></svg>
+          Import
+          <input id="importJsonInput" type="file" accept="application/json" hidden>
+        </label>
+        <button class="btn" id="autoSyncBtn" title="Poll the GCC/product automation feed while this dashboard is open">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M3 12A9 9 0 0 1 18.5 5.8"/><path d="M7 18H3v4"/><path d="M17 6h4V2"/></svg>
+          Auto Sync Off
+        </button>
+        <button class="btn" id="resetBtn">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 3v6h6"/></svg>
+          Reset
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-view="overview">Overview</button>
+      <button class="tab" data-view="discovery">Discovery</button>
+      <button class="tab" data-view="pipeline">Pipeline</button>
+      <button class="tab" data-view="studio">Application Studio</button>
+      <button class="tab" data-view="matcher">Match Engine</button>
+      <button class="tab" data-view="crm">Recruiter CRM</button>
+      <button class="tab" data-view="interview">Interview Prep</button>
+      <button class="tab" data-view="analytics">Analytics</button>
+      <button class="tab" data-view="strategy">Strategy</button>
+      <button class="tab" data-view="settings">Settings</button>
+    </nav>
+
+    <section class="command-band" id="commandBand">
+      <article class="command-card primary-card">
+        <div class="command-label">Today Focus</div>
+        <div class="command-title">IBM, LTIMindtree, and KPI Partners are the strongest first moves.</div>
+        <div class="command-text">Prioritize verified JD, tailored resume, then recruiter outreach. Keep contract and notice-period checks separate.</div>
+      </article>
+      <article class="command-card">
+        <div class="command-label">Search Engine</div>
+        <div class="command-title">Daily discovery is staged for approval.</div>
+        <div class="command-text">New jobs can be deduped, scored, and imported without auto-submitting applications.</div>
+      </article>
+      <article class="command-card">
+        <div class="command-label">Quality Gate</div>
+        <div class="command-title">85+ fit gets resume tailoring before apply.</div>
+        <div class="command-text">Below 85, verify the JD first and skip weak stack matches.</div>
+      </article>
+    </section>
+
+    <section class="metrics" id="metrics"></section>
+
+    <section class="view active" id="overview">
+      <div class="filters">
+        <input class="field" id="searchInput" placeholder="Search company, role, location, notes, skills">
+        <select class="field" id="statusFilter"></select>
+        <select class="field" id="locationFilter"></select>
+        <select class="field" id="resumeFilter"></select>
+        <select class="field" id="sortSelect">
+          <option value="priority">Sort: priority</option>
+          <option value="fit">Sort: fit score</option>
+          <option value="followup">Sort: follow-up date</option>
+          <option value="company">Sort: company</option>
+        </select>
+      </div>
+      <div class="jobs" id="jobGrid"></div>
+      <div class="empty" id="emptyJobs">No jobs match these filters.</div>
+    </section>
+
+    <section class="view" id="discovery">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Daily Discovery Inbox</div>
+              <div class="hint">Use these searches for fresh jobs, then import Codex updates or add jobs manually.</div>
+            </div>
+            <button class="btn green" id="openSearchesBtn">Open Top Searches</button>
+          </div>
+          <div class="panel-body discovery-list" id="searchList"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Auto-Update Design</div>
+          </div>
+          <div class="panel-body stack">
+            <div class="copy-box">Best production workflow:
+1. Codex runs a daily job search.
+2. New jobs are deduplicated by LinkedIn ID/company/role.
+3. Each job is scored against your resume.
+4. Strong matches are added as "Found".
+5. You review and approve applications manually.</div>
+            <div class="copy-box">The dashboard is ready for that: it can import JSON updates, preserve your statuses, and export the full database. I can also create a recurring Codex automation so new jobs are searched every day.</div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="pipeline">
+      <div class="board" id="board"></div>
+    </section>
+
+    <section class="view" id="studio">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">One-Click Application Packets</div>
+              <div class="hint">Each packet includes fit answer, bullets, keywords, cover note, outreach, and gaps.</div>
+            </div>
+          </div>
+          <div class="panel-body draft-list" id="draftList"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Resume Versions</div>
+          </div>
+          <div class="panel-body grid-3" id="resumeCards"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="matcher">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Resume Match Engine</div>
+              <div class="hint">Paste a full JD, compare it against your resume profile, then update the job card.</div>
+            </div>
+          </div>
+          <div class="panel-body stack">
+            <label>Tracked Job<select class="field" id="matcherJobSelect"></select></label>
+            <div class="small-actions">
+              <button class="btn" id="loadJobToMatcherBtn">Load Job Details</button>
+              <button class="btn primary" id="analyzeMatcherBtn">Analyze Match</button>
+              <button class="btn green" id="applyMatcherBtn">Apply Score To Job</button>
+            </div>
+            <label>Resume Profile<textarea class="field" id="resumeProfileText" rows="9"></textarea></label>
+            <div class="small-actions">
+              <label class="btn">
+                Upload Resume Text
+                <input id="resumeTextUpload" type="file" accept=".txt,.md,.text" hidden>
+              </label>
+              <button class="btn" id="saveResumeProfileBtn">Save Resume Profile</button>
+              <button class="btn" id="resetResumeProfileBtn">Reset Resume Profile</button>
+            </div>
+            <label>Full Job Description<textarea class="field" id="jdText" rows="11" placeholder="Paste full JD here: responsibilities, required skills, experience, location, tools, salary clues"></textarea></label>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Match Report & Interview Prep</div>
+              <div class="hint">This explains fit, gaps, resume direction, and what to prepare for the role.</div>
+            </div>
+          </div>
+          <div class="panel-body stack">
+            <div id="matchReport"></div>
+            <div id="matcherInterviewPrep"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="crm">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Recruiter CRM</div>
+              <div class="hint">Track contacts, message timing, and response state per company.</div>
+            </div>
+          </div>
+          <div class="panel-body crm-grid" id="crmGrid"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Follow-Up Automation Plan</div>
+          </div>
+          <div class="panel-body timeline" id="followupTimeline"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="interview">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Interview Prep Mode</div>
+              <div class="hint">When a role moves to Interview, use these stories and technical drills.</div>
+            </div>
+          </div>
+          <div class="panel-body draft-list" id="interviewPrep"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Story Bank</div>
+          </div>
+          <div class="panel-body draft-list" id="storyBank"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="analytics">
+      <div class="analytics-grid">
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Conversion Funnel</div>
+          </div>
+          <div class="panel-body chart" id="funnelChart"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Follow-Up Queue</div>
+          </div>
+          <div class="panel-body reminder-list" id="reminderList"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Location Mix</div>
+          </div>
+          <div class="panel-body chart" id="locationChart"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Resume Version Mix</div>
+          </div>
+          <div class="panel-body chart" id="resumeChart"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Job Quality Mix</div>
+          </div>
+          <div class="panel-body chart" id="qualityChart"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Duplicate Signals</div>
+          </div>
+          <div class="panel-body reminder-list" id="duplicateList"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="strategy">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div>
+              <div class="panel-title">Company Priority Ranking</div>
+              <div class="hint">Ranked by fit, quality, stack match, role risk, and likely ROI.</div>
+            </div>
+          </div>
+          <div class="panel-body strategy-list" id="companyRanking"></div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Weekly Strategy Review</div>
+          </div>
+          <div class="panel-body stack" id="weeklyReview"></div>
+        </section>
+      </div>
+    </section>
+
+    <section class="view" id="settings">
+      <div class="grid-2">
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Operating Rules</div>
+          </div>
+          <div class="panel-body stack">
+            <div class="copy-box">Apply only after JD verification for roles below 85 fit. For 85+ fit, tailor the resume first. For contract roles, confirm compensation, payroll, duration, and conversion option before applying.</div>
+            <div class="copy-box">After every 30-50 applications, check interview conversion. If fewer than 2-3 recruiter calls, pause and revise resume positioning before continuing.</div>
+          </div>
+        </section>
+        <section class="panel">
+          <div class="panel-head">
+            <div class="panel-title">Data Controls</div>
+          </div>
+          <div class="panel-body stack">
+            <button class="btn" id="exportCsvBtn">Export CSV</button>
+            <button class="btn" id="copyPromptBtn">Copy Codex Daily Search Prompt</button>
+            <button class="btn" id="clearSavedBtn">Clear Saved Browser Data</button>
+            <div class="hint">Your edits are saved locally in this browser. Export JSON regularly as backup.</div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <section class="drawer" id="drawer" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-head">
+        <div>
+          <p class="modal-title" id="modalTitle">Job</p>
+          <div class="subtitle" id="modalSub"></div>
+        </div>
+        <button class="close" id="closeModalBtn" title="Close">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="form-grid">
+          <label>Company<input class="field" id="mCompany"></label>
+          <label>Role<input class="field" id="mRole"></label>
+          <label>Fit Score<input class="field" id="mFit" type="number" min="0" max="100"></label>
+          <label>Location<input class="field" id="mLocation"></label>
+          <label>Status<select class="field" id="mStatus"></select></label>
+          <label>Resume<select class="field" id="mResume"></select></label>
+          <label>Apply Type<select class="field" id="mApplyType"></select></label>
+          <label>Applied Date<input class="field" id="mApplied" type="date"></label>
+          <label>Follow-Up Date<input class="field" id="mFollowup" type="date"></label>
+        </div>
+        <div class="form-grid">
+          <label>Azure<input class="field" id="mAzure" type="number" min="0" max="100"></label>
+          <label>Databricks<input class="field" id="mDatabricks" type="number" min="0" max="100"></label>
+          <label>Data Modeling<input class="field" id="mModeling" type="number" min="0" max="100"></label>
+        </div>
+        <div class="stack">
+          <label>Link<input class="field" id="mLink"></label>
+          <label>Notes<textarea class="field" id="mNotes"></textarea></label>
+          <label>Keywords<textarea class="field" id="mKeywords"></textarea></label>
+          <label>Recruiter / Hiring Manager<input class="field" id="mContact"></label>
+          <label>Next Action<input class="field" id="mNext"></label>
+        </div>
+        <div class="insight-grid">
+          <div class="insight">
+            <b>AI Fit Analysis</b>
+            <span id="fitAnalysisText">Paste role details, keywords, or notes, then analyze.</span>
+          </div>
+        </div>
+        <div class="modal-actions">
+          <button class="btn" id="deleteJobBtn">Delete</button>
+          <button class="btn" id="analyzeFitBtn">Analyze Fit</button>
+          <button class="btn" id="cancelModalBtn">Cancel</button>
+          <button class="btn primary" id="saveJobBtn">Save</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="palette" id="palette" aria-hidden="true">
+    <div class="palette-card" role="dialog" aria-modal="true">
+      <div class="palette-search">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+        <input id="paletteInput" placeholder="Search actions, jobs, companies, views">
+        <button class="close" id="closePaletteBtn" title="Close">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <div class="palette-results" id="paletteResults"></div>
+    </div>
+  </section>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="gcc_product_feed.js"></script>
+  <script>
+    const STORAGE_KEY = "sarath-job-command-center-v2";
+    const PROFILE_STORAGE_KEY = "rolepilot-resume-profile-v1";
+    const STATUS = ["Found", "JD Verified", "Resume Tailored", "Applied", "Followed Up", "Interview", "Rejected", "Offer", "Skipped"];
+    const RESUMES = ["Azure-DE-v1", "Databricks-v1", "Lakehouse-Snowflake-v1", "Generic-DE-v1"];
+    const APPLY_TYPES = ["Easy Apply", "External Apply", "Referral", "Recruiter", "Unknown"];
+    const PROFILE_SKILLS = [
+      "Azure Data Factory", "Azure Databricks", "ADLS Gen2", "Blob Storage", "PySpark", "Apache Spark",
+      "Delta Lake", "Unity Catalog", "Medallion Architecture", "Airflow", "Snowflake", "SQL",
+      "SSIS", "Talend", "GitHub Actions", "CI/CD", "Data Validation", "Reconciliation",
+      "Star Schema", "SCD", "Dimensional Modeling", "Performance Tuning"
+    ];
+    const STORY_BANK = [
+      ["SSIS to Databricks migration", "Migrated 15+ SSIS ETL packages to Azure Databricks/PySpark with 30-40% performance improvement and zero data loss."],
+      ["Talend to PySpark modernization", "Re-engineered 10+ Talend workflows into Databricks pipelines supporting full-load and incremental-load patterns."],
+      ["Lakehouse architecture", "Designed bronze/silver/gold medallion architecture using Delta Lake and Unity Catalog for analytics and ML-ready datasets."],
+      ["Data quality and reconciliation", "Built validation and reconciliation checks to compare legacy outputs with migrated Databricks results before cutover."],
+      ["Pipeline orchestration", "Automated Databricks workflows using Databricks Jobs and Apache Airflow to reduce manual intervention and job failures."],
+      ["CI/CD for data pipelines", "Implemented GitHub Actions deployment workflows for Databricks notebooks and jobs, cutting deployment time by about 50%."],
+      ["Spark performance tuning", "Optimized Spark batch jobs through serialization and tuning, reducing average runtime by roughly 20%."]
+    ];
+    const MISSING_SKILL_LIBRARY = ["Azure Synapse", "Event Hub", "Cosmos DB", "Azure Purview", "dbt", "GCP", "Kafka", "Scala", "Data Vault"];
+    const DEFAULT_RESUME_PROFILE = `Sarath Krishnan - Data Engineer / Azure Databricks Engineer
+Experience: 5+ years.
+Core skills: Azure Data Factory, Azure Databricks, PySpark, Apache Spark, Spark SQL, ADLS Gen2, Blob Storage, Delta Lake, Unity Catalog, Medallion Architecture, Airflow, Snowflake, SQL, Python, SSIS, Talend, GitHub Actions, CI/CD, Data Validation, Reconciliation, Star Schema, SCD, Dimensional Modeling, Performance Tuning.
+Project strengths: migrated 15+ SSIS packages to Azure Databricks with PySpark; migrated 10+ Talend workflows to Databricks; built bronze/silver/gold medallion architecture; implemented Delta Lake and Unity Catalog patterns; automated Databricks workflows using Jobs and Airflow; implemented validation and reconciliation checks for migration cutover; tuned Spark jobs to reduce runtime; built CI/CD workflows using GitHub Actions.
+Target roles: Data Engineer, Senior Data Engineer, Azure Data Engineer, Databricks Engineer, PySpark/Spark Data Engineer, Data Platform Engineer.
+Target locations: Bengaluru, Hyderabad, Kochi, India remote/hybrid.
+Salary guardrail: INR 22 LPA+.`;
+    const MATCH_SKILLS = [
+      { label: "Azure Data Factory", terms: ["azure data factory", "adf", "data factory"], category: "Azure" },
+      { label: "Azure Databricks", terms: ["azure databricks", "databricks"], category: "Databricks" },
+      { label: "PySpark", terms: ["pyspark"], category: "Databricks" },
+      { label: "Apache Spark", terms: ["apache spark", "spark", "spark sql"], category: "Databricks" },
+      { label: "Delta Lake", terms: ["delta lake", "delta"], category: "Databricks" },
+      { label: "Unity Catalog", terms: ["unity catalog"], category: "Databricks" },
+      { label: "ADLS Gen2", terms: ["adls", "adls gen2", "data lake storage"], category: "Azure" },
+      { label: "SQL", terms: ["sql", "spark sql"], category: "Modeling" },
+      { label: "Python", terms: ["python"], category: "Engineering" },
+      { label: "Airflow", terms: ["airflow", "orchestration"], category: "Engineering" },
+      { label: "Snowflake", terms: ["snowflake"], category: "Modeling" },
+      { label: "ETL/ELT", terms: ["etl", "elt", "data pipeline", "data pipelines"], category: "Engineering" },
+      { label: "Data Modeling", terms: ["data modeling", "dimensional", "star schema", "scd"], category: "Modeling" },
+      { label: "Validation/Reconciliation", terms: ["validation", "reconciliation", "data quality"], category: "Engineering" },
+      { label: "CI/CD", terms: ["ci/cd", "github actions", "devops"], category: "Engineering" },
+      { label: "Migration", terms: ["migration", "ssis", "talend"], category: "Engineering" },
+      { label: "Azure Synapse", terms: ["synapse"], category: "Gap" },
+      { label: "dbt", terms: ["dbt"], category: "Gap" },
+      { label: "Kafka", terms: ["kafka"], category: "Gap" },
+      { label: "GCP", terms: ["gcp", "google cloud"], category: "Gap" },
+      { label: "Scala", terms: ["scala"], category: "Gap" }
+    ];
+
+    const searches = [
+      {name:"Bengaluru Databricks", role:"Data Engineer Databricks", location:"Bengaluru", url:"https://www.linkedin.com/jobs/search/?keywords=Data%20Engineer%20Databricks&location=Bengaluru%2C%20Karnataka%2C%20India&f_E=4&f_TPR=r604800"},
+      {name:"Bengaluru Azure", role:"Azure Data Engineer", location:"Bengaluru", url:"https://www.linkedin.com/jobs/search/?keywords=Azure%20Data%20Engineer&location=Bengaluru%2C%20Karnataka%2C%20India&f_E=4&f_TPR=r604800"},
+      {name:"Hyderabad Databricks", role:"Data Engineer Databricks", location:"Hyderabad", url:"https://www.linkedin.com/jobs/search/?keywords=Data%20Engineer%20Databricks&location=Hyderabad%2C%20Telangana%2C%20India&f_E=4&f_TPR=r604800"},
+      {name:"Hyderabad Azure", role:"Azure Data Engineer", location:"Hyderabad", url:"https://www.linkedin.com/jobs/search/?keywords=Azure%20Data%20Engineer&location=Hyderabad%2C%20Telangana%2C%20India&f_E=4&f_TPR=r604800"},
+      {name:"Kochi Data Engineering", role:"Azure Databricks Data Engineer", location:"Kochi", url:"https://www.linkedin.com/jobs/search/?keywords=Data%20Engineer%20Azure%20Databricks&location=Kochi%2C%20Kerala%2C%20India&f_E=4&f_TPR=r604800"},
+      {name:"Remote India", role:"PySpark Databricks Azure", location:"India Remote", url:"https://www.linkedin.com/jobs/search/?keywords=Data%20Engineer%20PySpark%20Databricks%20Azure&location=India&f_E=4&f_TPR=r604800&f_WT=2%2C3"}
+    ];
+
+    const seedJobs = [
+      job("IBM","Data Engineer - Data Platforms - Azure","Bengaluru, Hybrid",94,1,"External Apply","JD Verified","Azure-DE-v1","https://www.linkedin.com/jobs/view/4424865118/","Strongest Azure match; salary not listed","Azure Data Factory, Azure Databricks, ADLS Gen2, Blob Storage, Spark, Python, Airflow, Synapse, SQL","Tailor Azure resume and apply",96,82,80),
+      job("LTIMindtree","Azure Databricks Engineer","India, Remote",92,2,"Easy Apply","Found","Databricks-v1","https://www.linkedin.com/jobs/view/4434534526/","Exact role; over 100 applicants","Azure Databricks, PySpark, Delta Lake, ADF, SQL, migration","Verify full JD and apply",90,96,76),
+      job("KPI Partners","Senior Databricks Data Engineer","Bangalore Urban, Hybrid",90,3,"Easy Apply","Found","Databricks-v1","https://www.linkedin.com/jobs/view/4435542286/","Exact Databricks role","Databricks, PySpark, Delta Lake, Unity Catalog, medallion architecture","Verify full JD and apply",82,97,84),
+      job("Honeywell Technologies","Advanced Data Engineer - Databricks","Bengaluru",88,4,"External Apply","Found","Databricks-v1","https://www.linkedin.com/jobs/view/4418074230/","External apply","Databricks, Spark, PySpark, enterprise data platforms","Open company careers page",80,94,78),
+      job("Ledelsea","Data Engineer (Snowflake, Databricks, Azure DevOps)","Hyderabad, Hybrid",87,5,"Easy Apply","Found","Lakehouse-Snowflake-v1","https://www.linkedin.com/jobs/view/4437165439/","Contract role; confirm terms","Snowflake, Databricks, Azure DevOps, SQL, PySpark","Confirm contract, payroll, salary",82,88,86),
+      job("techolution","Azure Data Engineer - Immediate Joiners - Remote","India, Remote",84,6,"Easy Apply","Found","Azure-DE-v1","https://www.linkedin.com/jobs/view/4435021734/","Immediate joiner requirement","Azure Data Engineer, ADF, Databricks, PySpark","Check notice period fit",90,82,74),
+      job("EY","Senior Associate - EDS - DataEngineer","Kochi, On-site",82,7,"Unknown","Found","Azure-DE-v1","https://www.linkedin.com/jobs/view/4434524260/","Kochi location; verify band/salary","Data Engineering, ETL, Azure, SQL","Verify stack and salary band",78,78,78),
+      job("Persistent Systems","Senior Data Engineer","India, Remote",80,8,"Easy Apply","Found","Databricks-v1","https://www.linkedin.com/jobs/view/4436187192/","Broad senior data role","Senior Data Engineer, PySpark, Databricks, SQL","Verify JD",76,82,80),
+      job("Bristol Myers Squibb","Senior Data Engineer - Data & ML Engineering","Hyderabad",78,9,"External Apply","Found","Databricks-v1","https://www.linkedin.com/jobs/view/4437812106/","ML/data platform angle","Data and ML engineering, pipelines, Spark, Databricks","Verify pharma/domain requirements",74,80,76),
+      job("Accenture in India","Data Engineer","Hyderabad",76,10,"External Apply","Found","Azure-DE-v1","https://www.linkedin.com/jobs/view/4437700053/","Broad consulting role","Data engineering, ETL, Azure, SQL","Verify JD before applying",76,70,76),
+      job("GE HealthCare","Senior Data Engineer","Bengaluru",74,11,"External Apply","Found","Azure-DE-v1","https://www.linkedin.com/jobs/view/4418936341/","Details hidden; verify stack","Senior Data Engineer, SQL, pipelines","Verify stack",70,70,78),
+      job("Cisco","Data Engineer","Bengaluru",70,12,"External Apply","Skipped","Lakehouse-Snowflake-v1","https://www.linkedin.com/jobs/view/4436319175/","JD mentioned Snowflake/dbt/Python/GCP; GCP/dbt possible gaps","Snowflake, dbt, Python, GCP","Apply only after higher-fit roles",58,62,76)
+    ];
+
+    function job(company, role, location, fit, priority, applyType, status, resume, link, notes, keywords, next, azure, databricks, modeling) {
+      return {
+        id: crypto.randomUUID ? crypto.randomUUID() : `${company}-${role}`.replace(/[^a-z0-9]+/gi, "-").toLowerCase(),
+        dateFound: "2026-07-08", company, role, location, fit, priority, applyType, status,
+        resume, link, notes, keywords, next, contact: "", appliedDate: "", followupDate: "",
+        scores: { azure, databricks, modeling }
+      };
+    }
+
+    let jobs = load();
+    let activeView = "overview";
+    let editId = null;
+    let autoSyncTimer = null;
+    let lastFeedSignature = "";
+    let paletteRenderedActions = [];
+    let paletteActiveIndex = 0;
+
+    const $ = id => document.getElementById(id);
+
+    function load() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return seedJobs;
+      try {
+        const parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed.map(normalize) : seedJobs;
+      } catch {
+        return seedJobs;
+      }
+    }
+
+    function normalize(item) {
+      return {
+        ...item,
+        id: item.id || (crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random()}`),
+        scores: item.scores || { azure: 70, databricks: 70, modeling: 70 },
+        keywords: item.keywords || "",
+        next: item.next || "",
+        contact: item.contact || "",
+        appliedDate: item.appliedDate || "",
+        followupDate: item.followupDate || ""
+      };
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(jobs));
+    }
+
+    function esc(v) {
+      return String(v ?? "").replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+    }
+
+    function toast(text) {
+      $("toast").textContent = text;
+      $("toast").style.display = "block";
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => $("toast").style.display = "none", 1800);
+    }
+
+    function today() {
+      return new Date().toISOString().slice(0, 10);
+    }
+
+    function daysFromToday(days) {
+      const d = new Date();
+      d.setDate(d.getDate() + days);
+      return d.toISOString().slice(0, 10);
+    }
+
+    function duplicateKey(j) {
+      return `${j.company || ""} ${j.role || ""}`.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+    }
+
+    function canonicalJobKey(j) {
+      return (j.link || duplicateKey(j)).toLowerCase().replace(/[?#].*$/, "").trim();
+    }
+
+    function duplicateGroups() {
+      const groups = {};
+      jobs.forEach(j => {
+        const key = duplicateKey(j);
+        groups[key] = groups[key] || [];
+        groups[key].push(j);
+      });
+      return Object.values(groups).filter(group => group.length > 1);
+    }
+
+    function riskFlags(j) {
+      const text = `${j.role} ${j.location} ${j.applyType} ${j.notes} ${j.keywords}`.toLowerCase();
+      const flags = [];
+      if (text.includes("contract")) flags.push("Contract risk");
+      if (text.includes("immediate")) flags.push("Notice period risk");
+      if (text.includes("associate")) flags.push("Band/salary risk");
+      if (text.includes("gcp") || text.includes("dbt")) flags.push("Stack gap risk");
+      if (text.includes("over 100")) flags.push("High applicant volume");
+      if (!text.includes("remote") && !text.includes("hybrid") && !text.includes("kochi")) flags.push("On-site check");
+      return flags;
+    }
+
+    function salaryGuardrail(j) {
+      const text = `${j.role} ${j.notes}`.toLowerCase();
+      if (text.includes("associate") || text.includes("contract") || text.includes("immediate")) return "Verify INR 22 LPA+ before applying";
+      if (j.fit >= 88) return "Likely worth salary discussion";
+      return "Salary not visible; ask early";
+    }
+
+    function qualityScore(j) {
+      let score = 50;
+      score += Math.round((Number(j.fit || 0) - 70) * .75);
+      if (j.location.toLowerCase().includes("remote")) score += 8;
+      if (j.location.toLowerCase().includes("hybrid")) score += 6;
+      if (/ibm|honeywell|ey|ge|cisco|accenture|bristol|ltimindtree|persistent/i.test(j.company)) score += 8;
+      if (/databricks|azure|pyspark|snowflake/i.test(`${j.role} ${j.keywords}`)) score += 8;
+      if (j.applyType === "Easy Apply") score += 3;
+      score -= riskFlags(j).length * 5;
+      if (j.status === "Skipped") score -= 20;
+      return Math.max(0, Math.min(100, score));
+    }
+
+    function decision(j) {
+      const q = qualityScore(j);
+      const risks = riskFlags(j);
+      if (j.status === "Skipped" || j.fit < 72 || q < 58) return {label:"Red", text:"Skip", cls:"red"};
+      if (j.fit >= 85 && q >= 72 && risks.length <= 1) return {label:"Green", text:"Apply", cls:"green"};
+      return {label:"Yellow", text:"Verify", cls:"amber"};
+    }
+
+    function gapDetector(j) {
+      const text = `${j.role} ${j.keywords} ${j.notes}`.toLowerCase();
+      const matched = PROFILE_SKILLS.filter(skill => text.includes(skill.toLowerCase().split(" ")[0]) || text.includes(skill.toLowerCase()));
+      const missing = MISSING_SKILL_LIBRARY.filter(skill => text.includes(skill.toLowerCase()));
+      const recommended = PROFILE_SKILLS.filter(skill => !matched.includes(skill)).slice(0, 5);
+      return {
+        matched: [...new Set(matched)].slice(0, 8),
+        missing: [...new Set(missing)].slice(0, 6),
+        recommended
+      };
+    }
+
+    function qualityBucket(score) {
+      if (score >= 80) return "Excellent";
+      if (score >= 68) return "Good";
+      if (score >= 55) return "Caution";
+      return "Weak";
+    }
+
+    function inferJobScores(draft) {
+      const text = `${draft.company || ""} ${draft.role || ""} ${draft.location || ""} ${draft.notes || ""} ${draft.keywords || ""}`.toLowerCase();
+      const roleText = `${draft.role || ""}`.toLowerCase();
+      let fit = 58;
+      let azure = 52;
+      let databricks = 52;
+      let modeling = 58;
+      const matched = [];
+      const risks = [];
+
+      const add = (condition, points, label, bucket) => {
+        if (!condition) return;
+        fit += points;
+        matched.push(label);
+        if (bucket === "azure") azure += points + 5;
+        if (bucket === "databricks") databricks += points + 7;
+        if (bucket === "modeling") modeling += points + 4;
+      };
+
+      add(/data engineer|data platform engineer|azure data engineer|databricks engineer|pyspark data engineer|spark data engineer|etl developer/.test(roleText), 16, "target role family", "modeling");
+      add(/senior|engineer ii|sde ii|data engineer ii/.test(roleText), 6, "right seniority band", "modeling");
+      add(/azure|adf|data factory|adls|blob storage|synapse/.test(text), 13, "Azure data stack", "azure");
+      add(/databricks|delta lake|unity catalog|lakehouse|medallion/.test(text), 15, "Databricks Lakehouse", "databricks");
+      add(/pyspark|spark|spark sql/.test(text), 12, "PySpark/Spark", "databricks");
+      add(/sql|snowflake|warehouse|dimensional|modeling|etl|elt|pipeline/.test(text), 8, "SQL/ETL/data modeling", "modeling");
+      add(/airflow|orchestration|github actions|ci\/cd|devops/.test(text), 6, "orchestration/CI-CD", "azure");
+      add(/migration|ssis|talend|reconciliation|validation/.test(text), 7, "migration and validation experience", "modeling");
+      add(/bengaluru|bangalore|hyderabad|kochi|remote|hybrid|india/.test(text), 5, "target location", "modeling");
+
+      if (/principal|architect|manager|director|lead architect|10\+|9\+|8\+|8 years|9 years|10 years/.test(text)) risks.push("seniority may be too high");
+      if (/contract|immediate joiner|night shift|support|production support|technical support/.test(text)) risks.push("role/process risk");
+      if (/gcp|scala|kafka|dbt|cosmos|purview/.test(text)) risks.push("possible skill gap");
+      fit -= risks.length * 8;
+
+      const resume = /snowflake|warehouse|modeling|dbt/.test(text) ? "Lakehouse-Snowflake-v1" :
+        /databricks|delta|unity|lakehouse|pyspark|spark/.test(text) ? "Databricks-v1" :
+        /azure|adf|adls|synapse/.test(text) ? "Azure-DE-v1" : "Generic-DE-v1";
+
+      const result = {
+        fit: Math.max(0, Math.min(100, Math.round(fit))),
+        azure: Math.max(0, Math.min(100, Math.round(azure))),
+        databricks: Math.max(0, Math.min(100, Math.round(databricks))),
+        modeling: Math.max(0, Math.min(100, Math.round(modeling))),
+        resume,
+        matched: [...new Set(matched)].slice(0, 7),
+        risks
+      };
+      result.quality = qualityScore({
+        ...draft,
+        fit: result.fit,
+        scores: { azure: result.azure, databricks: result.databricks, modeling: result.modeling },
+        resume: result.resume,
+        status: draft.status || "Found",
+        applyType: draft.applyType || "Unknown"
+      });
+      return result;
+    }
+
+    function modalDraft() {
+      return {
+        company: $("mCompany").value.trim(),
+        role: $("mRole").value.trim(),
+        location: $("mLocation").value.trim(),
+        status: $("mStatus").value || "Found",
+        resume: $("mResume").value || "Generic-DE-v1",
+        applyType: $("mApplyType").value || "Unknown",
+        notes: $("mNotes").value.trim(),
+        keywords: $("mKeywords").value.trim()
+      };
+    }
+
+    function renderFitAnalysis(result) {
+      const decisionText = result.fit >= 85 && result.quality >= 72 && !result.risks.length ? "Strong apply" : result.fit >= 72 ? "Verify then apply" : "Low priority";
+      $("fitAnalysisText").textContent = `Fit ${result.fit}% | Quality ${result.quality}% | ${decisionText}. Resume: ${result.resume}. Matched: ${result.matched.join(", ") || "add JD keywords"}. Risks: ${result.risks.join(", ") || "none detected"}.`;
+    }
+
+    function analyzeModalFit(applyToFields = true) {
+      const result = inferJobScores(modalDraft());
+      if (applyToFields) {
+        $("mFit").value = result.fit;
+        $("mAzure").value = result.azure;
+        $("mDatabricks").value = result.databricks;
+        $("mModeling").value = result.modeling;
+        $("mResume").value = result.resume;
+      }
+      renderFitAnalysis(result);
+      return result;
+    }
+
+    function resumeProfile() {
+      return localStorage.getItem(PROFILE_STORAGE_KEY) || DEFAULT_RESUME_PROFILE;
+    }
+
+    function hasAny(text, terms) {
+      const hay = String(text || "").toLowerCase();
+      return terms.some(term => hay.includes(term));
+    }
+
+    function extractSkillMatches(resumeText, jdText) {
+      const jdSkills = MATCH_SKILLS.filter(skill => hasAny(jdText, skill.terms));
+      const matched = jdSkills.filter(skill => hasAny(resumeText, skill.terms));
+      const gaps = jdSkills.filter(skill => !hasAny(resumeText, skill.terms));
+      const resumeOnly = MATCH_SKILLS.filter(skill => hasAny(resumeText, skill.terms) && !hasAny(jdText, skill.terms));
+      return { jdSkills, matched, gaps, resumeOnly };
+    }
+
+    function requirementSignals(jdText) {
+      const text = String(jdText || "").toLowerCase();
+      const signals = [];
+      if (/4\+|5\+|6\+|7\+|4 years|5 years|6 years|7 years|four|five|six|seven/.test(text)) signals.push("experience band likely close");
+      if (/8\+|9\+|10\+|8 years|9 years|10 years|principal|architect|manager|director/.test(text)) signals.push("seniority risk");
+      if (/bengaluru|bangalore|hyderabad|kochi|india|remote|hybrid/.test(text)) signals.push("location aligned");
+      if (/contract|immediate joiner|night shift|support/.test(text)) signals.push("process risk");
+      if (/salary|ctc|lpa|compensation/.test(text)) signals.push("salary clue visible");
+      return signals;
+    }
+
+    function matchEngine(resumeText, jdText, job = {}) {
+      const combinedJd = `${job.company || ""} ${job.role || ""} ${job.location || ""} ${job.notes || ""} ${job.keywords || ""} ${jdText || ""}`;
+      const extracted = extractSkillMatches(resumeText, combinedJd);
+      const jdCount = Math.max(1, extracted.jdSkills.length);
+      const skillCoverage = Math.round((extracted.matched.length / jdCount) * 100);
+      const inferred = inferJobScores({
+        company: job.company || "",
+        role: job.role || "",
+        location: job.location || "",
+        notes: `${job.notes || ""} ${jdText || ""}`,
+        keywords: `${job.keywords || ""} ${extracted.jdSkills.map(s => s.label).join(", ")}`,
+        status: job.status || "Found",
+        applyType: job.applyType || "Unknown"
+      });
+      const signals = requirementSignals(combinedJd);
+      let score = Math.round((skillCoverage * .55) + (inferred.fit * .35) + (signals.includes("location aligned") ? 10 : 0));
+      if (signals.includes("seniority risk")) score -= 14;
+      if (signals.includes("process risk")) score -= 10;
+      score = Math.max(0, Math.min(100, score));
+      const quality = Math.max(0, Math.min(100, Math.round((score * .65) + (inferred.quality * .35))));
+      const decisionText = score >= 85 && quality >= 75 && !signals.includes("seniority risk") ? "Strong apply" : score >= 72 ? "Tailor and verify" : "Low priority";
+      return {
+        score,
+        quality,
+        skillCoverage,
+        resume: inferred.resume,
+        azure: inferred.azure,
+        databricks: inferred.databricks,
+        modeling: inferred.modeling,
+        decisionText,
+        jdSkills: extracted.jdSkills,
+        matched: extracted.matched,
+        gaps: extracted.gaps,
+        resumeOnly: extracted.resumeOnly,
+        signals
+      };
+    }
+
+    function interviewTopicsFor(report, job = {}) {
+      const jdText = `${job.role || ""} ${job.keywords || ""} ${job.notes || ""} ${report.jdSkills.map(s => s.label).join(" ")}`.toLowerCase();
+      const topics = [];
+      const add = (condition, topic, drill) => { if (condition) topics.push({ topic, drill }); };
+      add(/databricks|delta|unity|lakehouse|pyspark|spark/.test(jdText), "Databricks/PySpark", "Prepare SSIS/Talend-to-Databricks migration story, Delta Lake design, Spark optimization, cluster/job orchestration, and validation approach.");
+      add(/azure|adf|adls|synapse/.test(jdText), "Azure Data Engineering", "Prepare ADF pipeline design, ADLS layout, Databricks integration, trigger/orchestration, monitoring, and failure handling.");
+      add(/sql|warehouse|model|snowflake|star|scd/.test(jdText), "SQL and Modeling", "Practice joins, window functions, incremental load logic, SCD, dimensional modeling, and reconciliation SQL.");
+      add(/airflow|orchestration|ci\/cd|github|devops/.test(jdText), "Orchestration and CI/CD", "Prepare Airflow DAG design, dependency handling, retry strategy, GitHub Actions deployment, and release rollback story.");
+      add(report.gaps.length, "Gap Defense", `Prepare honest bridging answers for: ${report.gaps.map(s => s.label).slice(0, 5).join(", ")}.`);
+      if (!topics.length) topics.push({ topic: "Core Data Engineering", drill: "Prepare ETL design, SQL, data validation, pipeline reliability, and migration impact stories." });
+      return topics;
+    }
+
+    function renderMatchReport(report, job = {}) {
+      const skillList = list => list.length ? list.map(s => s.label).join(", ") : "None detected";
+      $("matchReport").innerHTML = `
+        <div class="insight-grid">
+          <div class="insight"><b>Match Score</b><span>${report.score}% fit · ${report.quality}% quality · ${report.decisionText}</span></div>
+          <div class="insight"><b>Skill Coverage</b><span>${report.skillCoverage}% of detected JD skills found in resume profile</span></div>
+          <div class="insight"><b>Resume Direction</b><span>${esc(report.resume)}</span></div>
+          <div class="insight"><b>Stack Scores</b><span>Azure ${report.azure}% · Databricks ${report.databricks}% · Modeling ${report.modeling}%</span></div>
+        </div>
+        <div class="copy-box"><b>Matched:</b> ${esc(skillList(report.matched))}<br><b>Gaps:</b> ${esc(skillList(report.gaps))}<br><b>Signals:</b> ${esc(report.signals.join(", ") || "No major risk signals detected")}</div>
+        <div class="copy-box"><b>Positioning:</b> Lead with ${esc(report.resume)}. Emphasize migration, PySpark/Databricks delivery, validation/reconciliation, orchestration, and measurable performance improvement.</div>
+      `;
+      const topics = interviewTopicsFor(report, job);
+      $("matcherInterviewPrep").innerHTML = `
+        <div class="panel-title">Job-Specific Interview Prep</div>
+        ${topics.map(t => `<div class="draft-item"><div class="row"><b>${esc(t.topic)}</b><span class="pill blue">Prep</span></div><div class="copy-box">${esc(t.drill)}</div></div>`).join("")}
+      `;
+    }
+
+    function selectedMatcherJob() {
+      return jobs.find(j => j.id === $("matcherJobSelect").value) || jobs[0] || {};
+    }
+
+    function currentMatcherReport() {
+      return matchEngine($("resumeProfileText").value || resumeProfile(), $("jdText").value, selectedMatcherJob());
+    }
+
+    function automationFeed() {
+      return window.GCC_PRODUCT_JOB_FEED && Array.isArray(window.GCC_PRODUCT_JOB_FEED.jobs)
+        ? window.GCC_PRODUCT_JOB_FEED
+        : { generatedAt: "", sourceAutomation: "India GCC Product Data Job Monitor", jobs: [] };
+    }
+
+    function normalizeFeedJob(item, index) {
+      const title = item.role || item.title || "";
+      const keywordText = Array.isArray(item.keywords) ? item.keywords.join(", ") : (item.keywords || item.fitReason || "");
+      const fit = Number(item.fit || item.fitScore || item.score || 78);
+      const resume = /snowflake/i.test(keywordText) ? "Lakehouse-Snowflake-v1" : /databricks|delta|unity/i.test(`${title} ${keywordText}`) ? "Databricks-v1" : "Azure-DE-v1";
+      return normalize({
+        id: item.id || undefined,
+        dateFound: item.dateFound || item.postedDate || today(),
+        priority: jobs.length + index + 1,
+        company: item.company || "",
+        role: title,
+        location: item.location || item.indiaLocation || "India",
+        fit,
+        applyType: item.applyType || "External Apply",
+        status: "Found",
+        resume,
+        link: item.link || item.url || item.applyUrl || "",
+        notes: item.notes || item.fitReason || `Imported from ${automationFeed().sourceAutomation}`,
+        keywords: keywordText,
+        next: item.next || "Verify JD and prepare application",
+        contact: "",
+        appliedDate: "",
+        followupDate: "",
+        scores: {
+          azure: Number(item.azureScore || (/azure|adf|adls/i.test(keywordText) ? 88 : 72)),
+          databricks: Number(item.databricksScore || (/databricks|spark|pyspark|delta/i.test(keywordText) ? 90 : 70)),
+          modeling: Number(item.modelingScore || (/model|warehouse|snowflake|sql/i.test(keywordText) ? 82 : 72))
+        },
+        source: automationFeed().sourceAutomation,
+        classificationConfidence: item.classificationConfidence || item.confidence || "",
+        postedDate: item.postedDate || ""
+      });
+    }
+
+    function mergeAutomationFeed(showToast = false) {
+      const feed = automationFeed();
+      if (!feed.jobs.length) return { added: 0, updated: 0, total: 0 };
+      const existing = new Map(jobs.map(j => [canonicalJobKey(j), j]));
+      let added = 0;
+      let updated = 0;
+      feed.jobs.map(normalizeFeedJob).forEach(incoming => {
+        const key = canonicalJobKey(incoming);
+        if (existing.has(key)) {
+          const current = existing.get(key);
+          existing.set(key, normalize({
+            ...current,
+            ...incoming,
+            id: current.id,
+            status: current.status,
+            appliedDate: current.appliedDate,
+            followupDate: current.followupDate,
+            contact: current.contact,
+            next: current.next || incoming.next
+          }));
+          updated += 1;
+        } else {
+          existing.set(key, incoming);
+          added += 1;
+        }
+      });
+      jobs = [...existing.values()].map(normalize);
+      save();
+      if (showToast) toast(`Automation feed merged: ${added} new, ${updated} updated`);
+      return { added, updated, total: feed.jobs.length };
+    }
+
+    function feedSignature(feed = automationFeed()) {
+      return JSON.stringify({
+        generatedAt: feed.generatedAt || "",
+        jobs: feed.jobs.map(j => j.link || j.id || `${j.company}-${j.role}`)
+      });
+    }
+
+    function reloadAutomationFeed(showToast = false) {
+      return new Promise(resolve => {
+        const script = document.createElement("script");
+        script.src = `gcc_product_feed.js?sync=${Date.now()}`;
+        script.onload = () => {
+          script.remove();
+          const signature = feedSignature();
+          const changed = signature !== lastFeedSignature;
+          lastFeedSignature = signature;
+          if (changed) {
+            const result = mergeAutomationFeed(showToast);
+            renderAll();
+            if (showToast && result.total === 0) toast("Feed checked: no jobs in feed yet");
+          } else if (showToast) {
+            toast("Feed checked: no new changes");
+          }
+          resolve(true);
+        };
+        script.onerror = () => {
+          script.remove();
+          if (showToast) toast("Could not refresh feed");
+          resolve(false);
+        };
+        document.body.appendChild(script);
+      });
+    }
+
+    function setAutoSync(enabled) {
+      const btn = $("autoSyncBtn");
+      if (enabled) {
+        if (autoSyncTimer) clearInterval(autoSyncTimer);
+        reloadAutomationFeed(true);
+        autoSyncTimer = setInterval(() => reloadAutomationFeed(false), 60000);
+        btn.classList.add("green");
+        btn.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M3 12A9 9 0 0 1 18.5 5.8"/><path d="M7 18H3v4"/><path d="M17 6h4V2"/></svg>Auto Sync On`;
+        toast("Auto Sync checks every 60 seconds");
+      } else {
+        if (autoSyncTimer) clearInterval(autoSyncTimer);
+        autoSyncTimer = null;
+        btn.classList.remove("green");
+        btn.innerHTML = `<svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12a9 9 0 0 1-15.5 6.2"/><path d="M3 12A9 9 0 0 1 18.5 5.8"/><path d="M7 18H3v4"/><path d="M17 6h4V2"/></svg>Auto Sync Off`;
+      }
+    }
+
+    function metrics() {
+      const total = jobs.length;
+      const high = jobs.filter(j => j.fit >= 85 && j.status !== "Skipped").length;
+      const applied = jobs.filter(j => ["Applied","Followed Up","Interview","Offer","Rejected"].includes(j.status)).length;
+      const interviews = jobs.filter(j => ["Interview","Offer"].includes(j.status)).length;
+      const avg = Math.round(jobs.reduce((n, j) => n + Number(j.fit || 0), 0) / Math.max(1, total));
+      return [
+        ["Tracked Jobs", total, "Full private database"],
+        ["Strong Apply", high, "Fit score 85+"],
+        ["Applied", applied, "Submitted or beyond"],
+        ["Interviews", interviews, "Interview or offer stage"],
+        ["Avg Fit", `${avg}%`, "Across all tracked jobs"]
+      ];
+    }
+
+    function renderMetrics() {
+      $("metrics").innerHTML = metrics().map(m => `
+        <article class="metric">
+          <div class="label">${m[0]}</div>
+          <div class="metric-value">${m[1]}</div>
+          <div class="hint">${m[2]}</div>
+        </article>
+      `).join("");
+    }
+
+    function unique(key) {
+      return [...new Set(jobs.map(j => j[key]).filter(Boolean))].sort();
+    }
+
+    function fillSelect(id, values, allLabel) {
+      const node = $(id);
+      const old = node.value || "all";
+      node.innerHTML = `<option value="all">${allLabel}</option>` + values.map(v => `<option>${esc(v)}</option>`).join("");
+      node.value = values.includes(old) ? old : "all";
+    }
+
+    function renderFilters() {
+      $("statusFilter").innerHTML = `<option value="all">All statuses</option>` + STATUS.map(s => `<option>${esc(s === "Applied" ? "Applied / submitted+" : s)}</option>`).join("");
+      fillSelect("locationFilter", unique("location"), "All locations");
+      fillSelect("resumeFilter", unique("resume"), "All resumes");
+    }
+
+    function filteredJobs() {
+      const q = $("searchInput").value.trim().toLowerCase();
+      const status = $("statusFilter").value;
+      const loc = $("locationFilter").value;
+      const resume = $("resumeFilter").value;
+      const sort = $("sortSelect").value;
+      const list = jobs.filter(j => {
+        const text = `${j.company} ${j.role} ${j.location} ${j.status} ${j.resume} ${j.notes} ${j.keywords}`.toLowerCase();
+        const statusMatch = status === "all" || (status === "Applied / submitted+" ? isAppliedOrBeyond(j.status) : j.status === status);
+        return (!q || text.includes(q)) &&
+          statusMatch &&
+          (loc === "all" || j.location === loc) &&
+          (resume === "all" || j.resume === resume);
+      });
+      list.sort((a, b) => {
+        if (sort === "fit") return b.fit - a.fit;
+        if (sort === "company") return a.company.localeCompare(b.company);
+        if (sort === "followup") return (a.followupDate || "9999").localeCompare(b.followupDate || "9999");
+        return a.priority - b.priority;
+      });
+      return list;
+    }
+
+    function scoreClass(score) {
+      if (score >= 85) return "";
+      if (score >= 72) return "mid";
+      return "low";
+    }
+
+    function initials(name) {
+      return String(name || "")
+        .split(/\s+/)
+        .filter(Boolean)
+        .slice(0, 2)
+        .map(part => part[0])
+        .join("")
+        .toUpperCase();
+    }
+
+    function statusPill(status) {
+      if (["Interview","Offer"].includes(status)) return "green";
+      if (["Applied","Followed Up","Resume Tailored"].includes(status)) return "blue";
+      if (["Rejected","Skipped"].includes(status)) return "red";
+      return "amber";
+    }
+
+    function isAppliedOrBeyond(status) {
+      return ["Applied","Followed Up","Interview","Offer","Rejected"].includes(status);
+    }
+
+    function renderJobs() {
+      const list = filteredJobs();
+      $("jobGrid").innerHTML = list.map(j => `
+        <article class="job">
+          <div class="job-head">
+            <div class="avatar">${esc(initials(j.company))}</div>
+            <div>
+              <div class="company">${esc(j.company)}</div>
+              <div class="role">${esc(j.role)}</div>
+            </div>
+            <div class="score ${scoreClass(j.fit)}">${j.fit}%</div>
+          </div>
+          <div class="job-body">
+            <div class="pills">
+              <span class="pill">P${j.priority}</span>
+              <span class="pill blue">${esc(j.location)}</span>
+              <span class="pill ${j.applyType === "Easy Apply" ? "green" : "blue"}">${esc(j.applyType)}</span>
+              <span class="pill status-dot ${statusPill(j.status)}">${esc(j.status)}</span>
+              <span class="pill ${decision(j).cls}"><span class="decision">${decision(j).text}</span></span>
+              <span class="pill violet">${esc(j.resume)}</span>
+            </div>
+            <div class="quality-strip">
+              <span><b>Quality ${qualityScore(j)}%</b> · ${esc(qualityBucket(qualityScore(j)))} · ${esc(salaryGuardrail(j))}</span>
+              <span class="pill ${riskFlags(j).length ? "amber" : "green"}">${riskFlags(j).length || 0} risks</span>
+            </div>
+            <div class="notes">${esc(j.notes)}</div>
+            ${matchRow("Azure", j.scores.azure)}
+            ${matchRow("Databricks", j.scores.databricks)}
+            ${matchRow("Modeling", j.scores.modeling)}
+          </div>
+          <div class="job-foot">
+            <a class="link" href="${esc(j.link)}" target="_blank" rel="noreferrer">Open job
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7"/><path d="M7 7h10v10"/></svg>
+            </a>
+            <div class="small-actions">
+              <button class="mini-btn" data-action="draft" data-id="${j.id}">Prepare</button>
+              ${isAppliedOrBeyond(j.status) ? "" : `<button class="mini-btn green" data-action="applied" data-id="${j.id}">Mark Applied</button>`}
+              <button class="mini-btn" data-action="edit" data-id="${j.id}">Edit</button>
+              <button class="mini-btn" data-action="next" data-id="${j.id}">Next</button>
+            </div>
+          </div>
+        </article>
+      `).join("");
+      $("emptyJobs").style.display = list.length ? "none" : "block";
+      bindJobButtons();
+    }
+
+    function matchRow(label, value) {
+      return `<div class="match-row"><span>${label}</span><div class="bar"><div class="fill" style="--w:${Number(value || 0)}%"></div></div><b>${value}%</b></div>`;
+    }
+
+    function bindJobButtons() {
+      document.querySelectorAll("[data-action]").forEach(btn => {
+        btn.onclick = () => {
+          const id = btn.dataset.id;
+          if (btn.dataset.action === "edit") openModal(id);
+          if (btn.dataset.action === "draft") {
+            activeView = "studio";
+            switchView();
+            setTimeout(() => document.querySelector(`[data-draft="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" }), 20);
+          }
+          if (btn.dataset.action === "applied") markApplied(id);
+          if (btn.dataset.action === "next") advance(id);
+        };
+      });
+    }
+
+    function markApplied(id) {
+      const j = jobs.find(x => x.id === id);
+      if (!j) return;
+      j.status = "Applied";
+      if (!j.appliedDate) j.appliedDate = today();
+      if (!j.followupDate) j.followupDate = daysFromToday(3);
+      j.next = j.next || "Follow up with recruiter";
+      save();
+      renderAll();
+      toast(`Marked applied: ${j.company}`);
+    }
+
+    function advance(id) {
+      const j = jobs.find(x => x.id === id);
+      const i = STATUS.indexOf(j.status);
+      if (i >= 0 && i < STATUS.length - 3) j.status = STATUS[i + 1];
+      if (j.status === "Applied" && !j.appliedDate) {
+        j.appliedDate = today();
+        j.followupDate = daysFromToday(3);
+      }
+      save();
+      renderAll();
+      toast("Moved to " + j.status);
+    }
+
+    function renderSearches() {
+      const groups = duplicateGroups();
+      const strong = jobs.filter(j => decision(j).label === "Green").length;
+      const caution = jobs.filter(j => decision(j).label === "Yellow").length;
+      const feed = automationFeed();
+      $("searchList").innerHTML = `
+        <div class="discovery-item">
+          <div class="row"><b>${esc(feed.sourceAutomation)}</b><span class="pill ${feed.jobs.length ? "green" : "amber"}">${feed.jobs.length} feed jobs</span></div>
+          <div class="hint">Generated: ${esc(feed.generatedAt || "waiting for first dashboard feed file")} · Contract: outputs/gcc_product_feed.js</div>
+          <div class="small-actions">
+            <button class="mini-btn" id="mergeFeedBtn">Merge automation feed</button>
+            <button class="mini-btn" id="copyFeedContractBtn">Copy feed contract</button>
+          </div>
+        </div>
+        <div class="discovery-item">
+          <div class="row"><b>Inbox Intelligence</b><span class="pill green">${strong} strong</span><span class="pill amber">${caution} verify</span><span class="pill red">${groups.length} duplicate groups</span></div>
+          <div class="hint">New imports should be merged by link/company/role, then scored before they enter the application pipeline.</div>
+        </div>
+      ` + searches.map(s => `
+        <div class="discovery-item">
+          <div class="row"><b>${esc(s.name)}</b><span class="pill blue">${esc(s.location)}</span></div>
+          <div class="hint">${esc(s.role)}</div>
+          <a class="link" href="${esc(s.url)}" target="_blank" rel="noreferrer">Open LinkedIn search</a>
+        </div>
+      `).join("");
+      $("mergeFeedBtn").onclick = () => {
+        mergeAutomationFeed(true);
+        renderAll();
+      };
+      $("copyFeedContractBtn").onclick = async () => {
+        await navigator.clipboard.writeText(feedContractText());
+        toast("Feed contract copied");
+      };
+    }
+
+    function renderBoard() {
+      const lanes = ["Found","JD Verified","Resume Tailored","Applied","Followed Up","Interview","Offer","Rejected"];
+      $("board").innerHTML = lanes.map(status => {
+        const laneJobs = jobs.filter(j => j.status === status);
+        return `<section class="stage">
+          <div class="stage-head"><span>${status}</span><span class="pill">${laneJobs.length}</span></div>
+          <div class="stage-body">
+            ${laneJobs.map(j => `<div class="lane-card" data-lane="${j.id}"><b>${esc(j.company)}</b><span>${esc(j.role)}</span><span>Fit ${j.fit}% · Quality ${qualityScore(j)}% · ${esc(j.location)}</span>${isAppliedOrBeyond(j.status) ? "" : `<button class="mini-btn green" data-apply-lane="${j.id}">Mark Applied</button>`}</div>`).join("") || `<div class="hint">No jobs here yet.</div>`}
+          </div>
+        </section>`;
+      }).join("");
+      document.querySelectorAll("[data-lane]").forEach(x => x.onclick = () => openModal(x.dataset.lane));
+      document.querySelectorAll("[data-apply-lane]").forEach(btn => btn.onclick = e => {
+        e.stopPropagation();
+        markApplied(btn.dataset.applyLane);
+      });
+    }
+
+    function draftFor(j) {
+      const angle = j.resume.includes("Databricks") ? "Databricks migration, PySpark, Delta Lake, Unity Catalog, medallion architecture, Airflow, and performance tuning" :
+        j.resume.includes("Snowflake") ? "Snowflake, Databricks, SQL, data modeling, ETL/ELT, and analytics-ready pipelines" :
+        "Azure Data Factory, Azure Databricks, PySpark, ADLS Gen2, SQL, Airflow, and CI/CD";
+      return `I am a strong fit for the ${j.role} role at ${j.company} because I bring 5+ years of data engineering experience across ${angle}. My recent work includes migrating SSIS and Talend workflows to Databricks-based PySpark pipelines, building medallion architecture, validating migrated data, and improving pipeline runtime through Spark performance tuning.`;
+    }
+
+    function outreachFor(j) {
+      return `Hi [Name], I found the ${j.role} role at ${j.company} and it looks closely aligned with my Azure/Databricks data engineering background. I have 5+ years of experience with PySpark, Databricks, ADF, Delta Lake, Airflow, SQL, and ETL migration from SSIS/Talend to Lakehouse pipelines. I would be grateful if you could review my profile or point me to the right hiring team.`;
+    }
+
+    function bulletsFor(j) {
+      const base = [
+        "Migrated 15+ legacy SSIS ETL packages to Azure Databricks using PySpark, improving execution performance by 30-40% with zero data loss during cutover.",
+        "Migrated 10+ Talend ETL workflows to Databricks, re-engineering transformation logic in PySpark for full-load and incremental-load architectures.",
+        "Designed medallion architecture using Delta Lake and Unity Catalog across bronze, silver, and gold layers for analytics and ML-ready datasets.",
+        "Automated Databricks workflows using Databricks Jobs and Apache Airflow, reducing manual intervention and improving operational reliability.",
+        "Implemented CI/CD pipelines using GitHub Actions, reducing Databricks notebook and workflow deployment time by about 50%."
+      ];
+      if (j.resume.includes("Snowflake")) base.splice(2, 0, "Built curated Snowflake/SQL data models with dimensional modeling patterns for reporting and analytics use cases.");
+      return base.slice(0, 5);
+    }
+
+    function coverFor(j) {
+      return `Dear Hiring Team,\n\nI am interested in the ${j.role} role at ${j.company}. I bring 5+ years of data engineering experience across Azure Data Factory, Azure Databricks, PySpark, SQL, Airflow, Delta Lake, Unity Catalog, Snowflake, and ETL migration. My recent work includes migrating SSIS and Talend workflows into Databricks Lakehouse pipelines, designing medallion architecture, implementing validation and reconciliation checks, and improving pipeline performance.\n\nI would welcome the opportunity to contribute to your data engineering team with hands-on Azure/Databricks delivery experience.\n\nRegards,\nSarath Krishnan`;
+    }
+
+    function packetText(j) {
+      const gaps = gapDetector(j);
+      return [
+        `Decision: ${decision(j).text} (${decision(j).label})`,
+        `Fit: ${j.fit}% | Quality: ${qualityScore(j)}% | Resume: ${j.resume}`,
+        `ATS Keywords: ${j.keywords}`,
+        `Recommended Bullets:\n- ${bulletsFor(j).join("\n- ")}`,
+        `Fit Answer:\n${draftFor(j)}`,
+        `Cover Note:\n${coverFor(j)}`,
+        `Recruiter Outreach:\n${outreachFor(j)}`,
+        `Matched Skills: ${gaps.matched.join(", ") || "Need full JD verification"}`,
+        `Missing/Risky Skills: ${gaps.missing.join(", ") || "None detected from visible text"}`
+      ].join("\n\n");
+    }
+
+    function renderStudio() {
+      const top = [...jobs].filter(j => j.status !== "Skipped").sort((a,b) => b.fit - a.fit).slice(0, 8);
+      $("draftList").innerHTML = top.map(j => `
+        <div class="draft-item" data-draft="${j.id}">
+          <div class="row"><b>${esc(j.company)} - ${esc(j.role)}</b><span class="pill ${decision(j).cls}">${esc(decision(j).text)}</span><span class="pill ${statusPill(j.status)}">${esc(j.status)}</span></div>
+          <div class="insight-grid">
+            <div class="insight"><b>ATS Keywords</b><span>${esc(j.keywords)}</span></div>
+            <div class="insight"><b>Gap Detector</b><span>Matched: ${esc(gapDetector(j).matched.join(", ") || "JD verification needed")}</span><span>Risky: ${esc(gapDetector(j).missing.join(", ") || "None detected")}</span></div>
+          </div>
+          <div class="packet-grid">
+            <div class="packet-section"><div class="packet-title">Resume bullets</div><div class="copy-box">- ${esc(bulletsFor(j).join("\n- "))}</div></div>
+            <div class="packet-section"><div class="packet-title">Why fit answer</div><div class="copy-box">${esc(draftFor(j))}</div></div>
+            <div class="packet-section"><div class="packet-title">Cover note</div><div class="copy-box">${esc(coverFor(j))}</div></div>
+            <div class="packet-section"><div class="packet-title">Recruiter outreach</div><div class="copy-box">${esc(outreachFor(j))}</div></div>
+          </div>
+          <div class="small-actions">
+            <button class="mini-btn" data-copy="${esc(packetText(j))}">Copy full packet</button>
+            <button class="mini-btn" data-copy="${esc(draftFor(j))}">Copy fit answer</button>
+            <button class="mini-btn" data-copy="${esc(outreachFor(j))}">Copy outreach</button>
+            ${isAppliedOrBeyond(j.status) ? "" : `<button class="mini-btn green" data-applydraft="${j.id}">Mark Applied</button>`}
+            <button class="mini-btn" data-editdraft="${j.id}">Edit job</button>
+          </div>
+        </div>
+      `).join("");
+      document.querySelectorAll("[data-copy]").forEach(btn => btn.onclick = async () => {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        toast("Copied");
+      });
+      document.querySelectorAll("[data-editdraft]").forEach(btn => btn.onclick = () => openModal(btn.dataset.editdraft));
+      document.querySelectorAll("[data-applydraft]").forEach(btn => btn.onclick = () => markApplied(btn.dataset.applydraft));
+
+      const resumeInfo = [
+        ["Azure-DE-v1", "IBM, techolution, Accenture", "ADF, ADLS Gen2, Azure Databricks, PySpark, Airflow, SQL, CI/CD"],
+        ["Databricks-v1", "LTIMindtree, KPI, Honeywell", "Databricks Jobs, Delta Lake, Unity Catalog, medallion architecture, SSIS/Talend migration"],
+        ["Lakehouse-Snowflake-v1", "Ledelsea, Cisco", "Snowflake, SQL, Databricks, Azure DevOps, dimensional modeling"],
+        ["Generic-DE-v1", "Broad data engineer roles", "ETL/ELT, SQL, Python, Spark, data validation, orchestration"]
+      ];
+      $("resumeCards").innerHTML = resumeInfo.map(r => `
+        <div class="tool-card panel-body">
+          <div class="panel-title">${esc(r[0])}</div>
+          <div class="hint">${esc(r[1])}</div>
+          <div class="copy-box">${esc(r[2])}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderMatcher() {
+      $("resumeProfileText").value = resumeProfile();
+      const previous = $("matcherJobSelect").value;
+      $("matcherJobSelect").innerHTML = jobs.length
+        ? jobs.map(j => `<option value="${esc(j.id)}">${esc(j.company)} - ${esc(j.role)} (${j.fit}% fit)</option>`).join("")
+        : `<option value="">No jobs tracked yet</option>`;
+      if (jobs.some(j => j.id === previous)) $("matcherJobSelect").value = previous;
+      const job = selectedMatcherJob();
+      if (!$("jdText").value && job.role) {
+        $("jdText").value = `${job.role}\n${job.company}\n${job.location}\n${job.keywords || ""}\n${job.notes || ""}`;
+      }
+      renderMatchReport(currentMatcherReport(), job);
+    }
+
+    function renderAnalytics() {
+      const funnel = ["Found","JD Verified","Resume Tailored","Applied","Followed Up","Interview","Offer"];
+      const max = Math.max(1, ...funnel.map(s => jobs.filter(j => j.status === s).length));
+      $("funnelChart").innerHTML = funnel.map(s => {
+        const n = jobs.filter(j => j.status === s).length;
+        return chartRow(s, n, max);
+      }).join("");
+
+      const due = jobs.filter(j => j.followupDate && !["Rejected","Offer","Skipped"].includes(j.status))
+        .sort((a,b) => a.followupDate.localeCompare(b.followupDate));
+      $("reminderList").innerHTML = due.length ? due.map(j => `
+        <div class="reminder">
+          <div class="row"><b>${esc(j.company)}</b><span class="pill ${j.followupDate <= today() ? "red" : "amber"}">${esc(j.followupDate)}</span></div>
+          <div class="hint">${esc(j.role)} · ${esc(j.next || "Follow up with recruiter")}</div>
+          <button class="mini-btn" data-remind="${j.id}">Open</button>
+        </div>
+      `).join("") : `<div class="hint">No follow-ups scheduled yet.</div>`;
+      document.querySelectorAll("[data-remind]").forEach(btn => btn.onclick = () => openModal(btn.dataset.remind));
+
+      renderGroupChart("locationChart", "location");
+      renderGroupChart("resumeChart", "resume");
+      renderQualityChart();
+      renderDuplicates();
+    }
+
+    function renderQualityChart() {
+      const buckets = {};
+      jobs.forEach(j => {
+        const bucket = qualityBucket(qualityScore(j));
+        buckets[bucket] = (buckets[bucket] || 0) + 1;
+      });
+      const max = Math.max(1, ...Object.values(buckets));
+      $("qualityChart").innerHTML = ["Excellent","Good","Caution","Weak"].map(k => chartRow(k, buckets[k] || 0, max)).join("");
+    }
+
+    function renderDuplicates() {
+      const groups = duplicateGroups();
+      $("duplicateList").innerHTML = groups.length ? groups.map(group => `
+        <div class="reminder">
+          <div class="row"><b>${esc(group[0].company)}</b><span class="pill amber">${group.length} records</span></div>
+          <div class="hint">${group.map(j => esc(j.role)).join(" / ")}</div>
+        </div>
+      `).join("") : `<div class="hint">No duplicate jobs detected.</div>`;
+    }
+
+    function renderCrm() {
+      const active = jobs.filter(j => !["Rejected","Skipped"].includes(j.status)).sort((a,b) => a.priority - b.priority).slice(0, 12);
+      $("crmGrid").innerHTML = active.map(j => `
+        <div class="person-card">
+          <div class="row"><b>${esc(j.company)}</b><span class="pill ${statusPill(j.status)}">${esc(j.status)}</span></div>
+          <div class="hint">${esc(j.role)}</div>
+          <div class="copy-box">${esc(j.contact || "Recruiter/contact not added yet")}</div>
+          <div class="hint">Next: ${esc(j.next || "Send recruiter outreach")} ${j.followupDate ? "on " + esc(j.followupDate) : ""}</div>
+          <button class="mini-btn" data-crm="${j.id}">Edit contact</button>
+        </div>
+      `).join("");
+      document.querySelectorAll("[data-crm]").forEach(btn => btn.onclick = () => openModal(btn.dataset.crm));
+
+      const steps = [
+        ["0", "Apply", "Submit after JD check and resume tailoring."],
+        ["1", "Message", "Send recruiter/hiring-manager outreach within 24 hours."],
+        ["4", "Follow up", "Short follow-up if no response after 3-4 days."],
+        ["10", "Close loop", "Mark stale, re-follow-up once, or move to lower priority."]
+      ];
+      $("followupTimeline").innerHTML = steps.map(s => `
+        <div class="timeline-step">
+          <div class="timeline-dot">${esc(s[0])}</div>
+          <div><b>${esc(s[1])}</b><div class="hint">${esc(s[2])}</div></div>
+        </div>
+      `).join("");
+    }
+
+    function renderInterview() {
+      const interviewJobs = jobs.filter(j => ["Interview","Offer"].includes(j.status));
+      const prepJobs = (interviewJobs.length ? interviewJobs : jobs.filter(j => decision(j).label === "Green").slice(0, 4));
+      $("interviewPrep").innerHTML = prepJobs.map(j => `
+        <div class="draft-item">
+          <div class="row"><b>${esc(j.company)} - ${esc(j.role)}</b><span class="pill green">${esc(j.status === "Interview" ? "Active interview" : "Prep ready")}</span></div>
+          <div class="insight-grid">
+            <div class="insight"><b>Likely technical questions</b><ul>
+              <li>How did you migrate SSIS/Talend logic to PySpark?</li>
+              <li>How do you design bronze, silver, and gold layers?</li>
+              <li>How do you tune slow Spark jobs?</li>
+              <li>How do you validate data during migration cutover?</li>
+            </ul></div>
+            <div class="insight"><b>Role-specific focus</b><span>${esc(j.resume)} · ${esc(j.keywords)}</span></div>
+          </div>
+          <div class="copy-box">${esc("Use STAR: Situation = legacy ETL migration, Task = reliable Lakehouse migration, Action = PySpark/Databricks pipeline + validation + CI/CD, Result = 30-40% faster runtime and zero data loss.")}</div>
+        </div>
+      `).join("");
+
+      $("storyBank").innerHTML = STORY_BANK.map(s => `
+        <div class="draft-item">
+          <div class="row"><b>${esc(s[0])}</b><button class="mini-btn" data-copy="${esc(s[1])}">Copy</button></div>
+          <div class="copy-box">${esc(s[1])}</div>
+        </div>
+      `).join("");
+      document.querySelectorAll("[data-copy]").forEach(btn => btn.onclick = async () => {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        toast("Copied");
+      });
+    }
+
+    function companyPriorityScore(j) {
+      return Math.round((j.fit * .45) + (qualityScore(j) * .4) + ((j.scores.azure + j.scores.databricks + j.scores.modeling) / 3 * .15));
+    }
+
+    function renderStrategy() {
+      const ranked = [...jobs].filter(j => j.status !== "Skipped").sort((a,b) => companyPriorityScore(b) - companyPriorityScore(a)).slice(0, 10);
+      $("companyRanking").innerHTML = ranked.map((j, i) => `
+        <div class="strategy-item">
+          <div class="rank">${i + 1}</div>
+          <div>
+            <b>${esc(j.company)} - ${esc(j.role)}</b>
+            <div class="hint">Priority score ${companyPriorityScore(j)} · Fit ${j.fit}% · Quality ${qualityScore(j)}% · ${esc(decision(j).text)}</div>
+          </div>
+          <button class="mini-btn" data-strategy="${j.id}">Open</button>
+        </div>
+      `).join("");
+      document.querySelectorAll("[data-strategy]").forEach(btn => btn.onclick = () => openModal(btn.dataset.strategy));
+
+      const applied = jobs.filter(j => ["Applied","Followed Up","Interview","Offer","Rejected"].includes(j.status)).length;
+      const interviews = jobs.filter(j => ["Interview","Offer"].includes(j.status)).length;
+      const green = jobs.filter(j => decision(j).label === "Green").length;
+      const review = [
+        ["This week focus", green ? `Apply to the top ${Math.min(green, 5)} green jobs before expanding volume.` : "Verify JDs first; no strong green jobs are ready."],
+        ["Conversion signal", applied ? `${interviews}/${applied} applied roles have reached interview/offer.` : "No applications submitted yet; analytics will activate after first batch."],
+        ["Resume strategy", "Use Azure-DE for IBM/techolution, Databricks-v1 for LTIMindtree/KPI/Honeywell, Lakehouse-Snowflake for Ledelsea/Cisco."],
+        ["Risk control", "Ask salary early for associate, contract, immediate-joiner, or low-fit roles."]
+      ];
+      $("weeklyReview").innerHTML = review.map(r => `<div class="copy-box"><b>${esc(r[0])}</b><br>${esc(r[1])}</div>`).join("");
+    }
+
+    function chartRow(name, n, max) {
+      return `<div class="chart-row"><span>${esc(name)}</span><div class="bar"><div class="fill" style="--w:${Math.round((n/max)*100)}%"></div></div><b>${n}</b></div>`;
+    }
+
+    function renderGroupChart(id, key) {
+      const counts = {};
+      jobs.forEach(j => counts[j[key]] = (counts[j[key]] || 0) + 1);
+      const max = Math.max(1, ...Object.values(counts));
+      $(id).innerHTML = Object.entries(counts).sort((a,b) => b[1]-a[1]).map(([k,n]) => chartRow(k,n,max)).join("");
+    }
+
+    function openModal(id) {
+      editId = id || null;
+      const j = editId ? jobs.find(x => x.id === editId) : normalize({
+        company:"", role:"", location:"", fit:75, priority:jobs.length + 1, applyType:"Unknown",
+        status:"Found", resume:"Azure-DE-v1", link:"", notes:"", keywords:"", next:"Verify JD",
+        scores:{azure:70, databricks:70, modeling:70}
+      });
+      $("modalTitle").textContent = editId ? j.role : "Add New Job";
+      $("modalSub").textContent = editId ? `${j.company} · Fit ${j.fit}%` : "Paste the job details and score it.";
+      $("mCompany").value = j.company;
+      $("mRole").value = j.role;
+      $("mFit").value = j.fit;
+      $("mLocation").value = j.location;
+      $("mStatus").innerHTML = STATUS.map(s => `<option ${s === j.status ? "selected" : ""}>${esc(s)}</option>`).join("");
+      $("mResume").innerHTML = RESUMES.map(s => `<option ${s === j.resume ? "selected" : ""}>${esc(s)}</option>`).join("");
+      $("mApplyType").innerHTML = APPLY_TYPES.map(s => `<option ${s === j.applyType ? "selected" : ""}>${esc(s)}</option>`).join("");
+      $("mApplied").value = j.appliedDate || "";
+      $("mFollowup").value = j.followupDate || "";
+      $("mAzure").value = j.scores.azure;
+      $("mDatabricks").value = j.scores.databricks;
+      $("mModeling").value = j.scores.modeling;
+      $("mLink").value = j.link || "";
+      $("mNotes").value = j.notes || "";
+      $("mKeywords").value = j.keywords || "";
+      $("mContact").value = j.contact || "";
+      $("mNext").value = j.next || "";
+      $("fitAnalysisText").textContent = editId
+        ? `Fit ${j.fit}% | Quality ${qualityScore(j)}% | Resume: ${j.resume}. Edit details and click Analyze Fit to refresh.`
+        : "Paste role details, keywords, or notes, then analyze.";
+      $("deleteJobBtn").style.visibility = editId ? "visible" : "hidden";
+      $("drawer").classList.add("open");
+    }
+
+    function closeModal() {
+      $("drawer").classList.remove("open");
+      editId = null;
+    }
+
+    function saveModal() {
+      const inferred = analyzeModalFit(false);
+      const shouldAutoScore = !editId || Number($("mFit").value || 0) === 75 || Number($("mFit").value || 0) === 0;
+      if (shouldAutoScore) {
+        $("mFit").value = inferred.fit;
+        $("mAzure").value = inferred.azure;
+        $("mDatabricks").value = inferred.databricks;
+        $("mModeling").value = inferred.modeling;
+        $("mResume").value = inferred.resume;
+      }
+      const data = normalize({
+        id: editId || undefined,
+        dateFound: editId ? jobs.find(x => x.id === editId).dateFound : today(),
+        priority: editId ? jobs.find(x => x.id === editId).priority : jobs.length + 1,
+        company: $("mCompany").value.trim(),
+        role: $("mRole").value.trim(),
+        fit: Number($("mFit").value || 0),
+        location: $("mLocation").value.trim(),
+        status: $("mStatus").value,
+        resume: $("mResume").value,
+        applyType: $("mApplyType").value,
+        appliedDate: $("mApplied").value,
+        followupDate: $("mFollowup").value,
+        scores: {
+          azure: Number($("mAzure").value || 0),
+          databricks: Number($("mDatabricks").value || 0),
+          modeling: Number($("mModeling").value || 0)
+        },
+        link: $("mLink").value.trim(),
+        notes: $("mNotes").value.trim(),
+        keywords: $("mKeywords").value.trim(),
+        contact: $("mContact").value.trim(),
+        next: $("mNext").value.trim()
+      });
+      if (!data.company || !data.role) {
+        toast("Company and role are required");
+        return;
+      }
+      if (editId) jobs = jobs.map(j => j.id === editId ? data : j);
+      else jobs.push(data);
+      save();
+      closeModal();
+      renderAll();
+      toast("Saved");
+    }
+
+    function deleteJob() {
+      if (!editId) return;
+      jobs = jobs.filter(j => j.id !== editId);
+      save();
+      closeModal();
+      renderAll();
+      toast("Deleted");
+    }
+
+    function switchView() {
+      document.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.dataset.view === activeView));
+      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === activeView));
+      renderAll();
+    }
+
+    function goView(view) {
+      activeView = view;
+      switchView();
+      const label = document.querySelector(`.tab[data-view="${view}"]`)?.textContent || "View";
+      toast(`${label} opened`);
+    }
+
+    function prepareJob(id) {
+      goView("studio");
+      setTimeout(() => {
+        document.querySelector(`[data-draft="${id}"]`)?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 30);
+    }
+
+    function exportFile(name, content, type) {
+      const blob = new Blob([content], {type});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = name;
+      a.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function enrichedJobs() {
+      return jobs.map(j => ({
+        ...j,
+        quality: qualityScore(j),
+        decision: decision(j),
+        risks: riskFlags(j),
+        salaryGuardrail: salaryGuardrail(j),
+        gaps: gapDetector(j),
+        duplicateKey: duplicateKey(j)
+      }));
+    }
+
+    function csv() {
+      const fields = ["dateFound","priority","fit","quality","decision","company","role","location","applyType","status","resume","link","notes","keywords","contact","appliedDate","followupDate","next"];
+      const clean = v => `"${String(v ?? "").replace(/"/g, '""')}"`;
+      return [fields.join(","), ...jobs.map(j => fields.map(f => clean(f === "quality" ? qualityScore(j) : f === "decision" ? decision(j).text : j[f])).join(","))].join("\n");
+    }
+
+    function dailyPrompt() {
+      return `Search LinkedIn for new Data Engineer, Databricks Engineer, Azure Data Engineer, and generic data engineering jobs for Sarath Krishnan in Bengaluru, Hyderabad, Kochi, and India remote/hybrid. Use past-week and mid-senior filters where available. Deduplicate against the existing dashboard jobs. Score each new job against Sarath's resume: Azure ADF/ADLS/Databricks/PySpark, Delta Lake, Unity Catalog, Airflow, Snowflake, SQL, SSIS/Talend migration, medallion architecture, data validation, CI/CD. Add only strong or relevant jobs to the dashboard data with fit score, keywords, risk notes, resume version, apply type, and next action. Do not submit applications.`;
+    }
+
+    function feedContractText() {
+      return `Write C:\\Users\\sarat\\Documents\\Codex\\2026-07-08\\wh\\outputs\\gcc_product_feed.js after every India GCC Product Data Job Monitor run.
+
+Use this exact JavaScript format:
+window.GCC_PRODUCT_JOB_FEED = {
+  generatedAt: "YYYY-MM-DDTHH:mm:ss+05:30",
+  sourceAutomation: "India GCC Product Data Job Monitor",
+  jobs: [
+    {
+      id: "stable-job-id-if-known",
+      company: "Company",
+      role: "Role title",
+      location: "Bengaluru / Hyderabad / Kochi / India Remote",
+      link: "direct application URL",
+      postedDate: "YYYY-MM-DD or visible posted signal",
+      fit: 0-100,
+      fitReason: "short reason",
+      keywords: ["Azure Databricks", "PySpark", "ADF"],
+      applyType: "External Apply",
+      classificationConfidence: "High",
+      notes: "risk or salary signal",
+      azureScore: 0-100,
+      databricksScore: 0-100,
+      modelingScore: 0-100
+    }
+  ]
+};
+
+Do not include private user data. Do not submit applications.`;
+    }
+
+    function isPaletteOpen() {
+      return $("palette").classList.contains("open");
+    }
+
+    function paletteActions() {
+      const views = [
+        ["overview", "Overview", "Command cockpit, metrics, filtered job cards"],
+        ["discovery", "Discovery", "Automation feed, search links, duplicate checks"],
+        ["pipeline", "Pipeline", "Kanban stages from found to offer"],
+        ["studio", "Application Studio", "Resume keywords, answers, cover notes, outreach"],
+        ["matcher", "Match Engine", "Resume versus JD scoring and interview prep"],
+        ["crm", "Recruiter CRM", "Follow-up plan and relationship tracking"],
+        ["interview", "Interview Prep", "Role-specific questions and STAR stories"],
+        ["analytics", "Analytics", "Funnel, follow-ups, quality, locations, resumes"],
+        ["strategy", "Strategy", "Company priority, conversion plan, weekly review"],
+        ["settings", "Settings", "Import, export, saved data, daily search prompt"]
+      ].map(([view, label, meta]) => ({
+        label: `Go to ${label}`,
+        meta,
+        icon: label.slice(0, 1),
+        run: () => goView(view)
+      }));
+
+      const system = [
+        { label: "Add a job", meta: "Create a new tracked opportunity", icon: "+", run: () => openModal(null) },
+        { label: autoSyncTimer ? "Turn Auto Sync off" : "Turn Auto Sync on", meta: "Poll gcc_product_feed.js every 60 seconds while open", icon: "S", run: () => setAutoSync(!autoSyncTimer) },
+        { label: "Check automation feed now", meta: "Merge jobs from India GCC Product Data Job Monitor", icon: "F", run: async () => { await reloadAutomationFeed(true); renderAll(); } },
+        { label: "Export JSON backup", meta: "Download full enriched tracker data", icon: "J", run: () => exportFile("sarath-job-command-center.json", JSON.stringify(enrichedJobs(), null, 2), "application/json") },
+        { label: "Export CSV", meta: "Download spreadsheet-friendly tracker data", icon: "C", run: () => exportFile("sarath-job-command-center.csv", csv(), "text/csv") },
+        { label: "Copy daily search prompt", meta: "Use this prompt in Codex for manual search runs", icon: "P", run: async () => { await navigator.clipboard.writeText(dailyPrompt()); toast("Prompt copied"); } },
+        { label: "Open priority LinkedIn searches", meta: "Launch the first four saved searches", icon: "L", run: () => searches.slice(0, 4).forEach(s => window.open(s.url, "_blank", "noreferrer")) }
+      ];
+
+      const jobActions = [...jobs]
+        .filter(j => j.status !== "Skipped")
+        .sort((a, b) => (b.fit - a.fit) || (a.priority - b.priority))
+        .slice(0, 12)
+        .flatMap(j => [
+          {
+            label: `Prepare application: ${j.company}`,
+            meta: `${j.role} | Fit ${j.fit}% | ${j.location} | ${j.resume}`,
+            icon: initials(j.company),
+            run: () => prepareJob(j.id)
+          },
+          {
+            label: `Edit tracker card: ${j.company}`,
+            meta: `${j.role} | ${j.status} | ${decision(j).text}`,
+            icon: "E",
+            run: () => openModal(j.id)
+          },
+          {
+            label: `Open job link: ${j.company}`,
+            meta: `${j.role} | ${j.applyType}`,
+            icon: "O",
+            run: () => j.link ? window.open(j.link, "_blank", "noreferrer") : toast("No job link saved")
+          }
+        ]);
+
+      return [...system, ...views, ...jobActions];
+    }
+
+    function renderPalette() {
+      const q = $("paletteInput").value.trim().toLowerCase();
+      const searchable = action => `${action.label} ${action.meta}`.toLowerCase();
+      paletteRenderedActions = paletteActions().filter(action => !q || searchable(action).includes(q)).slice(0, 22);
+      paletteActiveIndex = Math.min(paletteActiveIndex, Math.max(0, paletteRenderedActions.length - 1));
+
+      $("paletteResults").innerHTML = paletteRenderedActions.length ? paletteRenderedActions.map((action, i) => `
+        <button class="palette-item ${i === paletteActiveIndex ? "active" : ""}" data-palette-index="${i}">
+          <span class="palette-icon">${esc(action.icon)}</span>
+          <span class="palette-main"><b>${esc(action.label)}</b><span>${esc(action.meta)}</span></span>
+          <span class="kbd">${i === paletteActiveIndex ? "Enter" : ""}</span>
+        </button>
+      `).join("") : `<div class="hint" style="padding:14px 16px;">No matching commands.</div>`;
+
+      document.querySelectorAll("[data-palette-index]").forEach(btn => {
+        btn.onclick = () => runPaletteAction(Number(btn.dataset.paletteIndex));
+        btn.onmouseenter = () => {
+          paletteActiveIndex = Number(btn.dataset.paletteIndex);
+          renderPalette();
+        };
+      });
+    }
+
+    async function runPaletteAction(index = paletteActiveIndex) {
+      const action = paletteRenderedActions[index];
+      if (!action) return;
+      closePalette();
+      await action.run();
+    }
+
+    function openPalette() {
+      paletteActiveIndex = 0;
+      $("palette").classList.add("open");
+      $("palette").setAttribute("aria-hidden", "false");
+      renderPalette();
+      requestAnimationFrame(() => {
+        $("paletteInput").focus();
+        $("paletteInput").select();
+      });
+    }
+
+    function closePalette() {
+      $("palette").classList.remove("open");
+      $("palette").setAttribute("aria-hidden", "true");
+      $("paletteInput").value = "";
+    }
+
+    function renderAll() {
+      renderMetrics();
+      renderFilters();
+      if (activeView === "overview") renderJobs();
+      if (activeView === "discovery") renderSearches();
+      if (activeView === "pipeline") renderBoard();
+      if (activeView === "studio") renderStudio();
+      if (activeView === "matcher") renderMatcher();
+      if (activeView === "crm") renderCrm();
+      if (activeView === "interview") renderInterview();
+      if (activeView === "analytics") renderAnalytics();
+      if (activeView === "strategy") renderStrategy();
+    }
+
+    document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+      activeView = t.dataset.view;
+      switchView();
+    });
+    ["searchInput","statusFilter","locationFilter","resumeFilter","sortSelect"].forEach(id => $(id).addEventListener("input", renderJobs));
+    $("addJobBtn").onclick = () => openModal(null);
+    $("closeModalBtn").onclick = closeModal;
+    $("cancelModalBtn").onclick = closeModal;
+    $("saveJobBtn").onclick = saveModal;
+    $("deleteJobBtn").onclick = deleteJob;
+    $("analyzeFitBtn").onclick = () => {
+      analyzeModalFit(true);
+      toast("Fit analysis updated");
+    };
+    ["mCompany","mRole","mLocation","mNotes","mKeywords","mApplyType","mStatus"].forEach(id => {
+      $(id).addEventListener("input", () => renderFitAnalysis(inferJobScores(modalDraft())));
+    });
+    $("drawer").onclick = e => { if (e.target.id === "drawer") closeModal(); };
+    $("commandBtn").onclick = openPalette;
+    $("closePaletteBtn").onclick = closePalette;
+    $("paletteInput").addEventListener("input", () => {
+      paletteActiveIndex = 0;
+      renderPalette();
+    });
+    $("palette").onclick = e => { if (e.target.id === "palette") closePalette(); };
+    document.addEventListener("keydown", e => {
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        openPalette();
+        return;
+      }
+      if (isPaletteOpen()) {
+        if (e.key === "Escape") closePalette();
+        if (e.key === "ArrowDown") {
+          e.preventDefault();
+          paletteActiveIndex = Math.min(paletteActiveIndex + 1, paletteRenderedActions.length - 1);
+          renderPalette();
+        }
+        if (e.key === "ArrowUp") {
+          e.preventDefault();
+          paletteActiveIndex = Math.max(paletteActiveIndex - 1, 0);
+          renderPalette();
+        }
+        if (e.key === "Enter") {
+          e.preventDefault();
+          runPaletteAction();
+        }
+        return;
+      }
+      if (e.key === "Escape") closeModal();
+    });
+    $("exportJsonBtn").onclick = () => exportFile("sarath-job-command-center.json", JSON.stringify(enrichedJobs(), null, 2), "application/json");
+    $("exportCsvBtn").onclick = () => exportFile("sarath-job-command-center.csv", csv(), "text/csv");
+    $("resetBtn").onclick = () => { jobs = seedJobs; save(); renderAll(); toast("Reset complete"); };
+    $("autoSyncBtn").onclick = () => setAutoSync(!autoSyncTimer);
+    $("clearSavedBtn").onclick = () => { localStorage.removeItem(STORAGE_KEY); jobs = seedJobs; renderAll(); toast("Local data cleared"); };
+    $("copyPromptBtn").onclick = async () => { await navigator.clipboard.writeText(dailyPrompt()); toast("Prompt copied"); };
+    $("openSearchesBtn").onclick = () => searches.slice(0, 4).forEach(s => window.open(s.url, "_blank", "noreferrer"));
+    $("matcherJobSelect").onchange = () => {
+      const j = selectedMatcherJob();
+      $("jdText").value = `${j.role || ""}\n${j.company || ""}\n${j.location || ""}\n${j.keywords || ""}\n${j.notes || ""}`;
+      renderMatchReport(currentMatcherReport(), j);
+    };
+    $("loadJobToMatcherBtn").onclick = () => {
+      const j = selectedMatcherJob();
+      $("jdText").value = `${j.role || ""}\n${j.company || ""}\n${j.location || ""}\n${j.keywords || ""}\n${j.notes || ""}`;
+      renderMatchReport(currentMatcherReport(), j);
+      toast("Job details loaded");
+    };
+    $("analyzeMatcherBtn").onclick = () => {
+      renderMatchReport(currentMatcherReport(), selectedMatcherJob());
+      toast("Match report updated");
+    };
+    $("applyMatcherBtn").onclick = () => {
+      const j = selectedMatcherJob();
+      if (!j.id) return toast("Select a job first");
+      const report = currentMatcherReport();
+      j.fit = report.score;
+      j.resume = report.resume;
+      j.scores = { azure: report.azure, databricks: report.databricks, modeling: report.modeling };
+      j.keywords = report.jdSkills.map(s => s.label).join(", ") || j.keywords;
+      j.notes = `${j.notes || ""}${j.notes ? "\n" : ""}Match Engine: ${report.score}% fit, ${report.quality}% quality. Gaps: ${report.gaps.map(s => s.label).join(", ") || "none detected"}.`.trim();
+      save();
+      renderAll();
+      toast("Score applied to job");
+    };
+    $("saveResumeProfileBtn").onclick = () => {
+      localStorage.setItem(PROFILE_STORAGE_KEY, $("resumeProfileText").value.trim() || DEFAULT_RESUME_PROFILE);
+      renderMatchReport(currentMatcherReport(), selectedMatcherJob());
+      toast("Resume profile saved");
+    };
+    $("resetResumeProfileBtn").onclick = () => {
+      localStorage.removeItem(PROFILE_STORAGE_KEY);
+      $("resumeProfileText").value = DEFAULT_RESUME_PROFILE;
+      renderMatchReport(currentMatcherReport(), selectedMatcherJob());
+      toast("Resume profile reset");
+    };
+    $("resumeTextUpload").onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        $("resumeProfileText").value = String(reader.result || "");
+        localStorage.setItem(PROFILE_STORAGE_KEY, $("resumeProfileText").value);
+        renderMatchReport(currentMatcherReport(), selectedMatcherJob());
+        toast("Resume text loaded");
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    };
+    ["resumeProfileText","jdText"].forEach(id => $(id).addEventListener("input", () => renderMatchReport(currentMatcherReport(), selectedMatcherJob())));
+    $("importJsonInput").onchange = e => {
+      const file = e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = () => {
+        try {
+          const imported = JSON.parse(reader.result);
+          if (Array.isArray(imported)) {
+            const existing = new Map(jobs.map(j => [j.link || `${j.company}-${j.role}`, j]));
+            imported.map(normalize).forEach(j => existing.set(j.link || `${j.company}-${j.role}`, {...existing.get(j.link || `${j.company}-${j.role}`), ...j}));
+            jobs = [...existing.values()].map(normalize);
+            save();
+            renderAll();
+            toast("Import merged");
+          }
+        } catch {
+          toast("Import failed");
+        }
+      };
+      reader.readAsText(file);
+      e.target.value = "";
+    };
+
+    lastFeedSignature = feedSignature();
+    mergeAutomationFeed(false);
+    renderAll();
+  </script>
+</body>
+</html>
