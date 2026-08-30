@@ -398,6 +398,8 @@ function Normalize-FeedRecord($job, $sourceNote) {
   $azureValue = if ($job.azureScore) { [int]$job.azureScore } elseif ($job.scores -and $job.scores.azure) { [int]$job.scores.azure } else { 70 }
   $databricksValue = if ($job.databricksScore) { [int]$job.databricksScore } elseif ($job.scores -and $job.scores.databricks) { [int]$job.scores.databricks } else { 70 }
   $modelingValue = if ($job.modelingScore) { [int]$job.modelingScore } elseif ($job.scores -and $job.scores.modeling) { [int]$job.scores.modeling } else { 70 }
+  $jdTextValue = if ($job.jdText) { [string]$job.jdText } else { "" }
+  $jdQualityValue = if ($job.jdQuality) { [string]$job.jdQuality } else { "UNKNOWN" }
 
   return [pscustomobject][ordered]@{
     id = $idValue
@@ -415,6 +417,8 @@ function Normalize-FeedRecord($job, $sourceNote) {
     azureScore = $azureValue
     databricksScore = $databricksValue
     modelingScore = $modelingValue
+    jdText = $jdTextValue
+    jdQuality = $jdQualityValue
   }
 }
 
@@ -879,6 +883,8 @@ foreach ($source in $companies) {
           azureScore = $nearScore.azureScore
           databricksScore = $nearScore.databricksScore
           modelingScore = $nearScore.modelingScore
+          jdText = $content
+          jdQuality = "PARTIAL"
           canonicalUrl = $canonical
         }
         $allDiscovery.Add($nearRecord)
@@ -923,6 +929,17 @@ foreach ($source in $companies) {
       azureScore = $score.azureScore
       databricksScore = $score.databricksScore
       modelingScore = $score.modelingScore
+      jdText = $content
+      jdQuality = if (
+        $source.sourceType -eq "greenhouse" -or
+        $source.sourceType -eq "lever" -or
+        $source.sourceType -eq "smartrecruiters"
+      ) {
+        "HIGH"
+      }
+      else {
+        "PARTIAL"
+      }
       canonicalUrl = $canonical
     }
     $allRelevant.Add($record)
@@ -965,6 +982,8 @@ foreach ($querySource in $broadDiscoveryQueries) {
       azureScore = $score.azureScore
       databricksScore = $score.databricksScore
       modelingScore = $score.modelingScore
+      jdText = $content
+      jdQuality = "SNIPPET"
       canonicalUrl = $canonical
     }
     $allDiscovery.Add($record)
@@ -1004,6 +1023,8 @@ foreach ($searchSource in $linkedInSearches) {
       azureScore = $score.azureScore
       databricksScore = $score.databricksScore
       modelingScore = $score.modelingScore
+      jdText = $content
+      jdQuality = "SNIPPET"
       canonicalUrl = $canonical
     }
     $allDiscovery.Add($record)
@@ -1045,6 +1066,8 @@ $feedJobs = @($feedSourceJobs | ForEach-Object {
     azureScore = $_.azureScore
     databricksScore = $_.databricksScore
     modelingScore = $_.modelingScore
+    jdText = if ($_.jdText) { [string]$_.jdText } else { "" }
+    jdQuality = if ($_.jdQuality) { [string]$_.jdQuality } else { "UNKNOWN" }
   }
 })
 
