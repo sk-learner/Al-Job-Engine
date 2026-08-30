@@ -17,68 +17,550 @@ jobs:
     name: Run job monitor
     runs-on: windows-latest
     timeout-minutes: 25
+
     env:
       GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
       GOOGLE_CSE_ID: ${{ secrets.GOOGLE_CSE_ID }}
 
     steps:
+
+      # ============================================================
+      # 1. CHECKOUT
+      # ============================================================
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
+
+      # ============================================================
+      # 2. EXISTING JOB MONITOR
+      #
+      # Your current:
+      # - GCC/Product job discovery
+      # - scoring
+      # - deduplication
+      # - ntfy notification
+      #
+      # remains unchanged.
+      # ============================================================
+
       - name: Run legacy ntfy-style monitor
+        id: monitor
         shell: powershell
         run: |
           $ErrorActionPreference = "Stop"
-          powershell.exe -NoProfile -ExecutionPolicy Bypass -File "work\job-monitor\run_gcc_product_monitor.ps1"
+
+          powershell.exe `
+            -NoProfile `
+            -ExecutionPolicy Bypass `
+            -File "work\job-monitor\run_gcc_product_monitor.ps1"
+
+
+      # ============================================================
+      # 3. VERIFY GENERATED FEED
+      # ============================================================
 
       - name: Verify generated feed
         shell: powershell
         run: |
           $ErrorActionPreference = "Stop"
+
           $feedPath = "work\rolepilot-saas\public\gcc_product_feed.js"
+
           if (!(Test-Path $feedPath)) {
             throw "Expected feed file was not generated: $feedPath"
           }
 
           $feed = Get-Content -Raw $feedPath
+
           if ($feed -notmatch "window\.GCC_PRODUCT_JOB_FEED\s*=") {
             throw "Generated feed does not use the expected JavaScript assignment format."
           }
 
-          $json = $feed -replace '^\s*window\.GCC_PRODUCT_JOB_FEED\s*=\s*', '' -replace ';\s*$', ''
+          $json = $feed `
+            -replace '^\s*window\.GCC_PRODUCT_JOB_FEED\s*=\s*', '' `
+            -replace ';\s*$', ''
+
           $parsed = $json | ConvertFrom-Json
+
           $jobCount = @($parsed.jobs).Count
-          "Feed generated at $($parsed.generatedAt) with $jobCount jobs."
+
+          Write-Host "Feed generated at $($parsed.generatedAt) with $jobCount jobs."
+
+
+      # ============================================================
+      # 4. NEW: SYNC DATA TO DATABRICKS
+      #
+      # IMPORTANT:
+      #
+      # This does NOT replace ntfy.
+      #
+      # Flow:
+      #
+      # Existing monitor
+      #       |
+      #       +----> ntfy
+      #       |
+      #       +----> Databricks
+      #
+      # If Databricks fails, the workflow continues.
+      # ============================================================
+
+      - name: Sync monitor data to Databricks
+        if: always()
+        continue-on-error: true
+        shell: powershell
+
+        env:
+          DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+          DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
+          DATABRICKS_JOB_ID: ${{ secrets.DATABRICKS_JOB_ID }}
+
+        run: |
+
+          $ErrorActionPreference = "Stop"
+
+          Write-Host "======================================"
+          Write-Host "DATABRICKS SYNC"
+          Write-Host "======================================"
+
+
+          # ---------------------------------------------------------
+          # Check Databricks configuration
+          #
+          # If you haven't created the GitHub secrets yet,
+          # simply skip this part.
+          #
+          # Your existing monitor + ntfy still works.
+          # ---------------------------------------------------------
+
+          $missingSecrets = @()
+
+          if ([string]::IsNullOrWhiteSpace($env:DATABRICKS_HOST)) {
+            $missingSecrets += "DATABRICKS_HOST"
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:DATABRICKS_TOKEN)) {
+            $missingSecrets += "DATABRICKS_TOKEN"
+          }
+
+          if ([string]::IsNullOrWhiteSpace($env:DATABRICKS_JOB_ID)) {
+            $missingSecrets += "DATABRICKS_JOB_ID"
+          }
+
+
+          if ($missingSecrets.Count -gt 0) {
+
+            Write-Warning (
+              "Databricks sync skipped. Missing GitHub secrets: " +
+              ($missingSecrets -join ", ")
+            )
+
+            exit 0
+          }
+
+
+          # Remove trailing slash if one exists.
+
+          $databricksHost = $env:DATABRICKS_HOST.TrimEnd("/")
+
+
+          # ---------------------------------------------------------
+          # Determine whether your main monitor succeeded
+          # ---------------------------------------------------------
+
+          $monitorStatus = "${{ steps.monitor.outcome }}"
+
+          Write-Host "Monitor status: $monitorStatus"
+
+
+          # ---------------------------------------------------------
+          # Read the summary produced by your PowerShell script
+          # ---------------------------------------------------------
+
+          $summaryPath = "work\job-monitor\monitor-run-summary.json"
+
+          $summary = @{}
+
+
+          if (Test-Path $summaryPath) {
+
+            Write-Host "Reading monitor summary..."
+
+            $summary = Get-Content `
+              -Raw `
+              $summaryPath |
+              ConvertFrom-Json
+
+          }
+          else {
+
+            Write-Warning "Monitor summary file does not exist."
+
+          }
+
+
+          # ---------------------------------------------------------
+          # Read current Databricks job feed
+          #
+          # recent-feed-jobs.json already contains the jobs produced
+          # by your monitor.
+          # ---------------------------------------------------------
+
+          $feedPath = "work\job-monitor\recent-feed-jobs.json"
+
+          $jobs = @()
+
+
+          # Do not send stale data when the monitor itself failed.
+
+          if (
+            $monitorStatus -eq "success" `
+            -and `
+            (Test-Path $feedPath)
+          ) {
+
+            Write-Host "Reading current job feed..."
+
+            $feed = Get-Content `
+              -Raw `
+              $feedPath |
+              ConvertFrom-Json
+
+            $jobs = @($feed.jobs)
+
+          }
+          else {
+
+            Write-Warning (
+              "Job feed not sent because monitor failed " +
+              "or recent-feed-jobs.json does not exist."
+            )
+
+          }
+
+
+          Write-Host "Jobs being sent to Databricks: $($jobs.Count)"
+
+
+          # ---------------------------------------------------------
+          # Build complete payload
+          #
+          # This is the information that eventually reaches Delta.
+          # ---------------------------------------------------------
+
+          $payload = [ordered]@{
+
+            github_run_id =
+              "${{ github.run_id }}"
+
+            github_run_attempt =
+              "${{ github.run_attempt }}"
+
+            github_repository =
+              "${{ github.repository }}"
+
+            github_run_url =
+              "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+            status =
+              $monitorStatus
+
+            summary =
+              $summary
+
+            jobs =
+              $jobs
+          }
+
+
+          $payloadJson = $payload |
+            ConvertTo-Json `
+              -Depth 15 `
+              -Compress
+
+
+          Write-Host (
+            "Payload size: " +
+            $payloadJson.Length +
+            " characters"
+          )
+
+
+          # ---------------------------------------------------------
+          # Authentication
+          # ---------------------------------------------------------
+
+          $headers = @{
+
+            Authorization =
+              "Bearer $env:DATABRICKS_TOKEN"
+
+          }
+
+
+          # =========================================================
+          # UPLOAD JSON FILE TO DATABRICKS WORKSPACE
+          #
+          # Instead of passing the entire feed as a Job parameter,
+          # upload the JSON file first.
+          #
+          # This prevents Job parameter size issues as the feed grows.
+          # =========================================================
+
+          $workspaceDirectory = "/Shared/ai-job-engine/input"
+
+
+          # ---------------------------------------------------------
+          # Create Databricks directory
+          # ---------------------------------------------------------
+
+          $mkdirBody = @{
+
+            path =
+              $workspaceDirectory
+
+          } |
+            ConvertTo-Json
+
+
+          try {
+
+            Invoke-RestMethod `
+              -Method Post `
+              -Uri "$databricksHost/api/2.0/workspace/mkdirs" `
+              -Headers $headers `
+              -ContentType "application/json" `
+              -Body $mkdirBody |
+              Out-Null
+
+          }
+          catch {
+
+            Write-Warning (
+              "Workspace directory creation returned: " +
+              $_.Exception.Message
+            )
+
+          }
+
+
+          # ---------------------------------------------------------
+          # Unique file for every GitHub run
+          # ---------------------------------------------------------
+
+          $workspaceFile = (
+            "$workspaceDirectory/" +
+            "${{ github.run_id }}" +
+            "-" +
+            "${{ github.run_attempt }}" +
+            ".json"
+          )
+
+
+          Write-Host "Databricks workspace file:"
+          Write-Host $workspaceFile
+
+
+          # ---------------------------------------------------------
+          # Databricks Workspace Import API expects base64 content.
+          # ---------------------------------------------------------
+
+          $payloadBytes = (
+            [System.Text.Encoding]::UTF8.GetBytes(
+              $payloadJson
+            )
+          )
+
+
+          $payloadBase64 = (
+            [Convert]::ToBase64String(
+              $payloadBytes
+            )
+          )
+
+
+          $importBody = @{
+
+            path =
+              $workspaceFile
+
+            format =
+              "AUTO"
+
+            content =
+              $payloadBase64
+
+            overwrite =
+              $true
+
+          } |
+            ConvertTo-Json `
+              -Depth 5
+
+
+          Write-Host "Uploading job data to Databricks..."
+
+
+          Invoke-RestMethod `
+            -Method Post `
+            -Uri "$databricksHost/api/2.0/workspace/import" `
+            -Headers $headers `
+            -ContentType "application/json" `
+            -Body $importBody |
+            Out-Null
+
+
+          Write-Host "Databricks upload successful."
+
+
+          # =========================================================
+          # TRIGGER DATABRICKS LAKEFLOW JOB
+          #
+          # Only send a SMALL parameter containing the path to the
+          # JSON file.
+          # =========================================================
+
+          $databricksInputPath = (
+            "/Workspace" +
+            $workspaceFile
+          )
+
+
+          $smallPayload = [ordered]@{
+
+            input_path =
+              $databricksInputPath
+
+            github_run_id =
+              "${{ github.run_id }}"
+
+            github_run_url =
+              "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+
+            status =
+              $monitorStatus
+          } |
+            ConvertTo-Json `
+              -Compress
+
+
+          # ---------------------------------------------------------
+          # Job trigger request
+          # ---------------------------------------------------------
+
+          $requestBody = @{
+
+            job_id =
+              [int64]$env:DATABRICKS_JOB_ID
+
+            job_parameters = @{
+
+              payload =
+                $smallPayload
+
+            }
+
+            idempotency_token =
+              "${{ github.run_id }}-${{ github.run_attempt }}"
+
+          } |
+            ConvertTo-Json `
+              -Depth 8
+
+
+          Write-Host "Triggering Databricks Lakeflow Job..."
+
+
+          $response = Invoke-RestMethod `
+            -Method Post `
+            -Uri "$databricksHost/api/2.2/jobs/run-now" `
+            -Headers $headers `
+            -ContentType "application/json" `
+            -Body $requestBody
+
+
+          Write-Host ""
+          Write-Host "======================================"
+          Write-Host "DATABRICKS JOB TRIGGERED"
+          Write-Host "======================================"
+
+          Write-Host "Databricks Run ID: $($response.run_id)"
+
+          Write-Host (
+            "GitHub Run ID: " +
+            "${{ github.run_id }}"
+          )
+
+
+      # ============================================================
+      # 5. EXISTING GITHUB COMMIT STEP
+      #
+      # Kept exactly as part of your existing workflow.
+      # ============================================================
 
       - name: Commit feed and state changes
         id: commit
         shell: powershell
+
         run: |
+
           $ErrorActionPreference = "Stop"
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+
+          git config `
+            user.name `
+            "github-actions[bot]"
+
+
+          git config `
+            user.email `
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
 
           $paths = @(
+
             "work/job-monitor/gcc-product-companies.json",
+
             "work/job-monitor/seen-jobs.json",
+
             "work/job-monitor/recent-feed-jobs.json",
+
             "outputs/gcc_product_feed.js",
+
             "outputs/linkedin_discovery_feed.js",
+
             "work/rolepilot-saas/public/gcc_product_feed.js",
+
             "work/rolepilot-saas/public/linkedin_discovery_feed.js"
+
           )
+
 
           git add -- $paths
 
+
           git diff --cached --quiet
+
+
           if ($LASTEXITCODE -eq 0) {
+
             "changed=false" >> $env:GITHUB_OUTPUT
-            "No feed or state changes to commit."
+
+            Write-Host "No feed or state changes to commit."
+
             exit 0
+
           }
 
-          git commit -m "Refresh India data job feed"
+
+          git commit `
+            -m "Refresh India data job feed"
+
+
           git push
+
+
           "changed=true" >> $env:GITHUB_OUTPUT
