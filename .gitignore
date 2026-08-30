@@ -12,3 +12,4 @@ dist
 repo-store/
 merge-wt/
 work/rolepilot-saas/supabase/.temp/
+work/job-monitor/monitor-run-summary.json
