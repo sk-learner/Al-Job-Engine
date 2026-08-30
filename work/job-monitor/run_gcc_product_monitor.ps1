@@ -1106,3 +1106,12 @@ $summary = [pscustomobject]@{
   newDiscoveryDetail = @($newDiscovery.ToArray() | Sort-Object -Property fit -Descending | Select-Object -First $maxDiscoveryAlertsPerRun)
 }
 $summary | ConvertTo-Json -Depth 8
+
+$summaryPath = Join-Path $stateDir "monitor-run-summary.json"
+
+Set-Content `
+    -Encoding UTF8 `
+    -Path $summaryPath `
+    -Value $summaryJson
+
+$summaryJson
