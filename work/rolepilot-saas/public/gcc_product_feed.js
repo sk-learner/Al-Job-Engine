@@ -1,5 +1,5 @@
 ﻿window.GCC_PRODUCT_JOB_FEED = {
-    "generatedAt":  "2026-09-19T14:52:01+00:00",
+    "generatedAt":  "2026-09-19T17:31:00+00:00",
     "sourceAutomation":  "India GCC Product Data Job Monitor",
     "sourceLanes":  [
                         {
@@ -93,26 +93,29 @@
                               ],
     "jobs":  [
                  {
-                     "id":  "linkedin:4465555159",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465555159/",
-                     "postedDate":  "3 days ago",
+                     "id":  "linkedin:4329481543",
+                     "company":  " Toppan Merrill ",
+                     "role":  "Senior Data Engineer",
+                     "location":  "Greater Chennai Area",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-toppan-merrill-4329481543/",
+                     "postedDate":  "6 days ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
+                                      "senior data engineer",
+                                      "spark",
+                                      "pyspark",
+                                      "databricks",
                                       "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
                      "azureScore":  59,
-                     "databricksScore":  45,
+                     "databricksScore":  75,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "Senior Data Engineer Toppan Merrill Greater Chennai Area PySpark Databricks Azure Remote India",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -121,7 +124,7 @@
                      "role":  "Senior Data Engineering Consultant",
                      "location":  "Hyderabad, Telangana, India",
                      "link":  "https://www.linkedin.com/jobs/view/senior-data-engineering-consultant-at-optum-india-4468654630/",
-                     "postedDate":  "1 day ago",
+                     "postedDate":  "2 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -136,50 +139,6 @@
                      "databricksScore":  59,
                      "modelingScore":  55,
                      "jdText":  "Senior Data Engineering Consultant Optum India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4465554152",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465554152/",
-                     "postedDate":  "3 days ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4465554142",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465554142/",
-                     "postedDate":  "3 days ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -205,6 +164,73 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
+                     "id":  "linkedin:4465554142",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465554142/",
+                     "postedDate":  "4 days ago",
+                     "fit":  89,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4465570080",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465570080/",
+                     "postedDate":  "4 days ago",
+                     "fit":  89,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4468806738",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4468806738/",
+                     "postedDate":  "1 day ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
                      "id":  "linkedin:4460104520",
                      "company":  " Accenture in India ",
                      "role":  "Data Engineer",
@@ -225,30 +251,6 @@
                      "databricksScore":  45,
                      "modelingScore":  55,
                      "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4466694303",
-                     "company":  " YASH Technologies Middle East ",
-                     "role":  "Module Lead - Azure Databricks Job",
-                     "location":  "Greater Hyderabad Area",
-                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-middle-east-4466694303/",
-                     "postedDate":  "1 day ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "databricks",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Middle East Greater Hyderabad Area Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -277,12 +279,59 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465570080",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
+                     "id":  "linkedin:4466694303",
+                     "company":  " YASH Technologies Middle East ",
+                     "role":  "Module Lead - Azure Databricks Job",
+                     "location":  "Greater Hyderabad Area",
+                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-middle-east-4466694303/",
+                     "postedDate":  "1 day ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Middle East Greater Hyderabad Area Azure Data Engineer Hyderabad Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4453418373",
+                     "company":  " EY ",
+                     "role":  "EY - GDS Consulting - AI And DATA -AI Data Platform Engineer - Databricks- Senior",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465570080/",
+                     "link":  "https://www.linkedin.com/jobs/view/ey-gds-consulting-ai-and-data-ai-data-platform-engineer-databricks-senior-at-ey-4453418373/",
                      "postedDate":  "3 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "data platform engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "EY - GDS Consulting - AI And DATA -AI Data Platform Engineer - Databricks- Senior EY Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4466656518",
+                     "company":  " Prophecy Technologies ",
+                     "role":  "Data Engineer with Scala",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-with-scala-at-prophecy-technologies-4466656518/",
+                     "postedDate":  "1 day ago",
                      "fit":  89,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -295,7 +344,30 @@
                      "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Data Engineer with Scala Prophecy Technologies Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4469220241",
+                     "company":  " CDW ",
+                     "role":  "Consultant- Data engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/consultant-data-engineer-at-cdw-4469220241/",
+                     "postedDate":  "22 hours ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Consultant- Data engineer CDW Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -322,17 +394,16 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4453418373",
-                     "company":  " EY ",
-                     "role":  "EY - GDS Consulting - AI And DATA -AI Data Platform Engineer - Databricks- Senior",
+                     "id":  "linkedin:4465574046",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/ey-gds-consulting-ai-and-data-ai-data-platform-engineer-databricks-senior-at-ey-4453418373/",
-                     "postedDate":  "2 days ago",
-                     "fit":  100,
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465574046/",
+                     "postedDate":  "4 days ago",
+                     "fit":  89,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "data platform engineer",
                                       "databricks"
                                   ],
                      "applyType":  "External Apply",
@@ -341,54 +412,51 @@
                      "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "EY - GDS Consulting - AI And DATA -AI Data Platform Engineer - Databricks- Senior EY Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467832794",
-                     "company":  " YASH Technologies ",
-                     "role":  "Module Lead - Azure Databricks Job",
+                     "id":  "linkedin:4465554152",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-4467832794/",
-                     "postedDate":  "1 day ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465554152/",
+                     "postedDate":  "4 days ago",
+                     "fit":  89,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
-                                      "databricks",
-                                      "azure"
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
+                     "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4469220241",
-                     "company":  " CDW ",
-                     "role":  "Consultant- Data engineer",
+                     "id":  "linkedin:4466646853",
+                     "company":  " Prophecy Technologies ",
+                     "role":  "Data Engineer Scala",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/consultant-data-engineer-at-cdw-4469220241/",
-                     "postedDate":  "19 hours ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-scala-at-prophecy-technologies-4466646853/",
+                     "postedDate":  "1 day ago",
+                     "fit":  89,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
-                                      "azure"
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
+                     "azureScore":  45,
+                     "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Consultant- Data engineer CDW Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdText":  "Data Engineer Scala Prophecy Technologies Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -415,77 +483,11 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465574046",
+                     "id":  "linkedin:4468815516",
                      "company":  " Accenture in India ",
                      "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465574046/",
-                     "postedDate":  "3 days ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4466656518",
-                     "company":  " Prophecy Technologies ",
-                     "role":  "Data Engineer with Scala",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-with-scala-at-prophecy-technologies-4466656518/",
-                     "postedDate":  "1 day ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer with Scala Prophecy Technologies Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4466646853",
-                     "company":  " Prophecy Technologies ",
-                     "role":  "Data Engineer Scala",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-scala-at-prophecy-technologies-4466646853/",
-                     "postedDate":  "1 day ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Scala Prophecy Technologies Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4468806738",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4468806738/",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4468815516/",
                      "postedDate":  "1 day ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
@@ -501,29 +503,6 @@
                      "databricksScore":  45,
                      "modelingScore":  55,
                      "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4466533559",
-                     "company":  " Texplorers Inc ",
-                     "role":  "Senior Data Engineer - Databricks",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-databricks-at-texplorers-inc-4466533559/",
-                     "postedDate":  "3 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "senior data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer - Databricks Texplorers Inc Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -551,27 +530,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467555391",
-                     "company":  " YASH Technologies ",
-                     "role":  "Module Lead - Azure Databricks Job",
+                     "id":  "linkedin:4465567102",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-4467555391/",
-                     "postedDate":  "2 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465567102/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
-                                      "databricks",
                                       "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
                      "azureScore":  59,
-                     "databricksScore":  59,
+                     "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -599,11 +577,11 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465507505",
-                     "company":  " Procter \u0026 Gamble ",
-                     "role":  "Senior Data Engineer",
+                     "id":  "linkedin:4466533559",
+                     "company":  " Texplorers Inc ",
+                     "role":  "Senior Data Engineer - Databricks",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-procter-gamble-4465507505/",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-databricks-at-texplorers-inc-4466533559/",
                      "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
@@ -618,7 +596,7 @@
                      "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Procter \u0026 Gamble Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Senior Data Engineer - Databricks Texplorers Inc Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -646,12 +624,35 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
+                     "id":  "linkedin:4466190305",
+                     "company":  " Kumaran Systems ",
+                     "role":  "Senior Data Engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-kumaran-systems-4466190305/",
+                     "postedDate":  "4 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "senior data engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Senior Data Engineer Kumaran Systems Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
                      "id":  "linkedin:4465563118",
                      "company":  " Accenture in India ",
                      "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465563118/",
-                     "postedDate":  "3 days ago",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -669,51 +670,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465567102",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
+                     "id":  "linkedin:4465507505",
+                     "company":  " Procter \u0026 Gamble ",
+                     "role":  "Senior Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465567102/",
-                     "postedDate":  "3 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4469185753",
-                     "company":  " Optum India ",
-                     "role":  "Data Engineering Consultant - PySpark, ADF",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineering-consultant-pyspark-adf-at-optum-india-4469185753/",
-                     "postedDate":  "23 hours ago",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-procter-gamble-4465507505/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "spark",
-                                      "pyspark",
-                                      "databricks",
-                                      "adf"
+                                      "senior data engineer",
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  75,
+                     "azureScore":  45,
+                     "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineering Consultant - PySpark, ADF Optum India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Senior Data Engineer Procter \u0026 Gamble Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -742,11 +718,34 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4468815516",
+                     "id":  "linkedin:4469507529",
+                     "company":  " Coretek ",
+                     "role":  "Data Engineer",
+                     "location":  "Kondapur, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-coretek-4469507529/",
+                     "postedDate":  "12 hours ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer Coretek Kondapur, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4460100921",
                      "company":  " Accenture in India ",
                      "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4468815516/",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4460100921/",
                      "postedDate":  "1 day ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
@@ -765,12 +764,37 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4460100921",
+                     "id":  "linkedin:4469185753",
+                     "company":  " Optum India ",
+                     "role":  "Data Engineering Consultant - PySpark, ADF",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineering-consultant-pyspark-adf-at-optum-india-4469185753/",
+                     "postedDate":  "1 day ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "spark",
+                                      "pyspark",
+                                      "databricks",
+                                      "adf"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  75,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineering Consultant - PySpark, ADF Optum India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4465556128",
                      "company":  " Accenture in India ",
                      "role":  "Data Engineer",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4460100921/",
-                     "postedDate":  "22 hours ago",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465556128/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -785,6 +809,53 @@
                      "databricksScore":  45,
                      "modelingScore":  55,
                      "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4467555391",
+                     "company":  " YASH Technologies ",
+                     "role":  "Module Lead - Azure Databricks Job",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-4467555391/",
+                     "postedDate":  "2 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4465536968",
+                     "company":  " Procter \u0026 Gamble ",
+                     "role":  "Senior Data Engineer (TOP Organization)",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-top-organization-at-procter-gamble-4465536968/",
+                     "postedDate":  "4 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "senior data engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Senior Data Engineer (TOP Organization) Procter \u0026 Gamble Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -809,75 +880,6 @@
                      "databricksScore":  59,
                      "modelingScore":  55,
                      "jdText":  "Sr. Software Engineer - Azure Databricks Job YASH Technologies Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4465556128",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465556128/",
-                     "postedDate":  "3 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4469507529",
-                     "company":  " Coretek ",
-                     "role":  "Data Engineer",
-                     "location":  "Kondapur, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-coretek-4469507529/",
-                     "postedDate":  "10 hours ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Coretek Kondapur, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4465536968",
-                     "company":  " Procter \u0026 Gamble ",
-                     "role":  "Senior Data Engineer (TOP Organization)",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-top-organization-at-procter-gamble-4465536968/",
-                     "postedDate":  "4 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "senior data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer (TOP Organization) Procter \u0026 Gamble Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -911,7 +913,7 @@
                      "role":  "Azure Data Engineer",
                      "location":  "Pune District, Maharashtra, India",
                      "link":  "https://www.linkedin.com/jobs/view/azure-data-engineer-at-recro-4466102453/",
-                     "postedDate":  "4 days ago",
+                     "postedDate":  "5 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -962,7 +964,7 @@
                      "role":  "Data Engineer",
                      "location":  "Chennai, Tamil Nadu, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-wpp-4456938925/",
-                     "postedDate":  "2 days ago",
+                     "postedDate":  "3 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -987,7 +989,7 @@
                      "role":  "Azure Databricks, ADF, Pyspark, Python, Terraform",
                      "location":  "Chennai, Tamil Nadu, India",
                      "link":  "https://www.linkedin.com/jobs/view/azure-databricks-adf-pyspark-python-terraform-at-tata-consultancy-services-4469510780/",
-                     "postedDate":  "3 hours ago",
+                     "postedDate":  "6 hours ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1066,7 +1068,7 @@
                      "role":  "Lead I - Data Engineering",
                      "location":  "Pune Division, Maharashtra, India",
                      "link":  "https://www.linkedin.com/jobs/view/lead-i-data-engineering-at-ust-4448751468/",
-                     "postedDate":  "5 hours ago",
+                     "postedDate":  "8 hours ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1083,6 +1085,30 @@
                      "databricksScore":  75,
                      "modelingScore":  55,
                      "jdText":  "Lead I - Data Engineering UST Pune Division, Maharashtra, India PySpark Databricks Azure Remote India",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4464765061",
+                     "company":  " PwC India ",
+                     "role":  "Senior Associate _Azure Databricks Pyspark Developer -_Data \u0026 Analytics _Advisory _Mumbai \u0026 Pune",
+                     "location":  "Mumbai Metropolitan Region",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-associate-azure-databricks-pyspark-developer-data-analytics-advisory-mumbai-pune-at-pwc-india-4464765061/",
+                     "postedDate":  "5 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "spark",
+                                      "pyspark",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  75,
+                     "modelingScore":  55,
+                     "jdText":  "Senior Associate _Azure Databricks Pyspark Developer -_Data \u0026 Analytics _Advisory _Mumbai \u0026 Pune PwC India Mumbai Metropolitan Region PySpark Databricks Azure Remote India",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1111,29 +1137,31 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465508560",
-                     "company":  " UST ",
-                     "role":  "Lead II - Data Engineering_BCBSA_Apache Spark; PySpark; Databricks",
-                     "location":  "Trivandrum, Kerala, India",
-                     "link":  "https://www.linkedin.com/jobs/view/lead-ii-data-engineering-bcbsa-apache-spark-pyspark-databricks-at-ust-4465508560/",
-                     "postedDate":  "4 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
+                     "id":  "near:7647369002",
+                     "company":  "Databricks",
+                     "role":  "Senior Software Engineer (Data Platform)",
+                     "location":  "Bengaluru, India, Bengaluru, India",
+                     "link":  "https://databricks.com/company/careers/open-positions/job?gh_jid=7647369002",
+                     "postedDate":  "Official ATS near-match; verify freshness",
+                     "fit":  86,
+                     "fitReason":  "Tier 2 ATS near-match for Sarath\u0027s profile; verify exact title, stack, seniority, and experience requirement",
                      "keywords":  [
-                                      "data engineer",
-                                      "spark",
-                                      "pyspark",
                                       "databricks",
-                                      "azure"
+                                      "unity catalog",
+                                      "lakehouse",
+                                      "airflow",
+                                      "etl",
+                                      "data pipeline",
+                                      "data pipelines"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  75,
-                     "modelingScore":  55,
-                     "jdText":  "Lead II - Data Engineering_BCBSA_Apache Spark; PySpark; Databricks UST Trivandrum, Kerala, India PySpark Databricks Azure Remote India",
-                     "jdQuality":  "SNIPPET"
+                     "notes":  "Official Databricks careers feed, but it missed one strict gate. Review before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  87,
+                     "modelingScore":  75,
+                     "jdText":  "\u0026lt;p\u0026gt;P-1348\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;At Databricks, we are passionate about enabling data teams to solve the world\u0026#39;s toughest problems, from security threat detection to cancer drug development. We do this by building and running the world\u0026#39;s best data and AI infrastructure platform, so our customers can focus on the high value challenges that are central to their own missions. Our engineering teams build technical products that fulfill real, important needs in the world. We always push the boundaries of data and AI technology, while simultaneously operating with the resilience, security and scale that is important to making customers successful on our platform.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;We develop and operate one of the largest scale software platforms. The fleet consists of millions of virtual machines, generating terabytes of logs and processing exabytes of data per day. At our scale, we observe cloud hardware, network, and operating system faults, and our software must gracefully shield our customers from any of the above.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;As a Senior Software Engineer working on the\u0026lt;strong\u0026gt; Data Platform team\u0026lt;/strong\u0026gt; you will help build the \u0026lt;strong\u0026gt;Data Intelligence Platform\u0026lt;/strong\u0026gt; for Databricks that will allow us to automate decision-making across the entire company. You will achieve this in collaboration with Databricks Product Teams, Data Science, Applied AI and many more. You will develop a variety of tools spanning \u0026lt;strong\u0026gt;logging, orchestration, data transformation, metric store, governance platforms, data consumption layers\u0026lt;/strong\u0026gt; etc. You will do this using the latest, bleeding-edge Databricks product and other tools in the data ecosystem - the team also functions as a large, production, in-house customer that dog foods Databricks and guides the future direction of the product.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;The impact you will have:\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;Design and run the Databricks metrics store that enables all business units and engineering teams to bring their detailed metrics into a common platform for sharing and aggregation, with high quality, introspection ability and query performance.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Design and run the cross-company Data Intelligence Platform, which contains every business and product metric used to run Databricks. Youâll play a key role in developing the right balance of data protections and ease of shareability for the Data Intelligence Platform as we transition to a public company.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Develop tooling and infrastructure to efficiently manage and run Databricks on Databricks at scale, across multiple clouds, geographies and deployment types. This includes CI/CD processes, test frameworks for pipelines and data quality, and infrastructure-as-code tooling.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Design the base ETL framework used by all pipelines developed at the company.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Partner with our engineering teams to provide leadership in developing the long-term vision and requirements for the Databricks product.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Build reliable data pipelines and solve data problems using Databricks, our partnerâs products and other OSS tools. Provide early feedback on the design and operations of these products.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Establish conventions and create new APIs for telemetry, debug, feature and audit event log data, and evolve them as the product and underlying services change.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Represent Databricks at academic and industrial conferences \u0026amp;amp; events.\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;What we look for:\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;6+ years of industry experience\u0026amp;nbsp;\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;4+ years of experience providing technical leadership on large projects similar to the ones described above - ETL frameworks, metrics stores, infrastructure management, data security.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience building, shipping and operating reliable multi-geo data pipelines at scale.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience working with and operating workflow or orchestration frameworks, including open source tools like Airflow and DBT or commercial enterprise tools.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience with large-scale messaging systems like Kafka or RabbitMQ or commercial systems.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Excellent cross-functional and communication skills, consensus builder.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Passion for data infrastructure and for enabling others by making their data easier to access.\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt;\u0026amp;nbsp;\u0026lt;/p\u0026gt;\u0026lt;div class=\u0026quot;content-conclusion\u0026quot;\u0026gt;\u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;About Databricks\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;span style=\u0026quot;font-family: arial, sans-serif;\u0026quot;\u0026gt;Databricks is the Data and AI company. More than 20,000 organizations worldwide â including adidas, AT\u0026amp;amp;T, Bayer, Block, Mastercard, Rivian, Unilever, and 70% of the Fortune 500 â rely on the Databricks Data + AI Platform to build and scale data and AI apps, analytics and agents. Headquartered in San Francisco with 30+ offices around the globe, Databricks offers a unified platform that includes Genie, Lakebase, Agent Bricks, Lakeflow, Lakehouse, and Unity Catalog. To learn more, follow Databricks on \u0026lt;a href=\u0026quot;https://www.linkedin.com/company/databricks\u0026quot;\u0026gt;LinkedIn\u0026lt;/a\u0026gt;, \u0026lt;a href=\u0026quot;https://x.com/databricks\u0026quot;\u0026gt;X\u0026lt;/a\u0026gt;, \u0026lt;a href=\u0026quot;https://www.youtube.com/@Databricks\u0026quot;\u0026gt;YouTube\u0026lt;/a\u0026gt;, and \u0026lt;a href=\u0026quot;https://www.instagram.com/databricksinc/?hl=en\u0026quot;\u0026gt;Instagram\u0026lt;/a\u0026gt;.\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;strong\u0026gt;Benefits\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;/strong\u0026gt;\u0026lt;/span\u0026gt;At Databricks, we strive to provide comprehensive benefits and perks that meet the needs of all of our employees. For specific details on the benefits offered in your region click \u0026lt;a href=\u0026quot;https://docs.google.com/document/d/154un3e8Xav4BceOSlcYFZRGEuQI54xMxVydRwQn54eQ/edit?usp=sharing\u0026quot;\u0026gt;here\u0026lt;/a\u0026gt;.\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;Our Commitment to Diversity and Inclusion\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;At Databricks, we are committed to fostering a diverse and inclusive culture where everyone can excel. We take great care to ensure that our hiring practices are inclusive and meet equal employment opportunity standards. Individuals looking for employment at Databricks are considered without regard to age, color, disability, ethnicity, family or marital status, gender identity or expression, language, national origin, physical and mental ability, political affiliation, race, religion, sexual orientation, socio-economic status, veteran status, and other protected characteristics.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;Compliance\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;\u0026lt;span style=\u0026quot;font-weight: 400;\u0026quot;\u0026gt;If access to export-controlled technology or source code is required for performance of job duties, it is within Employer\u0026#39;s discretion whether to apply for a U.S. government license for such positions, and Employer may decline to proceed with an applicant on this basis alone.\u0026lt;/span\u0026gt;\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt;\u0026lt;/div\u0026gt;",
+                     "jdQuality":  "PARTIAL"
                  },
                  {
                      "id":  "linkedin:4449000426",
@@ -1141,7 +1169,7 @@
                      "role":  "Data Engineer",
                      "location":  "Chennai, Tamil Nadu, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-ciklum-india-4449000426/",
-                     "postedDate":  "2 days ago",
+                     "postedDate":  "3 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1161,36 +1189,12 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4464765061",
-                     "company":  " PwC India ",
-                     "role":  "Senior Associate _Azure Databricks Pyspark Developer -_Data \u0026 Analytics _Advisory _Mumbai \u0026 Pune",
-                     "location":  "Mumbai Metropolitan Region",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-associate-azure-databricks-pyspark-developer-data-analytics-advisory-mumbai-pune-at-pwc-india-4464765061/",
-                     "postedDate":  "5 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "spark",
-                                      "pyspark",
-                                      "databricks",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  75,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Associate _Azure Databricks Pyspark Developer -_Data \u0026 Analytics _Advisory _Mumbai \u0026 Pune PwC India Mumbai Metropolitan Region PySpark Databricks Azure Remote India",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
                      "id":  "linkedin:4440204292",
                      "company":  " Edwards Vacuum ",
                      "role":  "Azure Data Engineer",
                      "location":  "Pune Division, Maharashtra, India",
                      "link":  "https://www.linkedin.com/jobs/view/azure-data-engineer-at-edwards-vacuum-4440204292/",
-                     "postedDate":  "1 day ago",
+                     "postedDate":  "2 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1216,7 +1220,7 @@
                      "role":  "Senior Data Engineer",
                      "location":  "Noida, Uttar Pradesh, India",
                      "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-dsv-global-transport-and-logistics-4456882275/",
-                     "postedDate":  "4 days ago",
+                     "postedDate":  "5 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1237,12 +1241,37 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
+                     "id":  "linkedin:4465508560",
+                     "company":  " UST ",
+                     "role":  "Lead II - Data Engineering_BCBSA_Apache Spark; PySpark; Databricks",
+                     "location":  "Trivandrum, Kerala, India",
+                     "link":  "https://www.linkedin.com/jobs/view/lead-ii-data-engineering-bcbsa-apache-spark-pyspark-databricks-at-ust-4465508560/",
+                     "postedDate":  "4 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "spark",
+                                      "pyspark",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  75,
+                     "modelingScore":  55,
+                     "jdText":  "Lead II - Data Engineering_BCBSA_Apache Spark; PySpark; Databricks UST Trivandrum, Kerala, India PySpark Databricks Azure Remote India",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
                      "id":  "linkedin:4423913467",
                      "company":  " Basware ",
                      "role":  "Senior Data Engineer — Enterprise Data Platform",
                      "location":  "Chandigarh, India",
                      "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-%E2%80%94-enterprise-data-platform-at-basware-4423913467/",
-                     "postedDate":  "2 days ago",
+                     "postedDate":  "3 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1260,32 +1289,6 @@
                      "databricksScore":  75,
                      "modelingScore":  55,
                      "jdText":  "Senior Data Engineer — Enterprise Data Platform Basware Chandigarh, India PySpark Databricks Azure Remote India",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4329481543",
-                     "company":  " Toppan Merrill ",
-                     "role":  "Senior Data Engineer",
-                     "location":  "Greater Chennai Area",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-toppan-merrill-4329481543/",
-                     "postedDate":  "6 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Remote India; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "senior data engineer",
-                                      "spark",
-                                      "pyspark",
-                                      "databricks",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  75,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Toppan Merrill Greater Chennai Area PySpark Databricks Azure Remote India",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1312,34 +1315,12 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4455302929",
-                     "company":  " Amgen ",
-                     "role":  "Data Engineer",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-amgen-4455302929/",
-                     "postedDate":  "6 days ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer Amgen Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
                      "id":  "linkedin:4447803041",
                      "company":  " Microsoft ",
                      "role":  "Consultant - Data Engineer + AI",
                      "location":  "Hyderabad, Telangana, India",
                      "link":  "https://www.linkedin.com/jobs/view/consultant-data-engineer-%2B-ai-at-microsoft-4447803041/",
-                     "postedDate":  "6 days ago",
+                     "postedDate":  "1 week ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1357,26 +1338,25 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4441177455",
-                     "company":  " Deloitte ",
-                     "role":  "Lead Software Engineering - Data Engineer \u0026 AI - Hyderabad",
+                     "id":  "linkedin:4468655691",
+                     "company":  " The Depository Trust \u0026 Clearing Corporation (DTCC) ",
+                     "role":  "Data Engineering Senior Associate",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/lead-software-engineering-data-engineer-ai-hyderabad-at-deloitte-4441177455/",
-                     "postedDate":  "4 hours ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineering-senior-associate-at-the-depository-trust-clearing-corporation-dtcc-4468655691/",
+                     "postedDate":  "2 days ago",
+                     "fit":  89,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
-                                      "azure"
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
+                     "azureScore":  45,
+                     "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Lead Software Engineering - Data Engineer \u0026 AI - Hyderabad Deloitte Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdText":  "Data Engineering Senior Associate The Depository Trust \u0026 Clearing Corporation (DTCC) Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1403,26 +1383,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4417630615",
-                     "company":  " Kroll ",
-                     "role":  "Senior Data Engineer",
+                     "id":  "linkedin:4446631628",
+                     "company":  " dsm-firmenich ",
+                     "role":  "Lead Expert Data Engineer- Procurement",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-kroll-4417630615/",
-                     "postedDate":  "5 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/lead-expert-data-engineer-procurement-at-dsm-firmenich-4446631628/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "senior data engineer",
-                                      "databricks"
+                                      "azure data engineer",
+                                      "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
+                     "azureScore":  59,
+                     "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Kroll Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Lead Expert Data Engineer- Procurement dsm-firmenich Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1449,25 +1429,27 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4468655691",
-                     "company":  " The Depository Trust \u0026 Clearing Corporation (DTCC) ",
-                     "role":  "Data Engineering Senior Associate",
+                     "id":  "linkedin:4467832794",
+                     "company":  " YASH Technologies ",
+                     "role":  "Module Lead - Azure Databricks Job",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineering-senior-associate-at-the-depository-trust-clearing-corporation-dtcc-4468655691/",
+                     "link":  "https://www.linkedin.com/jobs/view/module-lead-azure-databricks-job-at-yash-technologies-4467832794/",
                      "postedDate":  "1 day ago",
-                     "fit":  89,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "databricks"
+                                      "azure data engineer",
+                                      "databricks",
+                                      "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
+                     "azureScore":  59,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineering Senior Associate The Depository Trust \u0026 Clearing Corporation (DTCC) Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdText":  "Module Lead - Azure Databricks Job YASH Technologies Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1476,7 +1458,7 @@
                      "role":  "Data Platform Engineer",
                      "location":  "Hyderabad, Telangana, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-platform-engineer-at-accenture-in-india-4465547962/",
-                     "postedDate":  "3 days ago",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1491,6 +1473,29 @@
                      "databricksScore":  59,
                      "modelingScore":  55,
                      "jdText":  "Data Platform Engineer Accenture in India Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4417630615",
+                     "company":  " Kroll ",
+                     "role":  "Senior Data Engineer",
+                     "location":  "Hyderabad, Telangana, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-kroll-4417630615/",
+                     "postedDate":  "6 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "senior data engineer",
+                                      "databricks"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  45,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Senior Data Engineer Kroll Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1522,7 +1527,7 @@
                      "role":  "Senior Specialist, Process Data Engineering",
                      "location":  "Hyderabad, Telangana, India",
                      "link":  "https://www.linkedin.com/jobs/view/senior-specialist-process-data-engineering-at-msd-4469243332/",
-                     "postedDate":  "17 hours ago",
+                     "postedDate":  "20 hours ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1610,12 +1615,12 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4446631628",
-                     "company":  " dsm-firmenich ",
-                     "role":  "Lead Expert Data Engineer- Procurement",
+                     "id":  "linkedin:4441177455",
+                     "company":  " Deloitte ",
+                     "role":  "Lead Software Engineering - Data Engineer \u0026 AI - Hyderabad",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/lead-expert-data-engineer-procurement-at-dsm-firmenich-4446631628/",
-                     "postedDate":  "3 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/lead-software-engineering-data-engineer-ai-hyderabad-at-deloitte-4441177455/",
+                     "postedDate":  "7 hours ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1629,31 +1634,7 @@
                      "azureScore":  59,
                      "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "Lead Expert Data Engineer- Procurement dsm-firmenich Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4468388844",
-                     "company":  " Wipro ",
-                     "role":  "Azure Data Factory",
-                     "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/azure-data-factory-at-wipro-4468388844/",
-                     "postedDate":  "2 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure",
-                                      "data factory"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  73,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Azure Data Factory Wipro Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
+                     "jdText":  "Lead Software Engineering - Data Engineer \u0026 AI - Hyderabad Deloitte Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1681,50 +1662,27 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4466190305",
-                     "company":  " Kumaran Systems ",
-                     "role":  "Senior Data Engineer",
+                     "id":  "linkedin:4468388844",
+                     "company":  " Wipro ",
+                     "role":  "Azure Data Factory",
                      "location":  "Hyderabad, Telangana, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-kumaran-systems-4466190305/",
-                     "postedDate":  "4 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/azure-data-factory-at-wipro-4468388844/",
+                     "postedDate":  "2 days ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Databricks; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "senior data engineer",
-                                      "databricks"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Kumaran Systems Hyderabad, Telangana, India Data Engineer Databricks Hyderabad Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4467852618",
-                     "company":  " Omnicom Global Solutions ",
-                     "role":  "Senior Databricks Data Engineer",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-databricks-data-engineer-at-omnicom-global-solutions-4467852618/",
-                     "postedDate":  "1 day ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Hyderabad Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
-                                      "databricks",
-                                      "azure"
+                                      "azure",
+                                      "data factory"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  59,
+                     "azureScore":  73,
+                     "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "Senior Databricks Data Engineer Omnicom Global Solutions Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "Azure Data Factory Wipro Hyderabad, Telangana, India Azure Data Engineer Hyderabad Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1752,14 +1710,14 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467723570",
-                     "company":  " Apexon ",
-                     "role":  "Senior Azure Data Engineer | 7+ Years | Bangalore",
+                     "id":  "linkedin:4467876909",
+                     "company":  " Zensar Technologies ",
+                     "role":  "DE\u0026A - Core - Cloud Data Engineering - Databricks",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-azure-data-engineer-7%2B-years-bangalore-at-apexon-4467723570/",
-                     "postedDate":  "4 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/de-a-core-cloud-data-engineering-databricks-at-zensar-technologies-4467876909/",
+                     "postedDate":  "1 day ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
@@ -1772,7 +1730,7 @@
                      "azureScore":  59,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Senior Azure Data Engineer | 7+ Years | Bangalore Apexon Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "DE\u0026A - Core - Cloud Data Engineering - Databricks Zensar Technologies Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1781,7 +1739,7 @@
                      "role":  "Senior Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
                      "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-teamware-solutions-4465576435/",
-                     "postedDate":  "3 days ago",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1799,34 +1757,35 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4458029532",
-                     "company":  " IBM ",
-                     "role":  "Data Engineer-Data Platforms-Azure",
+                     "id":  "linkedin:4467852618",
+                     "company":  " Omnicom Global Solutions ",
+                     "role":  "Senior Databricks Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4458029532/",
-                     "postedDate":  "21 hours ago",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-databricks-data-engineer-at-omnicom-global-solutions-4467852618/",
+                     "postedDate":  "1 day ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
+                                      "databricks",
                                       "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
                      "azureScore":  59,
-                     "databricksScore":  45,
+                     "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineer-Data Platforms-Azure IBM Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "Senior Databricks Data Engineer Omnicom Global Solutions Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4446242662",
+                     "id":  "linkedin:4458029532",
                      "company":  " IBM ",
                      "role":  "Data Engineer-Data Platforms-Azure",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4446242662/",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4458029532/",
                      "postedDate":  "1 day ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
@@ -1845,27 +1804,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467876909",
-                     "company":  " Zensar Technologies ",
-                     "role":  "DE\u0026A - Core - Cloud Data Engineering - Databricks",
+                     "id":  "linkedin:4446249647",
+                     "company":  " IBM ",
+                     "role":  "Data Engineer-Data Platforms-Azure",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/de-a-core-cloud-data-engineering-databricks-at-zensar-technologies-4467876909/",
-                     "postedDate":  "21 hours ago",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4446249647/",
+                     "postedDate":  "3 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
-                                      "databricks",
                                       "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
                      "azureScore":  59,
-                     "databricksScore":  59,
+                     "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "DE\u0026A - Core - Cloud Data Engineering - Databricks Zensar Technologies Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "Data Engineer-Data Platforms-Azure IBM Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1893,26 +1851,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4463838224",
-                     "company":  " Publicis Sapient ",
-                     "role":  "Senior Data Engineer",
+                     "id":  "linkedin:4446242662",
+                     "company":  " IBM ",
+                     "role":  "Data Engineer-Data Platforms-Azure",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-publicis-sapient-4463838224/",
-                     "postedDate":  "4 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4446242662/",
+                     "postedDate":  "1 day ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "senior data engineer",
-                                      "databricks"
+                                      "azure data engineer",
+                                      "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  59,
+                     "azureScore":  59,
+                     "databricksScore":  45,
                      "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Publicis Sapient Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "Data Engineer-Data Platforms-Azure IBM Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1921,7 +1879,7 @@
                      "role":  "Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-rockwell-automation-4459173405/",
-                     "postedDate":  "1 hour ago",
+                     "postedDate":  "4 hours ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -1939,25 +1897,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465566088",
-                     "company":  " Accenture in India ",
-                     "role":  "Data Engineer",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465566088/",
+                     "id":  "linkedin:4467972989",
+                     "company":  " 9NEXUS ",
+                     "role":  "Azure Data bricks and Azure - Gen AI ( WFO 5 days- Bangalore)",
+                     "location":  "Bangalore Urban, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/azure-data-bricks-and-azure-gen-ai-wfo-5-days-bangalore-at-9nexus-4467972989/",
                      "postedDate":  "3 days ago",
-                     "fit":  89,
+                     "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "databricks"
+                                      "databricks",
+                                      "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  45,
+                     "azureScore":  59,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Data Engineer Accenture in India Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "Azure Data bricks and Azure - Gen AI ( WFO 5 days- Bangalore) 9NEXUS Bangalore Urban, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -1984,27 +1943,26 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4468354520",
-                     "company":  " KPMG ",
-                     "role":  "KDN India_Consulting_Azure Data Engineer",
+                     "id":  "linkedin:4463838224",
+                     "company":  " Publicis Sapient ",
+                     "role":  "Senior Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/kdn-india-consulting-azure-data-engineer-at-kpmg-4468354520/",
-                     "postedDate":  "2 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-publicis-sapient-4463838224/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
-                                      "databricks",
-                                      "azure"
+                                      "senior data engineer",
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
+                     "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "KDN India_Consulting_Azure Data Engineer KPMG Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "Senior Data Engineer Publicis Sapient Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -2032,16 +1990,17 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467972989",
-                     "company":  " 9NEXUS ",
-                     "role":  "Azure Data bricks and Azure - Gen AI ( WFO 5 days- Bangalore)",
-                     "location":  "Bangalore Urban, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/azure-data-bricks-and-azure-gen-ai-wfo-5-days-bangalore-at-9nexus-4467972989/",
-                     "postedDate":  "3 days ago",
+                     "id":  "linkedin:4467723570",
+                     "company":  " Apexon ",
+                     "role":  "Senior Azure Data Engineer | 7+ Years | Bangalore",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-azure-data-engineer-7%2B-years-bangalore-at-apexon-4467723570/",
+                     "postedDate":  "4 days ago",
                      "fit":  100,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
+                                      "azure data engineer",
                                       "databricks",
                                       "azure"
                                   ],
@@ -2051,7 +2010,7 @@
                      "azureScore":  59,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Azure Data bricks and Azure - Gen AI ( WFO 5 days- Bangalore) 9NEXUS Bangalore Urban, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "Senior Azure Data Engineer | 7+ Years | Bangalore Apexon Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -2078,37 +2037,14 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4446249647",
-                     "company":  " IBM ",
-                     "role":  "Data Engineer-Data Platforms-Azure",
+                     "id":  "linkedin:4468354520",
+                     "company":  " KPMG ",
+                     "role":  "KDN India_Consulting_Azure Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-data-platforms-azure-at-ibm-4446249647/",
-                     "postedDate":  "3 days ago",
+                     "link":  "https://www.linkedin.com/jobs/view/kdn-india-consulting-azure-data-engineer-at-kpmg-4468354520/",
+                     "postedDate":  "2 days ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Data Engineer-Data Platforms-Azure IBM Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4467771541",
-                     "company":  " Tata Consultancy Services ",
-                     "role":  "Azure Databricks",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/azure-databricks-at-tata-consultancy-services-4467771541/",
-                     "postedDate":  "3 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
                                       "azure data engineer",
@@ -2121,54 +2057,30 @@
                      "azureScore":  59,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Azure Databricks Tata Consultancy Services Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "KDN India_Consulting_Azure Data Engineer KPMG Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4465523717",
-                     "company":  " Happiest Minds Technologies ",
-                     "role":  "LEAD DATA ENGINEER - Databricks",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/lead-data-engineer-databricks-at-happiest-minds-technologies-4465523717/",
-                     "postedDate":  "4 days ago",
+                     "id":  "linkedin:4467289000",
+                     "company":  " Caterpillar Inc. ",
+                     "role":  "Senior Data Engineer",
+                     "location":  "Bengaluru East, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-caterpillar-inc-4467289000/",
+                     "postedDate":  "20 hours ago",
                      "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "azure data engineer",
-                                      "databricks",
-                                      "azure"
+                                      "senior data engineer",
+                                      "databricks"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
                      "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
+                     "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "LEAD DATA ENGINEER - Databricks Happiest Minds Technologies Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4442713814",
-                     "company":  " Sandisk ",
-                     "role":  "Senior Engineer, Data Engineering",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-engineer-data-engineering-at-sandisk-4442713814/",
-                     "postedDate":  "1 day ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  45,
-                     "modelingScore":  55,
-                     "jdText":  "Senior Engineer, Data Engineering Sandisk Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdText":  "Senior Data Engineer Caterpillar Inc. Bengaluru East, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -2196,6 +2108,100 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
+                     "id":  "linkedin:4467771541",
+                     "company":  " Tata Consultancy Services ",
+                     "role":  "Azure Databricks",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/azure-databricks-at-tata-consultancy-services-4467771541/",
+                     "postedDate":  "3 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Azure Databricks Tata Consultancy Services Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4442713814",
+                     "company":  " Sandisk ",
+                     "role":  "Senior Engineer, Data Engineering",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/senior-engineer-data-engineering-at-sandisk-4442713814/",
+                     "postedDate":  "1 day ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Senior Engineer, Data Engineering Sandisk Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4458496025",
+                     "company":  " Chevron ",
+                     "role":  "Data Engineer",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-chevron-4458496025/",
+                     "postedDate":  "1 hour ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer Chevron Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4467739001",
+                     "company":  " Waters Corporation ",
+                     "role":  "Data Platforms Senior Engineer – Databricks",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-platforms-senior-engineer-%E2%80%93-databricks-at-waters-corporation-4467739001/",
+                     "postedDate":  "3 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "databricks",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "Data Platforms Senior Engineer – Databricks Waters Corporation Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
                      "id":  "linkedin:4465514619",
                      "company":  " Happiest Minds Technologies ",
                      "role":  "SENIOR DATA ENGINEER - Azure Databricks",
@@ -2220,31 +2226,28 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "near:7647369002",
-                     "company":  "Databricks",
-                     "role":  "Senior Software Engineer (Data Platform)",
-                     "location":  "Bengaluru, India, Bengaluru, India",
-                     "link":  "https://databricks.com/company/careers/open-positions/job?gh_jid=7647369002",
-                     "postedDate":  "Official ATS near-match; verify freshness",
-                     "fit":  86,
-                     "fitReason":  "Tier 2 ATS near-match for Sarath\u0027s profile; verify exact title, stack, seniority, and experience requirement",
+                     "id":  "linkedin:4465523717",
+                     "company":  " Happiest Minds Technologies ",
+                     "role":  "LEAD DATA ENGINEER - Databricks",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/lead-data-engineer-databricks-at-happiest-minds-technologies-4465523717/",
+                     "postedDate":  "4 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
                      "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
                                       "databricks",
-                                      "unity catalog",
-                                      "lakehouse",
-                                      "airflow",
-                                      "etl",
-                                      "data pipeline",
-                                      "data pipelines"
+                                      "azure"
                                   ],
                      "applyType":  "External Apply",
                      "classificationConfidence":  "Discovery",
-                     "notes":  "Official Databricks careers feed, but it missed one strict gate. Review before applying.",
-                     "azureScore":  45,
-                     "databricksScore":  87,
-                     "modelingScore":  75,
-                     "jdText":  "\u0026lt;p\u0026gt;P-1348\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;At Databricks, we are passionate about enabling data teams to solve the world\u0026#39;s toughest problems, from security threat detection to cancer drug development. We do this by building and running the world\u0026#39;s best data and AI infrastructure platform, so our customers can focus on the high value challenges that are central to their own missions. Our engineering teams build technical products that fulfill real, important needs in the world. We always push the boundaries of data and AI technology, while simultaneously operating with the resilience, security and scale that is important to making customers successful on our platform.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;We develop and operate one of the largest scale software platforms. The fleet consists of millions of virtual machines, generating terabytes of logs and processing exabytes of data per day. At our scale, we observe cloud hardware, network, and operating system faults, and our software must gracefully shield our customers from any of the above.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;As a Senior Software Engineer working on the\u0026lt;strong\u0026gt; Data Platform team\u0026lt;/strong\u0026gt; you will help build the \u0026lt;strong\u0026gt;Data Intelligence Platform\u0026lt;/strong\u0026gt; for Databricks that will allow us to automate decision-making across the entire company. You will achieve this in collaboration with Databricks Product Teams, Data Science, Applied AI and many more. You will develop a variety of tools spanning \u0026lt;strong\u0026gt;logging, orchestration, data transformation, metric store, governance platforms, data consumption layers\u0026lt;/strong\u0026gt; etc. You will do this using the latest, bleeding-edge Databricks product and other tools in the data ecosystem - the team also functions as a large, production, in-house customer that dog foods Databricks and guides the future direction of the product.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;The impact you will have:\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;Design and run the Databricks metrics store that enables all business units and engineering teams to bring their detailed metrics into a common platform for sharing and aggregation, with high quality, introspection ability and query performance.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Design and run the cross-company Data Intelligence Platform, which contains every business and product metric used to run Databricks. Youâll play a key role in developing the right balance of data protections and ease of shareability for the Data Intelligence Platform as we transition to a public company.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Develop tooling and infrastructure to efficiently manage and run Databricks on Databricks at scale, across multiple clouds, geographies and deployment types. This includes CI/CD processes, test frameworks for pipelines and data quality, and infrastructure-as-code tooling.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Design the base ETL framework used by all pipelines developed at the company.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Partner with our engineering teams to provide leadership in developing the long-term vision and requirements for the Databricks product.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Build reliable data pipelines and solve data problems using Databricks, our partnerâs products and other OSS tools. Provide early feedback on the design and operations of these products.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Establish conventions and create new APIs for telemetry, debug, feature and audit event log data, and evolve them as the product and underlying services change.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Represent Databricks at academic and industrial conferences \u0026amp;amp; events.\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;What we look for:\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;ul\u0026gt; \u0026lt;li\u0026gt;6+ years of industry experience\u0026amp;nbsp;\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;4+ years of experience providing technical leadership on large projects similar to the ones described above - ETL frameworks, metrics stores, infrastructure management, data security.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience building, shipping and operating reliable multi-geo data pipelines at scale.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience working with and operating workflow or orchestration frameworks, including open source tools like Airflow and DBT or commercial enterprise tools.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Experience with large-scale messaging systems like Kafka or RabbitMQ or commercial systems.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Excellent cross-functional and communication skills, consensus builder.\u0026lt;/li\u0026gt; \u0026lt;li\u0026gt;Passion for data infrastructure and for enabling others by making their data easier to access.\u0026lt;/li\u0026gt; \u0026lt;/ul\u0026gt; \u0026lt;p\u0026gt;\u0026amp;nbsp;\u0026lt;/p\u0026gt;\u0026lt;div class=\u0026quot;content-conclusion\u0026quot;\u0026gt;\u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;About Databricks\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;span style=\u0026quot;font-family: arial, sans-serif;\u0026quot;\u0026gt;Databricks is the Data and AI company. More than 20,000 organizations worldwide â including adidas, AT\u0026amp;amp;T, Bayer, Block, Mastercard, Rivian, Unilever, and 70% of the Fortune 500 â rely on the Databricks Data + AI Platform to build and scale data and AI apps, analytics and agents. Headquartered in San Francisco with 30+ offices around the globe, Databricks offers a unified platform that includes Genie, Lakebase, Agent Bricks, Lakeflow, Lakehouse, and Unity Catalog. To learn more, follow Databricks on \u0026lt;a href=\u0026quot;https://www.linkedin.com/company/databricks\u0026quot;\u0026gt;LinkedIn\u0026lt;/a\u0026gt;, \u0026lt;a href=\u0026quot;https://x.com/databricks\u0026quot;\u0026gt;X\u0026lt;/a\u0026gt;, \u0026lt;a href=\u0026quot;https://www.youtube.com/@Databricks\u0026quot;\u0026gt;YouTube\u0026lt;/a\u0026gt;, and \u0026lt;a href=\u0026quot;https://www.instagram.com/databricksinc/?hl=en\u0026quot;\u0026gt;Instagram\u0026lt;/a\u0026gt;.\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;strong\u0026gt;Benefits\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;/strong\u0026gt;\u0026lt;/span\u0026gt;At Databricks, we strive to provide comprehensive benefits and perks that meet the needs of all of our employees. For specific details on the benefits offered in your region click \u0026lt;a href=\u0026quot;https://docs.google.com/document/d/154un3e8Xav4BceOSlcYFZRGEuQI54xMxVydRwQn54eQ/edit?usp=sharing\u0026quot;\u0026gt;here\u0026lt;/a\u0026gt;.\u0026lt;br\u0026gt;\u0026lt;br\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;Our Commitment to Diversity and Inclusion\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;At Databricks, we are committed to fostering a diverse and inclusive culture where everyone can excel. We take great care to ensure that our hiring practices are inclusive and meet equal employment opportunity standards. Individuals looking for employment at Databricks are considered without regard to age, color, disability, ethnicity, family or marital status, gender identity or expression, language, national origin, physical and mental ability, political affiliation, race, religion, sexual orientation, socio-economic status, veteran status, and other protected characteristics.\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;Compliance\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt; \u0026lt;p\u0026gt;\u0026lt;strong\u0026gt;\u0026lt;span style=\u0026quot;font-weight: 400;\u0026quot;\u0026gt;If access to export-controlled technology or source code is required for performance of job duties, it is within Employer\u0026#39;s discretion whether to apply for a U.S. government license for such positions, and Employer may decline to proceed with an applicant on this basis alone.\u0026lt;/span\u0026gt;\u0026lt;/strong\u0026gt;\u0026lt;/p\u0026gt;\u0026lt;/div\u0026gt;",
-                     "jdQuality":  "PARTIAL"
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  59,
+                     "modelingScore":  55,
+                     "jdText":  "LEAD DATA ENGINEER - Databricks Happiest Minds Technologies Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
                  },
                  {
                      "id":  "linkedin:4466883228",
@@ -2267,30 +2270,6 @@
                      "databricksScore":  59,
                      "modelingScore":  55,
                      "jdText":  "Senior Data Engineer USEReady Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
-                     "jdQuality":  "SNIPPET"
-                 },
-                 {
-                     "id":  "linkedin:4467739001",
-                     "company":  " Waters Corporation ",
-                     "role":  "Data Platforms Senior Engineer – Databricks",
-                     "location":  "Bengaluru, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/data-platforms-senior-engineer-%E2%80%93-databricks-at-waters-corporation-4467739001/",
-                     "postedDate":  "2 days ago",
-                     "fit":  100,
-                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
-                     "keywords":  [
-                                      "data engineer",
-                                      "azure data engineer",
-                                      "databricks",
-                                      "azure"
-                                  ],
-                     "applyType":  "External Apply",
-                     "classificationConfidence":  "Discovery",
-                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
-                     "azureScore":  59,
-                     "databricksScore":  59,
-                     "modelingScore":  55,
-                     "jdText":  "Data Platforms Senior Engineer – Databricks Waters Corporation Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -2322,7 +2301,7 @@
                      "role":  "Data Engineer",
                      "location":  "Bengaluru, Karnataka, India",
                      "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465563123/",
-                     "postedDate":  "3 days ago",
+                     "postedDate":  "4 days ago",
                      "fit":  89,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
@@ -2339,17 +2318,16 @@
                      "jdQuality":  "SNIPPET"
                  },
                  {
-                     "id":  "linkedin:4467289000",
-                     "company":  " Caterpillar Inc. ",
-                     "role":  "Senior Data Engineer",
-                     "location":  "Bengaluru East, Karnataka, India",
-                     "link":  "https://www.linkedin.com/jobs/view/senior-data-engineer-at-caterpillar-inc-4467289000/",
-                     "postedDate":  "18 hours ago",
-                     "fit":  100,
+                     "id":  "linkedin:4465555159",
+                     "company":  " Accenture in India ",
+                     "role":  "Data Engineer",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-at-accenture-in-india-4465555159/",
+                     "postedDate":  "4 days ago",
+                     "fit":  89,
                      "fitReason":  "LinkedIn public India discovery match from Bengaluru Databricks; verify JD, company, experience, and salary before applying",
                      "keywords":  [
                                       "data engineer",
-                                      "senior data engineer",
                                       "databricks"
                                   ],
                      "applyType":  "External Apply",
@@ -2358,7 +2336,7 @@
                      "azureScore":  45,
                      "databricksScore":  59,
                      "modelingScore":  55,
-                     "jdText":  "Senior Data Engineer Caterpillar Inc. Bengaluru East, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
+                     "jdText":  "Data Engineer Accenture in India Bengaluru, Karnataka, India Data Engineer Databricks Bengaluru Databricks",
                      "jdQuality":  "SNIPPET"
                  },
                  {
@@ -2457,6 +2435,29 @@
                      "databricksScore":  45,
                      "modelingScore":  55,
                      "jdText":  "Data Engineer Andor Tech Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
+                     "jdQuality":  "SNIPPET"
+                 },
+                 {
+                     "id":  "linkedin:4467173899",
+                     "company":  " MyCareernet ",
+                     "role":  "Data Engineer_103421",
+                     "location":  "Bengaluru, Karnataka, India",
+                     "link":  "https://www.linkedin.com/jobs/view/data-engineer-103421-at-mycareernet-4467173899/",
+                     "postedDate":  "2 days ago",
+                     "fit":  100,
+                     "fitReason":  "LinkedIn public India discovery match from Bengaluru Azure; verify JD, company, experience, and salary before applying",
+                     "keywords":  [
+                                      "data engineer",
+                                      "azure data engineer",
+                                      "azure"
+                                  ],
+                     "applyType":  "External Apply",
+                     "classificationConfidence":  "Discovery",
+                     "notes":  "LinkedIn public result restored to match the previous ntfy alert style. Verify before applying.",
+                     "azureScore":  59,
+                     "databricksScore":  45,
+                     "modelingScore":  55,
+                     "jdText":  "Data Engineer_103421 MyCareernet Bengaluru, Karnataka, India Azure Data Engineer Bengaluru Azure",
                      "jdQuality":  "SNIPPET"
                  }
              ]
