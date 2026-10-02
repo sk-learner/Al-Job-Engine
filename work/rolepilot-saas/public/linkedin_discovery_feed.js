@@ -1,5 +1,5 @@
 ﻿window.LINKEDIN_DISCOVERY_FEED = {
-    "generatedAt":  "2026-10-02T12:58:20+00:00",
+    "generatedAt":  "2026-10-02T18:08:33+00:00",
     "sourceAutomation":  "India GCC Product Data Job Monitor",
     "sourceLanes":  [
                         {
